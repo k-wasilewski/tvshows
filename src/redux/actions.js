@@ -1,8 +1,8 @@
-export const SET_SOMETHING = 'SET_SOMETHING';
+export const SET_RESULTS = 'SET_RESULTS';
 
-export function setSomething(sth) {
+export function setResults(results) {
     return {
-        type: SET_SOMETHING,
-        data: sth
+        type: SET_RESULTS,
+        data: results
     };
 };

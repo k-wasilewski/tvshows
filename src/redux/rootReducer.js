@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import setSomethingReducer from "./setSomethingReducer";
+import setResultsReducer from "./setResultsReducer";
 
 export default combineReducers({
-    setSomethingReducer
+    setResultsReducer
 });
