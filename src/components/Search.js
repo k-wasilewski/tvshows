@@ -52,7 +52,7 @@ class Search extends Component {
     render() {
         return (
             <div className="App">
-                <span id='errorMsg'>{this.state.errorMsg}</span>
+                <span className='errorMsg'>{this.state.errorMsg}</span>
                 <form onSubmit={this.submitQuery}>
                     <input type='text' onChange={this.inputOnChange} />
                     <button>Szukaj</button>

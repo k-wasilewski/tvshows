@@ -3,7 +3,7 @@
   font-family: Lato;
 }
 
-#errorMsg {
+.errorMsg {
   color: red;
 }
 

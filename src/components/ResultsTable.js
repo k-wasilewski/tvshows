@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useHistory } from "react-router-dom";
+import {setDetailedResult} from "../redux/actions";
+import {connect} from "react-redux";
 
 const useStyles = makeStyles({
     table: {
@@ -26,14 +28,14 @@ const mappedGenres = (genres) => {
     }
 }
 
-export default function ResultsTable(props) {
+export function ResultsTable(props) {
     const classes = useStyles();
     const [sortedResults, setSortedResults] = React.useState([]);
 
     const history = useHistory();
 
     function rowClicked(event, result) {
-        alert(result.show.name)
+        props.setDetailedResult(result);
         history.push("/details");
     }
 
@@ -66,3 +68,11 @@ export default function ResultsTable(props) {
         </TableContainer>
     );
 }
+
+const mapStateToProps = state => ({
+    detailedResult: state.setDetailedResultReducer.detailedResult
+});
+
+const mapDispatchToProps = { setDetailedResult };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResultsTable);
