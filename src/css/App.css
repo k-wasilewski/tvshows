@@ -6,3 +6,9 @@
 #errorMsg {
   color: red;
 }
+
+#copyright {
+  bottom: 10px;
+  position: fixed;
+  right: 10%;
+}

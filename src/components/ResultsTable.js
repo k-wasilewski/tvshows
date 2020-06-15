@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
     table: {
@@ -25,13 +26,16 @@ const mappedGenres = (genres) => {
     }
 }
 
-function rowClicked(event, result) {
-    alert(result.show.name)
-}
-
 export default function ResultsTable(props) {
     const classes = useStyles();
     const [sortedResults, setSortedResults] = React.useState([]);
+
+    const history = useHistory();
+
+    function rowClicked(event, result) {
+        alert(result.show.name)
+        history.push("/details");
+    }
 
     React.useEffect( () => {
         setSortedResults(props.results.sort((a, b) => b.score - a.score));
