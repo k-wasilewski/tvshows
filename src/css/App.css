@@ -11,4 +11,11 @@
   bottom: 10px;
   position: fixed;
   right: 10%;
+  background-color: white;
+  box-shadow: 0 0 10px 10px white;
+}
+
+#tableWrapper {
+  width: 90vw;
+  margin: 0 auto;
 }

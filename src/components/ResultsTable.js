@@ -12,8 +12,8 @@ import {setDetailedResult} from "../redux/actions";
 import {connect} from "react-redux";
 
 const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
+    tableRow: {
+        color: "red"
     },
 });
 
@@ -44,8 +44,8 @@ export function ResultsTable(props) {
     }, [props.results])
 
     return (
-        <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
+        <TableContainer component={Paper} id='tableWrapper'>
+            <Table aria-label="results table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Ocena</TableCell>
@@ -56,7 +56,8 @@ export function ResultsTable(props) {
                 </TableHead>
                 <TableBody>
                     {sortedResults.map((result) => (
-                        <TableRow key={result.show.name} onClick={event => rowClicked(event, result)}>
+                        <TableRow key={result.show.name} onClick={event => rowClicked(event, result)}
+                                  className={classes.tableRow}>
                             <TableCell component="th" scope="row">{result.score}</TableCell>
                             <TableCell align="right">{result.show.name}</TableCell>
                             <TableCell align="right">{mappedGenres(result.show.genres)}</TableCell>
