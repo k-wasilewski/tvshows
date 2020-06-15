@@ -27,9 +27,10 @@ const mappedGenres = (genres) => {
 
 export default function ResultsTable(props) {
     const classes = useStyles();
+    const [sortedResults, setSortedResults] = React.useState([]);
 
     React.useEffect( () => {
-        //props.results.sort((a, b) => a.score - b.score);
+        setSortedResults(props.results.sort((a, b) => b.score - a.score));
     }, [props.results])
 
     return (
@@ -44,7 +45,7 @@ export default function ResultsTable(props) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.results.map((result) => (
+                    {sortedResults.map((result) => (
                         <TableRow key={result.show.name}>
                             <TableCell component="th" scope="row">{result.score}</TableCell>
                             <TableCell align="right">{result.show.name}</TableCell>
