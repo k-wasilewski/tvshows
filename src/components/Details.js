@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import {setDetailedResult} from "../redux/actions";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class Details extends Component {
 
@@ -19,9 +20,10 @@ class Details extends Component {
         } else {
             return (
                 <div className="App">
-                    <span>{result.show.name}</span>
+                    <h2>{result.show.name}</h2>
                     <span dangerouslySetInnerHTML={this.createMarkup(result.show.summary)} />
-                    <img alt={`img-${result.show.name}`} src={result.show.image.medium} />
+                    <div><img alt={`img-${result.show.name}`} src={result.show.image.medium} /></div>
+                    <Link to="/"><button>Powrót</button></Link>
                 </div>
             );
         }
