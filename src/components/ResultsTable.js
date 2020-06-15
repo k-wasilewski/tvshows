@@ -25,6 +25,10 @@ const mappedGenres = (genres) => {
     }
 }
 
+function rowClicked(event, result) {
+    alert(result.show.name)
+}
+
 export default function ResultsTable(props) {
     const classes = useStyles();
     const [sortedResults, setSortedResults] = React.useState([]);
@@ -46,7 +50,7 @@ export default function ResultsTable(props) {
                 </TableHead>
                 <TableBody>
                     {sortedResults.map((result) => (
-                        <TableRow key={result.show.name}>
+                        <TableRow key={result.show.name} onClick={event => rowClicked(event, result)}>
                             <TableCell component="th" scope="row">{result.score}</TableCell>
                             <TableCell align="right">{result.show.name}</TableCell>
                             <TableCell align="right">{mappedGenres(result.show.genres)}</TableCell>
