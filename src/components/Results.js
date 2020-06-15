@@ -15,6 +15,11 @@ class Results extends Component {
         };
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.filteredResults===prevState.filteredResults)
+            this.setState({filteredResults: []});
+    }
+
     filterByDay = (day) => {
         const dayName = mapDayNoToName(day);
 
@@ -26,13 +31,15 @@ class Results extends Component {
     }
 
     render() {
+        const results = (this.state.filteredResults.length===0) ?
+            this.props.results
+            :
+            this.state.filteredResults;
+
         return (
             <div className="App">
                 <ResultsFilter setDay={this.filterByDay} />
-                <ResultsTable results={(this.state.filteredResults.length===0) ?
-                    this.props.results
-                    :
-                    this.state.filteredResults} />
+                <ResultsTable results={results} />
             </div>
         );
     };

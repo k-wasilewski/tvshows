@@ -28,6 +28,10 @@ const mappedGenres = (genres) => {
 export default function ResultsTable(props) {
     const classes = useStyles();
 
+    React.useEffect( () => {
+        //props.results.sort((a, b) => a.score - b.score);
+    }, [props.results])
+
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
