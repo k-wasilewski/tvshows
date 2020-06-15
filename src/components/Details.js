@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import '../css/App.css';
 import {setDetailedResult} from "../redux/actions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {ErrorMsg} from "./ErrorMsg";
 
 class Details extends Component {
 
@@ -16,15 +16,15 @@ class Details extends Component {
         const result = this.props.detailedResult;
 
         if (result.length===0) {
-            return (<div className='errorMsg'>Należy wybrać element z listy</div>)
+            return (<ErrorMsg msg={'Należy wybrać element z listy'} />)
         } else {
             return (
-                <div className="App">
+                <React.Fragment>
                     <h2>{result.show.name}</h2>
                     <span dangerouslySetInnerHTML={this.createMarkup(result.show.summary)} />
                     <div><img alt={`img-${result.show.name}`} src={result.show.image.medium} /></div>
                     <Link to="/"><button>Powrót</button></Link>
-                </div>
+                </React.Fragment>
             );
         }
     };

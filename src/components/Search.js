@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import '../css/App.css';
 import axios from "axios";
 import { connect } from 'react-redux';
 import { setResults } from "../redux/actions";
+import {ErrorMsg} from "./ErrorMsg";
 
 class Search extends Component {
     constructor(props) {
@@ -51,13 +51,13 @@ class Search extends Component {
 
     render() {
         return (
-            <div className="App">
-                <span className='errorMsg'>{this.state.errorMsg}</span>
+            <React.Fragment>
+                <ErrorMsg msg={this.state.errorMsg} />
                 <form onSubmit={this.submitQuery}>
                     <input type='text' onChange={this.inputOnChange} />
                     <button>Szukaj</button>
                 </form>
-            </div>
+            </React.Fragment>
         );
     };
 };

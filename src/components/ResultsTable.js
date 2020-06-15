@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,12 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { useHistory } from "react-router-dom";
 import {setDetailedResult} from "../redux/actions";
 import {connect} from "react-redux";
-
-const useStyles = makeStyles({
-    tableRow: {
-        color: "red"
-    },
-});
+import {useStyles} from "./useStyles";
 
 const mappedGenres = (genres) => {
     if (genres.length===1) return genres;
@@ -27,6 +22,24 @@ const mappedGenres = (genres) => {
         });
     }
 }
+
+const StyledTableHeadRow = withStyles((theme) => ({
+    root: {
+        '& *': {
+            fontFamily: 'Lato Heavy',
+            fontSize: '1.1rem'
+        }
+    }
+}))(TableRow);
+
+const StyledTableRow = withStyles((theme) => ({
+    root: {
+        '&:hover': {
+            backgroundColor: 'lightgray',
+            cursor: 'pointer'
+        }
+    }
+}))(TableRow);
 
 export function ResultsTable(props) {
     const classes = useStyles();
@@ -44,25 +57,24 @@ export function ResultsTable(props) {
     }, [props.results])
 
     return (
-        <TableContainer component={Paper} id='tableWrapper'>
+        <TableContainer className={classes.tableWrapper} component={Paper} id='tableWrapper'>
             <Table aria-label="results table">
                 <TableHead>
-                    <TableRow>
+                    <StyledTableHeadRow>
                         <TableCell>Ocena</TableCell>
                         <TableCell align="right">Tytuł</TableCell>
                         <TableCell align="right">Gatunki</TableCell>
                         <TableCell align="right">Data premiery</TableCell>
-                    </TableRow>
+                    </StyledTableHeadRow>
                 </TableHead>
                 <TableBody>
                     {sortedResults.map((result) => (
-                        <TableRow key={result.show.name} onClick={event => rowClicked(event, result)}
-                                  className={classes.tableRow}>
+                        <StyledTableRow key={result.show.name} onClick={event => rowClicked(event, result)}>
                             <TableCell component="th" scope="row">{result.score}</TableCell>
                             <TableCell align="right">{result.show.name}</TableCell>
                             <TableCell align="right">{mappedGenres(result.show.genres)}</TableCell>
                             <TableCell align="right">{result.show.premiered}</TableCell>
-                        </TableRow>
+                        </StyledTableRow>
                     ))}
                 </TableBody>
             </Table>

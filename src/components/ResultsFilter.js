@@ -25,7 +25,7 @@ export default function SimpleSelect(props) {
     };
 
     return (
-        <div>
+        <React.Fragment>
             <FormControl className={classes.formControl}>
                 <InputLabel id="demo-simple-select-label">Dzień tygodnia</InputLabel>
                 <Select
@@ -43,6 +43,6 @@ export default function SimpleSelect(props) {
                     <MenuItem value={7}>Niedziela</MenuItem>
                 </Select>
             </FormControl>
-        </div>
+        </React.Fragment>
     );
 }

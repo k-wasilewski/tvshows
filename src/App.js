@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import './css/App.css';
+import React from 'react';
 import Router from "./components/Router";
+import {useStyles} from "./components/useStyles";
 
-class App extends Component {
-  render() {
+export default function App() {
+    const classes = useStyles();
+
     return (
-        <div className="App">
+        <div className={classes.App}>
             <Router />
         </div>
     );
-  };
 };
-
-export default App;

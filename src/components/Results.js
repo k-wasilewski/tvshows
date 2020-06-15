@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/App.css';
 import {setResults} from "../redux/actions";
 import {connect} from "react-redux";
 import ResultsTable from "./ResultsTable";
@@ -37,10 +36,10 @@ class Results extends Component {
             this.state.filteredResults;
 
         return (
-            <div className="App">
+            <React.Fragment>
                 <ResultsFilter setDay={this.filterByDay} />
                 <ResultsTable results={results} />
-            </div>
+            </React.Fragment>
         );
     };
 };
