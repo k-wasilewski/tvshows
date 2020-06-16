@@ -27,10 +27,10 @@ export default function SimpleSelect(props) {
     return (
         <React.Fragment>
             <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">Dzień tygodnia</InputLabel>
+                <InputLabel id='demo-simple-select-label'>Dzień tygodnia</InputLabel>
                 <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
+                    labelId='demo-simple-select-label'
+                    id='demo-simple-select'
                     value={day}
                     onChange={handleChange}
                 >

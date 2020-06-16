@@ -7,16 +7,16 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { useHistory } from "react-router-dom";
-import {setDetailedResult} from "../../../redux/actions";
-import {connect} from "react-redux";
+import { useHistory } from 'react-router-dom';
+import {setDetailedResult} from '../../../redux/actions';
+import {connect} from 'react-redux';
 import {
     useStyles,
     TABLE_HEAD_STYLE,
     TABLE_ROW_STYLE,
     TABLE_STYLE,
     TABLE_CONTAINER_STYLE
-} from "../../../styles/styles";
+} from '../../../styles/styles';
 
 const mappedGenres = (genres) => {
     if (genres.length===1) return genres;
@@ -45,7 +45,7 @@ export function ResultsTable(props) {
 
     function rowClicked(event, result) {
         props.setDetailedResult(result);
-        history.push("/details");
+        history.push('/details');
     }
 
     React.useEffect( () => {
@@ -57,22 +57,22 @@ export function ResultsTable(props) {
     if (sortedResults.length===0) return <React.Fragment />
     else return (
         <StyledTableContainer component={Paper}>
-            <StyledTable aria-label="results table">
+            <StyledTable aria-label='results table'>
                 <TableHead>
                     <StyledTableHeadRow>
                         <TableCell>Ocena</TableCell>
-                        <TableCell align="right">Tytuł</TableCell>
-                        <TableCell align="right">Gatunki</TableCell>
-                        <TableCell align="right">Data premiery</TableCell>
+                        <TableCell align='right'>Tytuł</TableCell>
+                        <TableCell align='right'>Gatunki</TableCell>
+                        <TableCell align='right'>Data premiery</TableCell>
                     </StyledTableHeadRow>
                 </TableHead>
                 <TableBody>
                     {sortedResults.map((result) => (
                         <StyledTableRow key={result.show.name} onClick={event => rowClicked(event, result)}>
-                            <TableCell component="th" scope="row">{result.score}</TableCell>
-                            <TableCell align="right">{result.show.name}</TableCell>
-                            <TableCell align="right">{mappedGenres(result.show.genres)}</TableCell>
-                            <TableCell align="right">{result.show.premiered}</TableCell>
+                            <TableCell component='th' scope='row'>{result.score}</TableCell>
+                            <TableCell align='right'>{result.show.name}</TableCell>
+                            <TableCell align='right'>{mappedGenres(result.show.genres)}</TableCell>
+                            <TableCell align='right'>{result.show.premiered}</TableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>

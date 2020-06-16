@@ -1,4 +1,4 @@
-import {SET_RESULTS} from "./actions";
+import {SET_RESULTS} from './actions';
 
 const initialState = {
     results: []

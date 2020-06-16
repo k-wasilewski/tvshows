@@ -1,4 +1,4 @@
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from '@material-ui/core/styles';
 
 const BACKGROUND_COLOR = '#deeaff';
 
@@ -8,6 +8,12 @@ export const useStyles = makeStyles({
         fontFamily: 'Lato',
         backgroundColor: BACKGROUND_COLOR,
         height: '100vh'
+    },
+    logo: {
+        top: '5px',
+        left: '5px',
+        position: 'fixed',
+        width: '15vw'
     },
     copywright: {
         bottom: '5px',

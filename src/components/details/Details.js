@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {setDetailedResult} from "../../redux/actions";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import {ErrorMsg} from "../misc/ErrorMsg";
+import {setDetailedResult} from '../../redux/actions';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {ErrorMsg} from '../misc/ErrorMsg';
 
 class Details extends Component {
 
@@ -23,7 +23,7 @@ class Details extends Component {
                     <h2>{result.show.name}</h2>
                     <span dangerouslySetInnerHTML={this.createMarkup(result.show.summary)} />
                     <div><img alt={`img-${result.show.name}`} src={result.show.image.medium} /></div>
-                    <Link to="/"><button>Powrót</button></Link>
+                    <Link to='/'><button>Powrót</button></Link>
                 </React.Fragment>
             );
         }
