@@ -25,7 +25,6 @@ export const styles = makeStyles({
     errorMsg: {
         display: 'block',
         color: 'red',
-        marginBottom: '2px'
     },
     hidden: {
         display: 'none'
@@ -37,10 +36,8 @@ export const styles = makeStyles({
         display: 'block',
         paddingTop: '5vh'
     },
-    searchForm: {
-        paddingTop: '10vh'
-    },
     dashboard: {
+        paddingTop: '10vh',
         textAlign: 'left',
         paddingLeft: '20vw'
     },

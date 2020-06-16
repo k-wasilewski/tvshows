@@ -17,10 +17,10 @@ export function Details(props) {
 
     if (result.length===0) {
         return (
-            <React.Fragment>
+            <div className={classes.dashboard}>
                 <ErrorMsg msg={'Należy wybrać element z listy'} />
                 <Link to='/'><button>Powrót</button></Link>
-            </React.Fragment>
+            </div>
             );
     } else {
         return (

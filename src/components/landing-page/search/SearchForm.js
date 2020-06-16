@@ -6,8 +6,8 @@ export function SearchForm(props) {
     const classes = styles();
 
     return (
-        <div className={`${classes.searchForm} ${classes.dashboard}`}>
-            <ErrorMsg style={{marginTop: '5vh'}} msg={props.msg} />
+        <div className={classes.dashboard}>
+            <ErrorMsg msg={props.msg} />
             <form onSubmit={props.onSubmit} >
                 <input type='text' onChange={props.onChange} />
                 <button>Szukaj</button>
