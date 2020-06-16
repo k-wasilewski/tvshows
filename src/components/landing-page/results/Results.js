@@ -35,9 +35,14 @@ class Results extends Component {
             :
             this.state.filteredResults;
 
+        const resultsFilter = (results.length===0) ?
+            null
+            :
+            <ResultsFilter setDay={this.filterByDay} />;
+
         return (
             <React.Fragment>
-                <ResultsFilter setDay={this.filterByDay} />
+                {resultsFilter}
                 <ResultsTable results={results} />
             </React.Fragment>
         );

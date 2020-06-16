@@ -1,11 +1,14 @@
 import {ErrorMsg} from "../../misc/ErrorMsg";
 import React from "react";
+import {useStyles} from "../../../styles/styles";
 
-export function SearchForm(props) { //styling
+export function SearchForm(props) {
+    const classes = useStyles();
+
     return (
-        <div>
-            <ErrorMsg msg={props.msg} />
-            <form onSubmit={props.onSubmit}>
+        <div className={classes.searchForm}>
+            <ErrorMsg style={{marginTop: '5vh'}} msg={props.msg} />
+            <form onSubmit={props.onSubmit} >
                 <input type='text' onChange={props.onChange} />
                 <button>Szukaj</button>
             </form>

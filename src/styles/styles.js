@@ -23,13 +23,17 @@ export const useStyles = makeStyles({
         boxShadow: `0 0 10px 10px ${BACKGROUND_COLOR}`
     },
     errorMsg: {
-        color: 'red'
+        color: 'red',
+        marginBottom: '2px'
     },
     hidden: {
         display: 'none'
     },
     detailsHeader: {
         marginTop: 0
+    },
+    searchForm: {
+        paddingTop: '10vh'
     }
 });
 
