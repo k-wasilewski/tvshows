@@ -2,7 +2,7 @@ import {makeStyles} from '@material-ui/core/styles';
 
 const BACKGROUND_COLOR = '#deeaff';
 
-export const useStyles = makeStyles({
+export const styles = makeStyles({
     App: {
         textAlign: 'center',
         fontFamily: 'Lato',
@@ -34,6 +34,10 @@ export const useStyles = makeStyles({
     },
     searchForm: {
         paddingTop: '10vh'
+    },
+    dashboard: {
+        textAlign: 'left',
+        paddingLeft: '20vw'
     }
 });
 

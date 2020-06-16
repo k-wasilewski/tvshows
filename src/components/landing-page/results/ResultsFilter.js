@@ -4,6 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import {styles} from "../../../styles/styles";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -16,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SimpleSelect(props) {
-    const classes = useStyles();
+    const materialUiClasses = useStyles();
+    const classes = styles();
     const [day, setDay] = React.useState('');
 
     const handleChange = (event) => {
@@ -25,8 +27,9 @@ export default function SimpleSelect(props) {
     };
 
     return (
-        <React.Fragment>
-            <FormControl className={classes.formControl}>
+        <div className={classes.dashboard}>
+            <span>Filtruj:</span>
+            <FormControl className={materialUiClasses.formControl}>
                 <InputLabel id='demo-simple-select-label'>Dzień tygodnia</InputLabel>
                 <Select
                     labelId='demo-simple-select-label'
@@ -43,6 +46,6 @@ export default function SimpleSelect(props) {
                     <MenuItem value={7}>Niedziela</MenuItem>
                 </Select>
             </FormControl>
-        </React.Fragment>
+        </div>
     );
 }

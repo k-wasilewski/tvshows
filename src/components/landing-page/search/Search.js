@@ -49,10 +49,15 @@ class Search extends Component {
         event.preventDefault();
     }
 
+    resetResults = (event) => {
+        this.props.setResults([]);
+        event.preventDefault();
+    }
+
     render() {
         return (
             <SearchForm msg={this.state.errorMsg} onSubmit={this.submitQuery}
-                        onChange={this.inputOnChange} />
+                        onChange={this.inputOnChange} doReset={this.resetResults}/>
         );
     };
 };

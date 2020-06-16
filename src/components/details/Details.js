@@ -3,7 +3,7 @@ import {setDetailedResult} from '../../redux/actions';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {ErrorMsg} from '../misc/ErrorMsg';
-import {useStyles} from '../../styles/styles';
+import {styles} from '../../styles/styles';
 
 const createMarkup = (text) => {
     return {
@@ -13,7 +13,7 @@ const createMarkup = (text) => {
 
 export function Details(props) {
     const result = props.detailedResult;
-    const classes = useStyles();
+    const classes = styles();
 
     if (result.length===0) {
         return (<ErrorMsg msg={'Należy wybrać element z listy'} />)

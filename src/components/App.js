@@ -1,10 +1,10 @@
 import React from 'react';
 import Router from './Router';
-import {useStyles} from '../styles/styles';
+import {styles} from '../styles/styles';
 import logo from '../img/logo.png';
 
 export default function App() {
-    const classes = useStyles();
+    const classes = styles();
 
     return (
         <div className={classes.App}>

@@ -1,8 +1,8 @@
 import React from 'react';
-import {useStyles} from '../../styles/styles';
+import {styles} from '../../styles/styles';
 
 export function ErrorMsg(props) {
-    const classes = useStyles();
+    const classes = styles();
 
     return (
         <span className={classes.errorMsg}>{props.msg}</span>
