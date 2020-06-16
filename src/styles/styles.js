@@ -23,6 +23,7 @@ export const styles = makeStyles({
         boxShadow: `0 0 10px 10px ${BACKGROUND_COLOR}`
     },
     errorMsg: {
+        display: 'block',
         color: 'red',
         marginBottom: '2px'
     },

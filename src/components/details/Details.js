@@ -16,7 +16,12 @@ export function Details(props) {
     const classes = styles();
 
     if (result.length===0) {
-        return (<ErrorMsg msg={'Należy wybrać element z listy'} />)
+        return (
+            <React.Fragment>
+                <ErrorMsg msg={'Należy wybrać element z listy'} />
+                <Link to='/'><button>Powrót</button></Link>
+            </React.Fragment>
+            );
     } else {
         return (
             <React.Fragment>
