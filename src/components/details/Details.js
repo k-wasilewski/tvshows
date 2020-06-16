@@ -35,12 +35,12 @@ export function Details(props) {
                                      onClick={resetDetailedResult}>Powrót</Button></Link>
                 <span className={classes.detailsSpan}
                       dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
-                <div>{
-                    (result.show.image)===null ?
-                    <Button variant='disabled' size='small'>brak zdjęcia</Button>
-                    :
+                {(result.show.image)===null ?
+                <Button variant='disabled' size='small'>brak zdjęcia</Button>
+                :
+                <a href={result.show.image.original}>
                     <img alt={`img-${result.show.name}`} src={result.show.image.medium} />
-                }</div>
+                </a>}
             </div>
         );
     }
