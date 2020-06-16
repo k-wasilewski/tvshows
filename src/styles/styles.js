@@ -32,6 +32,10 @@ export const styles = makeStyles({
     detailsHeader: {
         marginTop: 0
     },
+    detailsSpan: {
+        display: 'block',
+        paddingTop: '5vh'
+    },
     searchForm: {
         paddingTop: '10vh'
     },

@@ -21,7 +21,7 @@ export function Details(props) {
         return (
             <React.Fragment>
                 <h2 className={classes.detailsHeader}>{result.show.name}</h2>
-                <span dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
+                <span className={classes.detailsSpan} dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
                 <div><img alt={`img-${result.show.name}`} src={result.show.image.medium} /></div>
                 <Link to='/'><button>Powrót</button></Link>
             </React.Fragment>
