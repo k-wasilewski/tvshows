@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Search from './search/Search';
 import Results from './results/Results';
 

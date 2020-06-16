@@ -1,7 +1,7 @@
 import {ErrorMsg} from "../../misc/ErrorMsg";
 import React from "react";
 
-export function SearchForm(props) {
+export function SearchForm(props) { //styling
     return (
         <div>
             <ErrorMsg msg={props.msg} />

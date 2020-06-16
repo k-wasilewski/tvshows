@@ -11,7 +11,6 @@ import { useHistory } from 'react-router-dom';
 import {setDetailedResult} from '../../../redux/actions';
 import {connect} from 'react-redux';
 import {
-    useStyles,
     TABLE_HEAD_STYLE,
     TABLE_ROW_STYLE,
     TABLE_STYLE,
@@ -38,7 +37,6 @@ const StyledTable = withStyles((theme) => (TABLE_STYLE))(Table);
 const StyledTableContainer = withStyles((theme) => (TABLE_CONTAINER_STYLE))(TableContainer);
 
 export function ResultsTable(props) {
-    const classes = useStyles();
     const [sortedResults, setSortedResults] = React.useState([]);
 
     const history = useHistory();
@@ -50,9 +48,7 @@ export function ResultsTable(props) {
 
     React.useEffect( () => {
         setSortedResults(props.results.sort((a, b) => b.score - a.score));
-    }, [props.results])
-
-    const tableWrapperClassName = (sortedResults===[]) ? classes.hidden : classes.tableWrapper;
+    }, [props.results]);
 
     if (sortedResults.length===0) return <React.Fragment />
     else return (

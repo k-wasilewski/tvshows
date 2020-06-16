@@ -3,7 +3,7 @@ import {setDetailedResult} from '../../redux/actions';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {ErrorMsg} from '../misc/ErrorMsg';
-import {useStyles} from "../../styles/styles";
+import {useStyles} from '../../styles/styles';
 
 const createMarkup = (text) => {
     return {
@@ -19,12 +19,12 @@ export function Details(props) {
         return (<ErrorMsg msg={'Należy wybrać element z listy'} />)
     } else {
         return (
-            <div className={classes.App}>
-                <h2>{result.show.name}</h2>
+            <React.Fragment>
+                <h2 className={classes.detailsHeader}>{result.show.name}</h2>
                 <span dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
                 <div><img alt={`img-${result.show.name}`} src={result.show.image.medium} /></div>
                 <Link to='/'><button>Powrót</button></Link>
-            </div>
+            </React.Fragment>
         );
     }
 };

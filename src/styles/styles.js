@@ -27,6 +27,9 @@ export const useStyles = makeStyles({
     },
     hidden: {
         display: 'none'
+    },
+    detailsHeader: {
+        marginTop: 0
     }
 });
 

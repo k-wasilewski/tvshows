@@ -8,7 +8,7 @@ export default function App() {
 
     return (
         <div className={classes.App}>
-            <img className={classes.logo} src={logo} />
+            <img className={classes.logo} src={logo} alt='logo' />
             <Router />
             <p className={classes.copywright}> &copy; Kuba Wasilewski, 2020 </p>
         </div>
