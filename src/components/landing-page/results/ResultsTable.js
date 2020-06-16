@@ -10,7 +10,13 @@ import Paper from '@material-ui/core/Paper';
 import { useHistory } from "react-router-dom";
 import {setDetailedResult} from "../../../redux/actions";
 import {connect} from "react-redux";
-import {useStyles, BACKGROUND_COLOR} from "../../../styles/useStyles";
+import {
+    useStyles,
+    TABLE_HEAD_STYLE,
+    TABLE_ROW_STYLE,
+    TABLE_STYLE,
+    TABLE_CONTAINER_STYLE
+} from "../../../styles/styles";
 
 const mappedGenres = (genres) => {
     if (genres.length===1) return genres;
@@ -23,29 +29,13 @@ const mappedGenres = (genres) => {
     }
 }
 
-const StyledTableHeadRow = withStyles((theme) => ({
-    root: {
-        '& *': {
-            fontFamily: 'Lato Heavy',
-            fontSize: '1.1rem'
-        }
-    }
-}))(TableRow);
+const StyledTableHeadRow = withStyles((theme) => (TABLE_HEAD_STYLE))(TableRow);
 
-const StyledTableRow = withStyles((theme) => ({
-    root: {
-        '&:hover': {
-            backgroundColor: 'lightgray',
-            cursor: 'pointer'
-        }
-    }
-}))(TableRow);
+const StyledTableRow = withStyles((theme) => (TABLE_ROW_STYLE))(TableRow);
 
-const StyledTable = withStyles((theme) => ({
-    root: {
-        backgroundColor: BACKGROUND_COLOR
-    }
-}))(Table);
+const StyledTable = withStyles((theme) => (TABLE_STYLE))(Table);
+
+const StyledTableContainer = withStyles((theme) => (TABLE_CONTAINER_STYLE))(TableContainer);
 
 export function ResultsTable(props) {
     const classes = useStyles();
@@ -62,8 +52,11 @@ export function ResultsTable(props) {
         setSortedResults(props.results.sort((a, b) => b.score - a.score));
     }, [props.results])
 
-    return (
-        <TableContainer className={classes.tableWrapper} component={Paper} id='tableWrapper'>
+    const tableWrapperClassName = (sortedResults===[]) ? classes.hidden : classes.tableWrapper;
+
+    if (sortedResults.length===0) return <React.Fragment />
+    else return (
+        <StyledTableContainer component={Paper}>
             <StyledTable aria-label="results table">
                 <TableHead>
                     <StyledTableHeadRow>
@@ -84,7 +77,7 @@ export function ResultsTable(props) {
                     ))}
                 </TableBody>
             </StyledTable>
-        </TableContainer>
+        </StyledTableContainer>
     );
 }
 
