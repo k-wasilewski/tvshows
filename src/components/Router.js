@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import LandingPage from "./LandingPage";
-import Details from "./Details";
-import { useStyles } from "./useStyles";
+import LandingPage from "./landing-page/LandingPage";
+import Details from "./details/Details";
+import { useStyles } from "../styles/useStyles";
 
 const Router = () => {
     const classes = useStyles();

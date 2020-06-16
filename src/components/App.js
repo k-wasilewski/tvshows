@@ -1,6 +1,6 @@
 import React from 'react';
-import Router from "./components/Router";
-import {useStyles} from "./components/useStyles";
+import Router from "./Router";
+import {useStyles} from "../styles/useStyles";
 
 export default function App() {
     const classes = useStyles();

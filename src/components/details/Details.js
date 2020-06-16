@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {setDetailedResult} from "../redux/actions";
+import {setDetailedResult} from "../../redux/actions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {ErrorMsg} from "./ErrorMsg";
+import {ErrorMsg} from "../misc/ErrorMsg";
 
 class Details extends Component {
 

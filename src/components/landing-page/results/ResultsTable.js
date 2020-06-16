@@ -8,9 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useHistory } from "react-router-dom";
-import {setDetailedResult} from "../redux/actions";
+import {setDetailedResult} from "../../../redux/actions";
 import {connect} from "react-redux";
-import {useStyles, BACKGROUND_COLOR} from "./useStyles";
+import {useStyles, BACKGROUND_COLOR} from "../../../styles/useStyles";
 
 const mappedGenres = (genres) => {
     if (genres.length===1) return genres;

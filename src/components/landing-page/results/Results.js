@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {setResults} from "../redux/actions";
+import {setResults} from "../../../redux/actions";
 import {connect} from "react-redux";
 import ResultsTable from "./ResultsTable";
 import ResultsFilter from "./ResultsFilter";
-import mapDayNoToName from "../functions/mapDayNoToName";
+import mapDayNoToName from "../../../functions/mapDayNoToName";
 
 class Results extends Component {
     constructor(props) {

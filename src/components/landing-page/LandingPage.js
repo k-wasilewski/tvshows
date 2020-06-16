@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Search from './Search';
-import Results from './Results';
+import Search from './search/Search';
+import Results from './results/Results';
 
 class LandingPage extends Component {
     render() {

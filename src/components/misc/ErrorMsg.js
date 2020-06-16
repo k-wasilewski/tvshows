@@ -1,5 +1,5 @@
 import React from 'react';
-import {useStyles} from "./useStyles";
+import {useStyles} from "../../styles/useStyles";
 
 export function ErrorMsg(props) {
     const classes = useStyles();

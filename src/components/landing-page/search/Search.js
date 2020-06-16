@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { connect } from 'react-redux';
-import { setResults } from "../redux/actions";
-import {ErrorMsg} from "./ErrorMsg";
+import { setResults } from "../../../redux/actions";
+import {ErrorMsg} from "../../misc/ErrorMsg";
 
 class Search extends Component {
     constructor(props) {
