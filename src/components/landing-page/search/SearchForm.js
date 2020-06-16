@@ -9,7 +9,7 @@ export function SearchForm(props) {
         <div className={classes.dashboard}>
             <ErrorMsg msg={props.msg} />
             <form onSubmit={props.onSubmit} >
-                <input type='text' onChange={props.onChange} />
+                <input type='text' onChange={props.onChange} className={classes.input}/>
                 <button>Szukaj</button>
                 <button onClick={props.doReset}>Resetuj wyniki</button>
             </form>

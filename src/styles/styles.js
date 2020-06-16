@@ -7,7 +7,7 @@ export const styles = makeStyles({
         textAlign: 'center',
         fontFamily: 'Lato',
         backgroundColor: BACKGROUND_COLOR,
-        height: '100vh'
+        minHeight: '100vh'
     },
     logo: {
         top: '5px',
@@ -15,12 +15,25 @@ export const styles = makeStyles({
         position: 'fixed',
         width: '15vw'
     },
-    copywright: {
+    copyrightLandingPage: {
         bottom: '5px',
         right: '5px',
         position: 'fixed',
         backgroundColor: BACKGROUND_COLOR,
-        boxShadow: `0 0 10px 10px ${BACKGROUND_COLOR}`
+        boxShadow: `0 0 10px 10px ${BACKGROUND_COLOR}`,
+        ['@media (max-width:200px)']: {     //eslint-disable-line no-useless-computed-key
+            display: 'none'
+        }
+    },
+    copyrightDetails: {
+        bottom: '5px',
+        right: '5px',
+        position: 'fixed',
+        backgroundColor: BACKGROUND_COLOR,
+        boxShadow: `0 0 10px 10px ${BACKGROUND_COLOR}`,
+        ['@media (max-width:460px)']: {     //eslint-disable-line no-useless-computed-key
+            display: 'none'
+        }
     },
     errorMsg: {
         display: 'block',
@@ -47,6 +60,14 @@ export const styles = makeStyles({
     },
     formControl: {
         display: 'inline-block'
+    },
+    input: {
+        ['@media (max-width:310px)']: {     //eslint-disable-line no-useless-computed-key
+            width: '90%'
+        },
+        ['@media (max-width:200px)']: {     //eslint-disable-line no-useless-computed-key
+            width: '80%'
+        }
     }
 });
 
@@ -64,6 +85,20 @@ export const TABLE_ROW_STYLE = {
         '&:hover': {
             backgroundColor: 'lightgray',
             cursor: 'pointer'
+        }
+    }
+};
+
+export const TABLE_CELL_STYLE = {
+    root: {
+        ['@media (max-width:430px)']: {     //eslint-disable-line no-useless-computed-key
+            fontSize: '0.7rem'
+        },
+        ['@media (max-width:370px)']: {     //eslint-disable-line no-useless-computed-key
+            fontSize: '0.5rem'
+        },
+        ['@media (max-width:300px)']: {     //eslint-disable-line no-useless-computed-key
+            fontSize: '0.2rem'
         }
     }
 };

@@ -14,7 +14,8 @@ import {
     TABLE_HEAD_STYLE,
     TABLE_ROW_STYLE,
     TABLE_STYLE,
-    TABLE_CONTAINER_STYLE
+    TABLE_CONTAINER_STYLE,
+    TABLE_CELL_STYLE
 } from '../../../styles/styles';
 
 const mappedGenres = (genres) => {
@@ -36,6 +37,8 @@ const StyledTable = withStyles((theme) => (TABLE_STYLE))(Table);
 
 const StyledTableContainer = withStyles((theme) => (TABLE_CONTAINER_STYLE))(TableContainer);
 
+const StyledTableCell = withStyles((theme) => (TABLE_CELL_STYLE))(TableCell);
+
 export function ResultsTable(props) {
     const [sortedResults, setSortedResults] = React.useState([]);
 
@@ -56,19 +59,19 @@ export function ResultsTable(props) {
             <StyledTable aria-label='results table'>
                 <TableHead>
                     <StyledTableHeadRow>
-                        <TableCell>Ocena</TableCell>
-                        <TableCell align='right'>Tytuł</TableCell>
-                        <TableCell align='right'>Gatunki</TableCell>
-                        <TableCell align='right'>Data premiery</TableCell>
+                        <StyledTableCell>Ocena</StyledTableCell>
+                        <StyledTableCell align='right'>Tytuł</StyledTableCell>
+                        <StyledTableCell align='right'>Gatunki</StyledTableCell>
+                        <StyledTableCell align='right'>Data premiery</StyledTableCell>
                     </StyledTableHeadRow>
                 </TableHead>
                 <TableBody>
                     {sortedResults.map((result) => (
-                        <StyledTableRow key={result.show.name} onClick={event => rowClicked(event, result)}>
-                            <TableCell component='th' scope='row'>{result.score}</TableCell>
-                            <TableCell align='right'>{result.show.name}</TableCell>
-                            <TableCell align='right'>{mappedGenres(result.show.genres)}</TableCell>
-                            <TableCell align='right'>{result.show.premiered}</TableCell>
+                        <StyledTableRow key={result.score+result.show.name} onClick={event => rowClicked(event, result)}>
+                            <StyledTableCell component='th' scope='row'>{result.score}</StyledTableCell>
+                            <StyledTableCell align='right'>{result.show.name}</StyledTableCell>
+                            <StyledTableCell align='right'>{mappedGenres(result.show.genres)}</StyledTableCell>
+                            <StyledTableCell align='right'>{result.show.premiered}</StyledTableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>
