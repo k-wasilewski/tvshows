@@ -31,6 +31,8 @@ export function Details(props) {
         return (
             <div className={classes.dashboard}>
                 <h2 className={classes.detailsHeader}>{result.show.name}</h2>
+                <Link to='/'><Button variant='outlined' size='small'
+                                     onClick={resetDetailedResult}>Powrót</Button></Link>
                 <span className={classes.detailsSpan}
                       dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
                 <div>{
@@ -39,8 +41,6 @@ export function Details(props) {
                     :
                     <img alt={`img-${result.show.name}`} src={result.show.image.medium} />
                 }</div>
-                <Link to='/'><Button variant='outlined' size='small'
-                                     onClick={resetDetailedResult}>Powrót</Button></Link>
             </div>
         );
     }
