@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {ErrorMsg} from '../misc/ErrorMsg';
 import {styles} from '../../styles/styles';
 import Button from '@material-ui/core/Button';
+import Typography from "@material-ui/core/Typography";
 
 const createMarkup = (text) => {
     return {
@@ -31,11 +32,14 @@ export function Details(props) {
         return (
             <React.Fragment>
                 <div className={classes.dashboard}>
-                    <h2 className={classes.detailsHeader}>{result.show.name}</h2>
+                    <Typography variant="h5" component="h2"
+                                className={classes.detailsHeader}>
+                        {result.show.name}
+                    </Typography>
                     <Link to='/'><Button variant='outlined' size='small'
                                          onClick={resetDetailedResult}>Powrót</Button></Link>
-                    <span className={classes.detailsSpan}
-                          dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
+                    <Typography variant="body1" component="h2" className={classes.detailsSpan}
+                        dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
                     {(result.show.image)===null ?
                         <Button variant='disabled' size='small'>brak zdjęcia</Button>
                         :

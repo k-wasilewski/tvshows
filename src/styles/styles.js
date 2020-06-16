@@ -54,7 +54,8 @@ export const styles = makeStyles({
     },
     detailsSpan: {
         display: 'block',
-        paddingTop: '5vh'
+        paddingTop: '5vh',
+        paddingRight: '5vw'
     },
     dashboard: {
         paddingTop: '10vh',

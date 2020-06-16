@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import {styles} from "../../../styles/styles";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -29,7 +30,8 @@ export default function ResultsFilter(props) {
 
     return (
         <div className={classes.dashboard}>
-            <span className={classes.filterLabel}>Filtruj:</span>
+            <Typography variant="body1" component="h2"
+                        className={classes.filterLabel}>Filtruj:</Typography>
             <FormControl className={`${materialUiClasses.formControl} ${classes.formControl}`}>
                 <InputLabel id='demo-simple-select-label'>Dzień tygodnia</InputLabel>
                 <Select

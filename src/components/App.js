@@ -5,6 +5,7 @@ import logo from '../img/logo.png';
 import {setDetailedResult, setOriginalImage} from '../redux/actions';
 import {connect} from 'react-redux';
 import OriginalImg from "./details/OriginalImg";
+import Typography from "@material-ui/core/Typography";
 
 export function App(props) {
     const classes = styles();
@@ -27,7 +28,9 @@ export function App(props) {
             <div className={(props.img==='') ? classes.App : classes.blurApp}>
                 <img className={classes.logo} src={logo} alt='logo' />
                 <Router />
-                <p className={copyrightClassName}> &copy; Kuba Wasilewski, 2020 </p>
+                <Typography variant="h6" component="h2" className={copyrightClassName}>
+                    &copy; Kuba Wasilewski, 2020
+                </Typography>
             </div>
         </React.Fragment>
     );
