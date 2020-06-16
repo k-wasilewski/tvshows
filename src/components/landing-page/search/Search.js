@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setResults } from '../../../redux/actions';
-import {ErrorMsg} from '../../misc/ErrorMsg';
+import {SearchForm} from "./SearchForm";
 
 class Search extends Component {
     constructor(props) {
@@ -51,13 +51,8 @@ class Search extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <ErrorMsg msg={this.state.errorMsg} />
-                <form onSubmit={this.submitQuery}>
-                    <input type='text' onChange={this.inputOnChange} />
-                    <button>Szukaj</button>
-                </form>
-            </React.Fragment>
+            <SearchForm msg={this.state.errorMsg} onSubmit={this.submitQuery}
+                        onChange={this.inputOnChange} />
         );
     };
 };
