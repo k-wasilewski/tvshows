@@ -32,23 +32,23 @@ export function Details(props) {
         return (
             <React.Fragment>
                 <div className={classes.dashboard}>
-                    <Typography variant="h5" component="h2"
-                                className={classes.detailsHeader}>
+                    <Typography variant="h5" component="h2" className={classes.detailsHeader}>
                         {result.show.name}
                     </Typography>
-                    <Link to='/'><Button variant='outlined' size='small'
-                                         onClick={resetDetailedResult}>Powrót</Button></Link>
+                    <Link to='/'><Button variant='outlined' size='small' onClick={resetDetailedResult}>
+                        Powrót
+                    </Button></Link>
                     <Typography variant="body1" component="h2" className={classes.detailsSpan}
                         dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
                     {(result.show.image)===null ?
                         <Button variant='disabled' size='small'>brak zdjęcia</Button>
                         :
                         <img alt={`img-${result.show.name}`} src={result.show.image.medium}
-                             className={classes.mediumImage}
-                              onClick={() => {
+                             className={classes.mediumImage} onClick={() => {
                                   setOriginalImage(result.show.image.original, result.show.name);
                                   if (result.length!==0)
-                                      props.setOriginalImage(result.show.image.original, result.show.name);
+                                      props.setOriginalImage(result.show.image.original,
+                                          result.show.name);
                               }}
                         />
                     }

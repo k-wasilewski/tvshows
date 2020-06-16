@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 120,
     },
     selectEmpty: {
-        marginTop: theme.spacing(2),
-    },
+        marginTop: theme.spacing(2)
+    }
 }));
 
 export default function ResultsFilter(props) {
@@ -30,16 +30,13 @@ export default function ResultsFilter(props) {
 
     return (
         <div className={classes.dashboard}>
-            <Typography variant="body1" component="h2"
-                        className={classes.filterLabel}>Filtruj:</Typography>
+            <Typography variant="body1" component="h2" className={classes.filterLabel}>
+                Filtruj:
+            </Typography>
             <FormControl className={`${materialUiClasses.formControl} ${classes.formControl}`}>
                 <InputLabel id='demo-simple-select-label'>Dzień tygodnia</InputLabel>
-                <Select
-                    labelId='demo-simple-select-label'
-                    id='demo-simple-select'
-                    value={day}
-                    onChange={handleChange}
-                >
+                <Select labelId='demo-simple-select-label' id='demo-simple-select'
+                    value={day} onChange={handleChange}>
                     <MenuItem value={1}>Poniedziałek</MenuItem>
                     <MenuItem value={2}>Wtorek</MenuItem>
                     <MenuItem value={3}>Środa</MenuItem>
@@ -55,4 +52,4 @@ export default function ResultsFilter(props) {
             }}>Resetuj filtr</Button>
         </div>
     );
-}
+};

@@ -6,5 +6,5 @@ export function ErrorMsg(props) {
 
     return (
         <span className={classes.errorMsg}>{props.msg}</span>
-    )
+    );
 }

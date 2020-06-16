@@ -28,7 +28,7 @@ const mappedGenres = (genres) => {
             else return genre;
         });
     }
-}
+};
 
 const StyledTableHeadRow = withStyles((theme) => (TABLE_HEAD_STYLE))(TableRow);
 
@@ -42,17 +42,16 @@ const StyledTableCell = withStyles((theme) => (TABLE_CELL_STYLE))(TableCell);
 
 export function ResultsTable(props) {
     const [sortedResults, setSortedResults] = React.useState([]);
-
     const history = useHistory();
+
+    React.useEffect( () => {
+        setSortedResults(props.results.sort((a, b) => b.score - a.score));
+    }, [props.results]);
 
     function rowClicked(event, result) {
         props.setDetailedResult(result);
         history.push('/details');
     }
-
-    React.useEffect( () => {
-        setSortedResults(props.results.sort((a, b) => b.score - a.score));
-    }, [props.results]);
 
     if (sortedResults.length===0) return <React.Fragment />
     else return (
@@ -91,7 +90,7 @@ export function ResultsTable(props) {
             </StyledTable>
         </StyledTableContainer>
     );
-}
+};
 
 const mapStateToProps = state => ({
     detailedResult: state.setDetailedResultReducer.detailedResult

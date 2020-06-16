@@ -23,14 +23,8 @@ export function OriginalImg(props) {
     return (
         <Card className={visible ? classes.imageWrapperCard : classes.hidden}>
             <CardActionArea>
-                {(props.src==='') ?
-                    <CircularProgress />
-                    :
-                    <CardMedia
-                    className={classes.imageCard}
-                    image={props.src}
-                    title={`${props.title}-img`}
-                />}
+                {(props.src==='') ? <CircularProgress /> : <CardMedia className={classes.imageCard}
+                    image={props.src} title={`${props.title}-img`} />}
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.title}
@@ -47,7 +41,7 @@ export function OriginalImg(props) {
             </CardActions>
         </Card>
     );
-}
+};
 
 const mapStateToProps = (state) => {
     return {

@@ -15,7 +15,7 @@ export function SearchForm(props) {
         if (event.key === 'Enter') {
             props.onSubmit();
         }
-    }
+    };
 
     return (
         <form className={classes.dashboard} onSubmit={props.onSubmit}>
@@ -24,5 +24,5 @@ export function SearchForm(props) {
             <Button type='submit' variant='outlined' size='small' onKeyDown={onKeyDown}>Szukaj</Button>
             <Button variant='outlined' size='small' onClick={props.doReset}>Resetuj wyniki</Button>
         </form>
-    )
-}
+    );
+};

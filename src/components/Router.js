@@ -10,7 +10,6 @@ const Router = () => {
                 <Route path={`/`} exact component={LandingPage} />
                 <Route path={`/details`} exact component={Details} />
             </Switch>
-
         </React.Fragment>
     );
 };
