@@ -1,9 +1,13 @@
 import {makeStyles} from "@material-ui/core/styles";
 
+export const BACKGROUND_COLOR = '#deeaff';
+
 export const useStyles = makeStyles({
     App: {
         textAlign: 'center',
-        fontFamily: 'Lato'
+        fontFamily: 'Lato',
+        backgroundColor: BACKGROUND_COLOR,
+        height: '100vh'
     },
     tableWrapper: {
         width: '90vw',
@@ -14,11 +18,11 @@ export const useStyles = makeStyles({
         color: 'red'
     },
     copywright: {
-        bottom: '10px',
+        bottom: '5px',
+        right: '5px',
         position: 'fixed',
-        right: '10%',
-        backgroundColor: 'white',
-        boxShadow: '0 0 10px 10px white'
+        backgroundColor: BACKGROUND_COLOR,
+        boxShadow: `0 0 10px 10px ${BACKGROUND_COLOR}`
     },
     errorMsg: {
         color: 'red'

@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { useHistory } from "react-router-dom";
 import {setDetailedResult} from "../redux/actions";
 import {connect} from "react-redux";
-import {useStyles} from "./useStyles";
+import {useStyles, BACKGROUND_COLOR} from "./useStyles";
 
 const mappedGenres = (genres) => {
     if (genres.length===1) return genres;
@@ -41,6 +41,12 @@ const StyledTableRow = withStyles((theme) => ({
     }
 }))(TableRow);
 
+const StyledTable = withStyles((theme) => ({
+    root: {
+        backgroundColor: BACKGROUND_COLOR
+    }
+}))(Table);
+
 export function ResultsTable(props) {
     const classes = useStyles();
     const [sortedResults, setSortedResults] = React.useState([]);
@@ -58,7 +64,7 @@ export function ResultsTable(props) {
 
     return (
         <TableContainer className={classes.tableWrapper} component={Paper} id='tableWrapper'>
-            <Table aria-label="results table">
+            <StyledTable aria-label="results table">
                 <TableHead>
                     <StyledTableHeadRow>
                         <TableCell>Ocena</TableCell>
@@ -77,7 +83,7 @@ export function ResultsTable(props) {
                         </StyledTableRow>
                     ))}
                 </TableBody>
-            </Table>
+            </StyledTable>
         </TableContainer>
     );
 }
