@@ -11,12 +11,18 @@ export function SearchForm(props) {
         props.passInputRefToParent(inputRef);
     }, []);     //eslint-disable-line react-hooks/exhaustive-deps
 
+    function onKeyDown(event) {
+        if (event.key === 'Enter') {
+            props.onSubmit();
+        }
+    }
+
     return (
-        <div className={classes.dashboard}>
+        <form className={classes.dashboard} onSubmit={props.onSubmit}>
             <ErrorMsg msg={props.msg} />
             <input type='text' onChange={props.onChange} className={classes.input} ref={inputRef} />
-            <Button variant='outlined' size='small' onClick={props.onSubmit}>Szukaj</Button>
+            <Button type='submit' variant='outlined' size='small' onKeyDown={onKeyDown}>Szukaj</Button>
             <Button variant='outlined' size='small' onClick={props.doReset}>Resetuj wyniki</Button>
-        </div>
+        </form>
     )
 }
