@@ -10,11 +10,13 @@ class Search extends Component {
 
         this.state = {
             input: '',
-            errorMsg: ''
+            errorMsg: '',
+            inputRef: null
         };
 
         this.inputOnChange = this.inputOnChange.bind(this);
         this.submitQuery = this.submitQuery.bind(this);
+        this.getInputRefFromChild = this.getInputRefFromChild.bind(this);
     }
 
     inputOnChange = (event) => {
@@ -50,14 +52,20 @@ class Search extends Component {
     }
 
     resetResults = (event) => {
+        this.state.inputRef.value = '';
         this.props.setResults([]);
         event.preventDefault();
+    }
+
+    getInputRefFromChild = (inputRef) => {
+        this.setState({inputRef: inputRef.current});
     }
 
     render() {
         return (
             <SearchForm msg={this.state.errorMsg} onSubmit={this.submitQuery}
-                        onChange={this.inputOnChange} doReset={this.resetResults}/>
+                        onChange={this.inputOnChange} doReset={this.resetResults}
+                        passInputRefToParent={this.getInputRefFromChild} />
         );
     };
 };
