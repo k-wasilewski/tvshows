@@ -14,7 +14,7 @@ export function App(props) {
             setCopyrightClassName(classes.copyrightDetails);
         else if (copyrightClassName===classes.copyrightDetails)
             setCopyrightClassName(classes.copyrightLandingPage);
-    }, [props.detailedResult]);
+    }, [props.detailedResult]);     //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className={classes.App}>

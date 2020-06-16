@@ -7,9 +7,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Tooltip from '@material-ui/core/Tooltip';
 import { useHistory } from 'react-router-dom';
-import {setDetailedResult} from '../../../redux/actions';
-import {connect} from 'react-redux';
+import {setDetailedResult} from "../../../redux/actions";
+import {connect} from "react-redux";
 import {
     TABLE_HEAD_STYLE,
     TABLE_ROW_STYLE,
@@ -67,12 +68,24 @@ export function ResultsTable(props) {
                 </TableHead>
                 <TableBody>
                     {sortedResults.map((result) => (
-                        <StyledTableRow key={result.score+result.show.name} onClick={event => rowClicked(event, result)}>
-                            <StyledTableCell component='th' scope='row'>{result.score}</StyledTableCell>
-                            <StyledTableCell align='right'>{result.show.name}</StyledTableCell>
-                            <StyledTableCell align='right'>{mappedGenres(result.show.genres)}</StyledTableCell>
-                            <StyledTableCell align='right'>{result.show.premiered}</StyledTableCell>
-                        </StyledTableRow>
+                        <Tooltip key={`tooltip-${result.score}${result.show.name}`}
+                                 title={`Szczegóły serialu ${result.show.name}`} placement='top-end'>
+                            <StyledTableRow key={result.score+result.show.name}
+                                            onClick={event => rowClicked(event, result)}>
+                                <StyledTableCell component='th' scope='row'>
+                                    {result.score}
+                                </StyledTableCell>
+                                <StyledTableCell align='right'>
+                                    {result.show.name}
+                                </StyledTableCell>
+                                <StyledTableCell align='right'>
+                                    {mappedGenres(result.show.genres)}
+                                </StyledTableCell>
+                                <StyledTableCell align='right'>
+                                    {result.show.premiered}
+                                </StyledTableCell>
+                            </StyledTableRow>
+                        </Tooltip>
                     ))}
                 </TableBody>
             </StyledTable>

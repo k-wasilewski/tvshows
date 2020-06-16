@@ -4,6 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
 import {styles} from "../../../styles/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +47,7 @@ export default function SimpleSelect(props) {
                     <MenuItem value={7}>Niedziela</MenuItem>
                 </Select>
             </FormControl>
-            <button onClick={props.doReset}>Resetuj filtr</button>
+            <Button variant='outlined' size='small' onClick={props.doReset}>Resetuj filtr</Button>
         </div>
     );
 }

@@ -68,6 +68,10 @@ export const styles = makeStyles({
         ['@media (max-width:200px)']: {     //eslint-disable-line no-useless-computed-key
             width: '80%'
         }
+    },
+    myCustomTooltip: {
+        position: 'absolute',
+        color: 'lightgray',
     }
 });
 
