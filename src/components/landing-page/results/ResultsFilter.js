@@ -28,8 +28,8 @@ export default function SimpleSelect(props) {
 
     return (
         <div className={classes.dashboard}>
-            <span>Filtruj:</span>
-            <FormControl className={materialUiClasses.formControl}>
+            <span className={classes.filterLabel}>Filtruj:</span>
+            <FormControl className={`${materialUiClasses.formControl} ${classes.formControl}`}>
                 <InputLabel id='demo-simple-select-label'>Dzień tygodnia</InputLabel>
                 <Select
                     labelId='demo-simple-select-label'
@@ -46,6 +46,7 @@ export default function SimpleSelect(props) {
                     <MenuItem value={7}>Niedziela</MenuItem>
                 </Select>
             </FormControl>
+            <button onClick={props.doReset}>Resetuj filtr</button>
         </div>
     );
 }

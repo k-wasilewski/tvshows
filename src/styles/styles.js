@@ -38,6 +38,13 @@ export const styles = makeStyles({
     dashboard: {
         textAlign: 'left',
         paddingLeft: '20vw'
+    },
+    filterLabel: {
+        display: 'inline-block',
+        paddingTop: '30px'
+    },
+    formControl: {
+        display: 'inline-block'
     }
 });
 

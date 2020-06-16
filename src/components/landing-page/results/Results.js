@@ -29,6 +29,10 @@ class Results extends Component {
         this.setState({filteredResults: filteredResults});
     }
 
+    resetFilter = () => {
+        this.setState({filteredResults: this.props.results});
+    }
+
     render() {
         const results = (this.state.filteredResults.length===0) ?
             this.props.results
@@ -38,7 +42,7 @@ class Results extends Component {
         const resultsFilter = (results.length===0) ?
             null
             :
-            <ResultsFilter setDay={this.filterByDay} />;
+            <ResultsFilter setDay={this.filterByDay} doReset={this.resetFilter} />;
 
         return (
             <React.Fragment>

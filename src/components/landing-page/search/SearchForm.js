@@ -11,7 +11,7 @@ export function SearchForm(props) {
             <form onSubmit={props.onSubmit} >
                 <input type='text' onChange={props.onChange} />
                 <button>Szukaj</button>
-                <button onClick={props.doReset}>Resetuj</button>
+                <button onClick={props.doReset}>Resetuj wyniki</button>
             </form>
         </div>
     )
