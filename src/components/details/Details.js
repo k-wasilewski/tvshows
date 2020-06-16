@@ -44,17 +44,29 @@ export function Details(props) {
                     {(result.show.image)===null ?
                         <Button variant='disabled' size='small'>brak zdjęcia</Button>
                         :
-                        <Tooltip key={`tooltip-${result.score}${result.show.name}`}
-                                 title={`Powiększ zdjęcie ${result.show.name}`} placement='top-end'>
-                            <img alt={`img-${result.show.name}`} src={result.show.image.medium}
-                                 className={classes.mediumImage} onClick={() => {
-                                  setOriginalImage(result.show.image.original, result.show.name);
-                                  if (result.length!==0)
-                                      props.setOriginalImage(result.show.image.original,
-                                          result.show.name);
-                              }}
-                            />
-                        </Tooltip>
+                        <React.Fragment>
+                            {(props.img==='') ?
+                                (<Tooltip key={`tooltip-${result.score}${result.show.name}`}
+                                          title={`Powiększ zdjęcie ${result.show.name}`} placement='top-end'>
+                                    <img alt={`img-${result.show.name}`} src={result.show.image.medium}
+                                         className={classes.mediumImage} onClick={() => {
+                                        setOriginalImage(result.show.image.original, result.show.name);
+                                        if (result.length!==0)
+                                            props.setOriginalImage(result.show.image.original,
+                                                result.show.name);
+                                    }}
+                                    />
+                                </Tooltip>)
+                                :
+                                (<img alt={`img-${result.show.name}`} src={result.show.image.medium}
+                                      className={classes.mediumImage} onClick={() => {
+                                    setOriginalImage(result.show.image.original, result.show.name);
+                                    if (result.length!==0)
+                                        props.setOriginalImage(result.show.image.original,
+                                            result.show.name);
+                                }}
+                                />)}
+                        </React.Fragment>
                     }
                 </div>
             </React.Fragment>
@@ -64,7 +76,8 @@ export function Details(props) {
 
 const mapStateToProps = (state) => {
     return {
-        detailedResult: state.setDetailedResultReducer.detailedResult
+        detailedResult: state.setDetailedResultReducer.detailedResult,
+        img: state.setOriginalImageReducer.src
     };
 };
 
