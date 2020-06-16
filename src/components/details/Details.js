@@ -1,5 +1,5 @@
 import React from 'react';
-import {setDetailedResult} from '../../redux/actions';
+import {setDetailedResult, setOriginalImage} from '../../redux/actions';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {ErrorMsg} from '../misc/ErrorMsg';
@@ -29,19 +29,27 @@ export function Details(props) {
             );
     } else {
         return (
-            <div className={classes.dashboard}>
-                <h2 className={classes.detailsHeader}>{result.show.name}</h2>
-                <Link to='/'><Button variant='outlined' size='small'
-                                     onClick={resetDetailedResult}>Powrót</Button></Link>
-                <span className={classes.detailsSpan}
-                      dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
-                {(result.show.image)===null ?
-                <Button variant='disabled' size='small'>brak zdjęcia</Button>
-                :
-                <a href={result.show.image.original}>
-                    <img alt={`img-${result.show.name}`} src={result.show.image.medium} />
-                </a>}
-            </div>
+            <React.Fragment>
+                <div className={classes.dashboard}>
+                    <h2 className={classes.detailsHeader}>{result.show.name}</h2>
+                    <Link to='/'><Button variant='outlined' size='small'
+                                         onClick={resetDetailedResult}>Powrót</Button></Link>
+                    <span className={classes.detailsSpan}
+                          dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
+                    {(result.show.image)===null ?
+                        <Button variant='disabled' size='small'>brak zdjęcia</Button>
+                        :
+                        <img alt={`img-${result.show.name}`} src={result.show.image.medium}
+                             className={classes.mediumImage}
+                              onClick={() => {
+                                  setOriginalImage(result.show.image.original, result.show.name);
+                                  if (result.length!==0)
+                                      props.setOriginalImage(result.show.image.original, result.show.name);
+                              }}
+                        />
+                    }
+                </div>
+            </React.Fragment>
         );
     }
 };
@@ -53,7 +61,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    setDetailedResult
+    setDetailedResult,
+    setOriginalImage
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details);

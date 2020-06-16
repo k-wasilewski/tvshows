@@ -9,6 +9,13 @@ export const styles = makeStyles({
         backgroundColor: BACKGROUND_COLOR,
         minHeight: '100vh'
     },
+    blurApp: {
+        textAlign: 'center',
+        fontFamily: 'Lato',
+        backgroundColor: BACKGROUND_COLOR,
+        minHeight: '100vh',
+        filter: 'blur(4px)'
+    },
     logo: {
         top: '5px',
         left: '5px',
@@ -68,6 +75,19 @@ export const styles = makeStyles({
         ['@media (max-width:200px)']: {     //eslint-disable-line no-useless-computed-key
             width: '80%'
         }
+    },
+    mediumImage: {
+        cursor: 'pointer'
+    },
+    imageWrapperCard: {
+        width: '30vw',
+        zIndex: 100,
+        position: 'absolute',
+        top: '10vh',
+        left: '35vw'
+    },
+    imageCard: {
+        height: '60vh'
     }
 });
 

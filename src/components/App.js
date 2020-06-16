@@ -2,8 +2,9 @@ import React from 'react';
 import Router from './Router';
 import {styles} from '../styles/styles';
 import logo from '../img/logo.png';
-import {setDetailedResult} from '../redux/actions';
+import {setDetailedResult, setOriginalImage} from '../redux/actions';
 import {connect} from 'react-redux';
+import OriginalImg from "./details/OriginalImg";
 
 export function App(props) {
     const classes = styles();
@@ -16,23 +17,32 @@ export function App(props) {
             setCopyrightClassName(classes.copyrightLandingPage);
     }, [props.detailedResult]);     //eslint-disable-line react-hooks/exhaustive-deps
 
+    function gotCallbackFromImg() {
+        props.setOriginalImage('', '');
+    }
+
     return (
-        <div className={classes.App}>
-            <img className={classes.logo} src={logo} alt='logo' />
-            <Router />
-            <p className={copyrightClassName}> &copy; Kuba Wasilewski, 2020 </p>
-        </div>
+        <React.Fragment>
+            <OriginalImg notifyParent={gotCallbackFromImg} />
+            <div className={(props.img==='') ? classes.App : classes.blurApp}>
+                <img className={classes.logo} src={logo} alt='logo' />
+                <Router />
+                <p className={copyrightClassName}> &copy; Kuba Wasilewski, 2020 </p>
+            </div>
+        </React.Fragment>
     );
 };
 
 const mapStateToProps = (state) => {
     return {
-        detailedResult: state.setDetailedResultReducer.detailedResult
+        detailedResult: state.setDetailedResultReducer.detailedResult,
+        img: state.setOriginalImageReducer.src
     };
 };
 
 const mapDispatchToProps = {
-    setDetailedResult
+    setDetailedResult,
+    setOriginalImage
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

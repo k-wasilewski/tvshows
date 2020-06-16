@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SimpleSelect(props) {
+export default function ResultsFilter(props) {
     const materialUiClasses = useStyles();
     const classes = styles();
     const [day, setDay] = React.useState('');
