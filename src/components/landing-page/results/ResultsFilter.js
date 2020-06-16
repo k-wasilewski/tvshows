@@ -47,7 +47,10 @@ export default function SimpleSelect(props) {
                     <MenuItem value={7}>Niedziela</MenuItem>
                 </Select>
             </FormControl>
-            <Button variant='outlined' size='small' onClick={props.doReset}>Resetuj filtr</Button>
+            <Button variant='outlined' size='small' onClick={() => {
+                props.doReset();
+                setDay('');
+            }}>Resetuj filtr</Button>
         </div>
     );
 }

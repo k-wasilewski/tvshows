@@ -24,19 +24,24 @@ export function Details(props) {
         return (
             <div className={classes.dashboard}>
                 <ErrorMsg msg={'Należy wybrać element z listy'} />
-                <Link to='/'><Button>Powrót</Button></Link>
+                <Link to='/'><Button variant='outlined' size='small'>Powrót</Button></Link>
             </div>
             );
     } else {
         return (
-            <React.Fragment>
+            <div className={classes.dashboard}>
                 <h2 className={classes.detailsHeader}>{result.show.name}</h2>
                 <span className={classes.detailsSpan}
                       dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
-                <div><img alt={`img-${result.show.name}`} src={result.show.image.medium} /></div>
+                <div>{
+                    (result.show.image)===null ?
+                    <Button variant='disabled' size='small'>brak zdjęcia</Button>
+                    :
+                    <img alt={`img-${result.show.name}`} src={result.show.image.medium} />
+                }</div>
                 <Link to='/'><Button variant='outlined' size='small'
                                      onClick={resetDetailedResult}>Powrót</Button></Link>
-            </React.Fragment>
+            </div>
         );
     }
 };

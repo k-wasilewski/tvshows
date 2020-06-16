@@ -9,7 +9,7 @@ export function SearchForm(props) {
 
     useEffect(() => {
         props.passInputRefToParent(inputRef);
-    }, []);
+    }, []);     //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className={classes.dashboard}>

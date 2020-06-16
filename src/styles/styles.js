@@ -31,7 +31,7 @@ export const styles = makeStyles({
         position: 'fixed',
         backgroundColor: BACKGROUND_COLOR,
         boxShadow: `0 0 10px 10px ${BACKGROUND_COLOR}`,
-        ['@media (max-width:460px)']: {     //eslint-disable-line no-useless-computed-key
+        ['@media (max-width:340px)']: {     //eslint-disable-line no-useless-computed-key
             display: 'none'
         }
     },
@@ -68,10 +68,6 @@ export const styles = makeStyles({
         ['@media (max-width:200px)']: {     //eslint-disable-line no-useless-computed-key
             width: '80%'
         }
-    },
-    myCustomTooltip: {
-        position: 'absolute',
-        color: 'lightgray',
     }
 });
 

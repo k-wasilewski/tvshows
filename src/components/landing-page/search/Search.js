@@ -52,7 +52,9 @@ class Search extends Component {
     }
 
     resetResults = (event) => {
-        this.state.inputRef.value = '';
+        const inputNode = this.state.inputRef;
+        inputNode.value = '';
+        this.setState({input: ''});
         this.props.setResults([]);
         event.preventDefault();
     }
