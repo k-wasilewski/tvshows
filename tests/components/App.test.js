@@ -19,49 +19,49 @@ describe("App rendering specification", () => {
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
+});
 
-    describe("App functional specification", () => {
+describe("App functional specification", () => {
 
-        function getCopyright(component) {
-            return component.find('#copyright').at(0).find('h2');
-        }
+    function getCopyright(component) {
+        return component.find('#copyright').at(0).find('h2');
+    }
 
-        function getMaterialUIClassName(className) {
-            return `MuiTypography-root makeStyles-${className}-4 MuiTypography-h6`;
-        }
+    function getMaterialUIClassName(className) {
+        return `MuiTypography-root makeStyles-${className}-4 MuiTypography-h6`;
+    }
 
-        it('toggles copyrightClassName when props.detailedResult change', () => {
-            configure({adapter: new Adapter()});
+    it('toggles copyrightClassName when props.detailedResult change', () => {
+        configure({adapter: new Adapter()});
 
-            //test App component without props
-            const component = mount(
-                <Provider store={store}>
-                    <BrowserRouter>
-                        <App />
-                    </BrowserRouter>
-                </Provider>
-            );
-            const copyright = getCopyright(component);
-            const copyrightLandingPageClassName =
-                getMaterialUIClassName('copyrightLandingPage');
+        //test App component without props
+        const component = mount(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </Provider>
+        );
+        const copyright = getCopyright(component);
+        const copyrightLandingPageClassName =
+            getMaterialUIClassName('copyrightLandingPage');
 
-            expect(copyright.hasClass(copyrightLandingPageClassName)).toBeTruthy();
-            component.unmount();
+        expect(copyright.hasClass(copyrightLandingPageClassName)).toBeTruthy();
+        component.unmount();
 
-            //test App component with props.detailedResult changed
-            const componentChanged = mount(
-                <Provider store={store}>
-                    <BrowserRouter>
-                        <App detailedResult='changed' />
-                    </BrowserRouter>
-                </Provider>
-            );
-            const copyrightDetailsClassName = getMaterialUIClassName('copyrightDetails');
+        //test App component with props.detailedResult changed
+        const componentChanged = mount(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <App detailedResult='changed' />
+                </BrowserRouter>
+            </Provider>
+        );
+        const copyrightDetailsClassName = getMaterialUIClassName('copyrightDetails');
 
-            setTimeout(function () {
-                expect(copyright.hasClass(copyrightDetailsClassName)).toBeTruthy();
-                componentChanged.unmount();
-            }, 500)
-        });
+        setTimeout(function () {
+            expect(copyright.hasClass(copyrightDetailsClassName)).toBeTruthy();
+            componentChanged.unmount();
+        }, 500)
     });
 });
