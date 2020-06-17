@@ -127,4 +127,34 @@ describe("Search functional specification", () => {
             done();
         }, 4000);
     });
+
+    it('resetResults() resets the according values', () => {
+        const testValue = 'testValue';
+
+        const mockSetResults = jest.fn();
+
+        const component = shallow(
+            <Search setResults={mockSetResults} />
+        );
+
+        component.setState({
+            input: testValue,
+            inputRef: {
+                value: testValue
+            }
+        });
+
+        expect(component.state('input')).toBe(testValue);
+        expect(component.state('inputRef').value).toBe(testValue);
+        expect(mockSetResults).toHaveBeenCalledTimes(0);
+
+        const mockedEvent = {preventDefault: () => {}};
+        component.instance().resetResults(mockedEvent);
+
+        expect(component.state('input')).toBe('');
+        expect(component.state('inputRef').value).toBe('');
+        expect(mockSetResults).toHaveBeenCalledWith([]);
+
+        component.unmount();
+    });
 });
