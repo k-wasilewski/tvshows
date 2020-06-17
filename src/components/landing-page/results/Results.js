@@ -1,5 +1,4 @@
 import React from 'react';
-import {setResults} from '../../../redux/actions';
 import {connect} from 'react-redux';
 import ResultsTable from './ResultsTable';
 import ResultsFilter from './ResultsFilter';
@@ -59,8 +58,4 @@ function mapStateToProps(state) {
     };
 };
 
-const mapDispatchToProps = {
-    setResults
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Results);
+export default connect(mapStateToProps, null)(Results);

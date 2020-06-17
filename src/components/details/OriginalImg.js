@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {CircularProgress} from "@material-ui/core";
 import {styles} from "../../styles/styles";
-import {setOriginalImage} from "../../redux/actions";
 import {connect} from "react-redux";
 
 export function OriginalImg(props) {
@@ -50,8 +49,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = {
-    setOriginalImage
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(OriginalImg);
+export default connect(mapStateToProps, null)(OriginalImg);

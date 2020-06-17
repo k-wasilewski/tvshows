@@ -92,10 +92,8 @@ export function ResultsTable(props) {
     );
 };
 
-const mapStateToProps = state => ({
-    detailedResult: state.setDetailedResultReducer.detailedResult
-});
+const mapDispatchToProps = {
+    setDetailedResult
+};
 
-const mapDispatchToProps = { setDetailedResult };
-
-export default connect(mapStateToProps, mapDispatchToProps)(ResultsTable);
+export default connect(null, mapDispatchToProps)(ResultsTable);

@@ -72,14 +72,8 @@ class Search extends React.Component {
     };
 };
 
-function mapStateToProps(state) {
-    return {
-        results: state.setResultsReducer.results,
-    };
-};
-
 const mapDispatchToProps = {
     setResults
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Search);
