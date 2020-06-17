@@ -4,7 +4,7 @@ import {styles} from '../styles/styles';
 import logo from '../img/logo.png';
 import {setDetailedResult, setOriginalImage} from '../redux/actions';
 import {connect} from 'react-redux';
-import OriginalImg from "./details/OriginalImg";
+import OriginalImg from "./details/OriginalImage";
 import Typography from "@material-ui/core/Typography";
 
 export function App(props) {

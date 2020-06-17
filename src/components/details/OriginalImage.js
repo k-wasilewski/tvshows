@@ -10,7 +10,7 @@ import {CircularProgress} from "@material-ui/core";
 import {styles} from "../../styles/styles";
 import {connect} from "react-redux";
 
-export function OriginalImg(props) {
+export function OriginalImage(props) {
     const classes = styles();
     const [visible, setVisible] = React.useState(false);
 
@@ -49,4 +49,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(OriginalImg);
+export default connect(mapStateToProps, null)(OriginalImage);

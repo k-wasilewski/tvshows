@@ -80,6 +80,9 @@ export const styles = makeStyles({
     mediumImage: {
         cursor: 'pointer'
     },
+    mediumImgWrapper: {
+        width: '20vw'
+    },
     imageWrapperCard: {
         width: '30vw',
         zIndex: 100,

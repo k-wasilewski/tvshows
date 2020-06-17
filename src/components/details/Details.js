@@ -7,6 +7,7 @@ import {styles} from '../../styles/styles';
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
+import MediumImage from "../misc/MediumImage";
 
 const createMarkup = (text) => {
     return {
@@ -48,24 +49,13 @@ export function Details(props) {
                             {(props.img==='') ?
                                 (<Tooltip key={`tooltip-${result.score}${result.show.name}`}
                                           title={`Powiększ zdjęcie ${result.show.name}`} placement='top-end'>
-                                    <img alt={`img-${result.show.name}`} src={result.show.image.medium}
-                                         className={classes.mediumImage} onClick={() => {
-                                        setOriginalImage(result.show.image.original, result.show.name);
-                                        if (result.length!==0)
-                                            props.setOriginalImage(result.show.image.original,
-                                                result.show.name);
-                                    }}
-                                    />
+                                    <div className={classes.mediumImgWrapper}>
+                                        <MediumImage result={result} />
+                                    </div>
                                 </Tooltip>)
                                 :
-                                (<img alt={`img-${result.show.name}`} src={result.show.image.medium}
-                                      className={classes.mediumImage} onClick={() => {
-                                    setOriginalImage(result.show.image.original, result.show.name);
-                                    if (result.length!==0)
-                                        props.setOriginalImage(result.show.image.original,
-                                            result.show.name);
-                                }}
-                                />)}
+                                (<MediumImage result={result} />)
+                            }
                         </React.Fragment>
                     }
                 </div>
