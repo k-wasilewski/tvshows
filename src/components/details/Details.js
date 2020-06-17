@@ -7,7 +7,7 @@ import {styles} from '../../styles/styles';
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
-import MediumImage from "../misc/MediumImage";
+import MediumImage from "./MediumImage";
 
 const createMarkup = (text) => {
     return {
