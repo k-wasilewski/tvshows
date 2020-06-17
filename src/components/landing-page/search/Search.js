@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setResults } from '../../../redux/actions';
 import {SearchForm} from "./SearchForm";
 
-class Search extends Component {
+class Search extends React.Component {
     constructor(props) {
         super(props);
 

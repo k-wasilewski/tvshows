@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -15,7 +15,7 @@ export function OriginalImg(props) {
     const classes = styles();
     const [visible, setVisible] = React.useState(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (props.src!=='') setVisible(true);
         else setVisible(false);
     }, [props.src]);

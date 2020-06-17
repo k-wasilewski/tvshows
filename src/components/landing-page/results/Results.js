@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {setResults} from '../../../redux/actions';
 import {connect} from 'react-redux';
 import ResultsTable from './ResultsTable';
 import ResultsFilter from './ResultsFilter';
 import mapDayNoToName from '../../../functions/mapDayNoToName';
 
-class Results extends Component {
+class Results extends React.Component {
     constructor(props) {
         super(props);
 
