@@ -7,6 +7,7 @@ import {SearchForm} from "./SearchForm";
 export class Search extends React.Component {
     constructor(props) {
         super(props);
+        this._isMounted = false;
 
         this.state = {
             input: '',
@@ -23,17 +24,27 @@ export class Search extends React.Component {
         this.setState({input: event.target.value});
     }
 
+    componentDidMount() {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     submitQuery(event) {
         const query = this.state.input;
 
-        axios.get(`http://api.tvmaze.com/search/shows?q=${query}`
-        ).then(resp => {
+        axios.get(`http://api.tvmaze.com/search/shows?q=${query}`)
+                .then(resp => {
             if (query==='') {
-                this.setState({
+                if (this._isMounted)
+                    this.setState({
                     errorMsg: 'Pole nie może być puste'
                 });
             } else if (resp.data.length===0) {
-                this.setState({
+                if (this._isMounted)
+                    this.setState({
                     errorMsg: 'Nic nie znaleziono'
                 });
             } else {
@@ -43,7 +54,8 @@ export class Search extends React.Component {
                 });
             }
         }).catch(error => {
-            this.setState({
+            if (this._isMounted)
+                this.setState({
                 errorMsg: 'Błąd serwera'
             });
         });

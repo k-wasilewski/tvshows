@@ -80,6 +80,7 @@ describe("Search functional specification", () => {
         setTimeout(function () {
             expect(mockSetResults).toHaveBeenCalledWith(resp);
             component.unmount();
+            mock.reset();
             done();
         }, 500);
     });
@@ -89,8 +90,6 @@ describe("Search functional specification", () => {
         const resp = 'success';
         mock.onGet().reply(200, resp);
 
-        const mockSetState = jest.spyOn(Search.prototype, 'setState');
-
         const component = shallow(
             <Search />
         );
@@ -98,15 +97,34 @@ describe("Search functional specification", () => {
         const mockedEvent = {preventDefault: () => {}};
         component.instance().submitQuery(mockedEvent);
 
-        const testInput = '';
-        component.setState({input: testInput});
-        component.update();
-
         setTimeout(function () {
-            expect(mockSetState).toHaveBeenCalled();
             expect(component.state().errorMsg).toBe('Pole nie może być puste');
             component.unmount();
+            mock.reset();
             done();
         }, 500);
+    });
+
+    it('submitQuery() sets state.errorMsg accordingly when response from server equals 0', (done) => {
+        const mock = new MockAdapter(axios);
+        const resp = [];
+        mock.onGet().reply(200, resp);
+
+        const component = shallow(
+            <Search />
+        );
+
+        component.setState({input: 'testInput'});
+        component.update();
+
+        const mockedEvent = {preventDefault: () => {}};
+        component.instance().submitQuery(mockedEvent);
+
+        setTimeout(function () {
+            expect(component.state().errorMsg).toBe('Nic nie znaleziono');
+            component.unmount();
+            mock.reset();
+            done();
+        }, 4000);
     });
 });
