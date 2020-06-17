@@ -28,13 +28,17 @@ describe("App functional specification", () => {
     }
 
     function getMaterialUIClassName(className) {
-        return `MuiTypography-root makeStyles-${className}-4 MuiTypography-h6`;
+        switch (className) {
+            case 'copyrightLandingPage':
+                return `MuiTypography-root makeStyles-${className}-4 MuiTypography-h6`;
+            case 'copyrightDetails':
+                return `MuiTypography-root makeStyles-${className}-5 MuiTypography-h6`;
+        }
     }
 
-    it('toggles copyrightClassName when props.detailedResult change', () => {
+    it('toggles copyrightClassName when props.detailedResult change', (done) => {
         configure({adapter: new Adapter()});
 
-        //test App component without props
         const component = mount(
             <Provider store={store}>
                 <BrowserRouter>
@@ -42,26 +46,21 @@ describe("App functional specification", () => {
                 </BrowserRouter>
             </Provider>
         );
-        const copyright = getCopyright(component);
+        let copyright = getCopyright(component);
         const copyrightLandingPageClassName =
             getMaterialUIClassName('copyrightLandingPage');
 
         expect(copyright.hasClass(copyrightLandingPageClassName)).toBeTruthy();
-        component.unmount();
 
-        //test App component with props.detailedResult changed
-        const componentChanged = mount(
-            <Provider store={store}>
-                <BrowserRouter>
-                    <App detailedResult='changed' />
-                </BrowserRouter>
-            </Provider>
-        );
+        component.setProps({children: <BrowserRouter><App detailedResult='changed'/></BrowserRouter>});
+        component.update();
+        copyright = getCopyright(component);
         const copyrightDetailsClassName = getMaterialUIClassName('copyrightDetails');
 
         setTimeout(function () {
             expect(copyright.hasClass(copyrightDetailsClassName)).toBeTruthy();
-            componentChanged.unmount();
+            component.unmount();
+            done();
         }, 500)
     });
 });
