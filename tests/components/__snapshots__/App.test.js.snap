@@ -90,7 +90,7 @@ Array [
     </div>
   </div>,
   <div
-    className="makeStyles-App-1"
+    className="makeStyles-blurApp-2"
   >
     <img
       alt="logo"
@@ -161,6 +161,7 @@ Array [
     </form>
     <h2
       className="MuiTypography-root makeStyles-copyrightDetails-5 MuiTypography-h6"
+      id="copyright"
     >
       © Kuba Wasilewski, 2020
     </h2>

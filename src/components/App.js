@@ -28,7 +28,7 @@ export function App(props) {
             <div className={(props.img==='') ? classes.App : classes.blurApp}>
                 <img className={classes.logo} src={logo} alt='logo' />
                 <Router />
-                <Typography variant="h6" component="h2" className={copyrightClassName}>
+                <Typography id='copyright' variant="h6" component="h2" className={copyrightClassName}>
                     &copy; Kuba Wasilewski, 2020
                 </Typography>
             </div>
