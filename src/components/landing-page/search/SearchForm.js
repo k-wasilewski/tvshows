@@ -18,10 +18,11 @@ export function SearchForm(props) {
     };
 
     return (
-        <form className={classes.dashboard} onSubmit={props.onSubmit}>
+        <form id='searchForm' className={classes.dashboard} onSubmit={props.onSubmit}>
             <ErrorMsg msg={props.msg} />
             <input id='searchFormInput' type='text' onChange={props.onChange} className={classes.input} ref={inputRef} />
-            <Button type='submit' variant='outlined' size='small' onKeyDown={onKeyDown}>Szukaj</Button>
+            <Button id='searchFormSubmitBtn' type='submit' variant='outlined' size='small'
+                    onKeyDown={onKeyDown}>Szukaj</Button>
             <Button variant='outlined' size='small' onClick={props.doReset}>Resetuj wyniki</Button>
         </form>
     );

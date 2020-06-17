@@ -23,7 +23,7 @@ export class Search extends React.Component {
         this.setState({input: event.target.value});
     }
 
-    submitQuery = (event) => {
+    submitQuery(event) {
         const query = this.state.input;
 
         axios.get(`http://api.tvmaze.com/search/shows?q=${query}`

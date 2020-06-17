@@ -3,6 +3,7 @@
 exports[`LandingPage rendering specification LandingPage is rendered 1`] = `
 <form
   className="makeStyles-dashboard-10"
+  id="searchForm"
   onSubmit={[Function]}
 >
   <span
@@ -19,6 +20,7 @@ exports[`LandingPage rendering specification LandingPage is rendered 1`] = `
   <button
     className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
     disabled={false}
+    id="searchFormSubmitBtn"
     onBlur={[Function]}
     onDragLeave={[Function]}
     onFocus={[Function]}

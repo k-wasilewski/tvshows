@@ -6,7 +6,9 @@ import ConnectedSearch, {Search} from "../../../../src/components/landing-page/s
 import {Provider} from "react-redux";
 import {configure} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
-import {mount} from "enzyme";
+import {mount, shallow} from "enzyme";
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
 describe("Search rendering specification", () => {
     it('Search is rendered', () => {
@@ -37,6 +39,49 @@ describe("Search functional specification", () => {
 
         setTimeout(function () {
             expect(component.instance().state.input).toBe(testInput);
-        }, 4000);
+            component.unmount();
+        }, 500);
+    });
+
+    it('submitQuery() is called when form is submitted', () => {
+        const submitQuery = jest.spyOn(Search.prototype, 'submitQuery');
+
+        const component = mount(
+            <Provider store={store}>
+                <Search />
+            </Provider>
+        );
+
+        const searchForm = component.find('#searchForm');
+        searchForm.forEach(form => form.simulate('submit'));
+
+        expect(submitQuery).toHaveBeenCalled()
+        component.unmount();
+    });
+
+    it('submitQuery() submits a query from state.input value', (done) => {
+        const mock = new MockAdapter(axios);
+        const resp = 'success';
+        const testInput = 'testInput';
+        mock.onGet().reply(200, resp);
+
+        const mockSetResults = jest.fn();
+
+        const component = shallow(
+            <Search setResults={mockSetResults} />
+        );
+
+        component.setState({input: testInput});
+        component.update();
+
+        const mockedEvent = {preventDefault: () => {}};
+        component.instance().submitQuery(mockedEvent);
+
+        setTimeout(function () {
+            console.log(component.props())
+            expect(mockSetResults).toHaveBeenCalledWith(resp);
+            component.unmount();
+            done();
+        }, 500);
     });
 });
