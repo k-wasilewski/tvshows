@@ -78,8 +78,33 @@ describe("Search functional specification", () => {
         component.instance().submitQuery(mockedEvent);
 
         setTimeout(function () {
-            console.log(component.props())
             expect(mockSetResults).toHaveBeenCalledWith(resp);
+            component.unmount();
+            done();
+        }, 500);
+    });
+
+    it('submitQuery() sets state.errorMsg accordingly when input value is empty', (done) => {
+        const mock = new MockAdapter(axios);
+        const resp = 'success';
+        mock.onGet().reply(200, resp);
+
+        const mockSetState = jest.spyOn(Search.prototype, 'setState');
+
+        const component = shallow(
+            <Search />
+        );
+
+        const mockedEvent = {preventDefault: () => {}};
+        component.instance().submitQuery(mockedEvent);
+
+        const testInput = '';
+        component.setState({input: testInput});
+        component.update();
+
+        setTimeout(function () {
+            expect(mockSetState).toHaveBeenCalled();
+            expect(component.state().errorMsg).toBe('Pole nie może być puste');
             component.unmount();
             done();
         }, 500);
