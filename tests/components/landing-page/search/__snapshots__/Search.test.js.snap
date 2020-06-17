@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LandingPage rendering specification LandingPage is rendered 1`] = `
+exports[`Search rendering specification Search is rendered 1`] = `
 <form
   className="makeStyles-dashboard-10"
   onSubmit={[Function]}

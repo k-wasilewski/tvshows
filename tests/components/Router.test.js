@@ -8,7 +8,7 @@ import App from "../../src/components/App";
 import {mount, configure} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 
-describe("Router rendering specification", () => {
+describe("Router functional specification", () => {
     let component;
     const root = document.createElement('div');
 

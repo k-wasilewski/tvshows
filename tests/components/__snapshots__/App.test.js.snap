@@ -108,6 +108,7 @@ Array [
       </span>
       <input
         className="makeStyles-input-13"
+        id="searchFormInput"
         onChange={[Function]}
         type="text"
       />
