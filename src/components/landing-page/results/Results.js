@@ -28,7 +28,7 @@ export class Results extends React.Component {
         this.setState({filteredResults: filteredResults});
     }
 
-    resetFilter = () => {
+    resetFilter() {
         this.setState({filteredResults: this.props.results});
     }
 

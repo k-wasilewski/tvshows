@@ -52,7 +52,6 @@ describe("Results functional specification", () => {
 
         component.find(Results).prop('results').sort((a, b) => a-b)
         component.find(Results).setState({filteredResults: testFilteredResultsValue});
-        console.log(Array.isArray(component.find(Results).prop('results')))
         component.update();
         expect(component.find(Results).state('filteredResults')).toBe(testFilteredResultsValue);
         component.find(Results).setState({filteredResults: testChangedFilteredResultsValue});
@@ -103,5 +102,25 @@ describe("Results functional specification", () => {
             component.unmount();
             done();
         }, 500);
+    });
+
+    it('resetFilter() sets state.filteredResults value to props.results value', () => {
+        configure({adapter: new Adapter()});
+
+        const testInitialResults = ['sample value'];
+
+        const component = shallow(
+            <Results results={testInitialResults}/>
+        );
+        let stateFilteredResults = component.state('filteredResults');
+        let propsResults = component.props().children[1].props.results;
+
+        expect(stateFilteredResults===propsResults).toBeFalsy();
+        component.instance().resetFilter();
+        component.update();
+        stateFilteredResults = component.state('filteredResults');
+        propsResults = component.props().children[1].props.results;
+        expect(stateFilteredResults===propsResults).toBeTruthy();
+        component.unmount();
     });
 });
