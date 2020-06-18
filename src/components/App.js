@@ -25,7 +25,7 @@ export function App(props) {
     return (
         <React.Fragment>
             <OriginalImg notifyParent={gotCallbackFromImg} />
-            <div className={(props.img==='') ? classes.App : classes.blurApp}>
+            <div id='App' className={(props.img==='') ? classes.App : classes.blurApp}>
                 <img className={classes.logo} src={logo} alt='logo' />
                 <Router />
                 <Typography id='copyright' variant="h6" component="h2" className={copyrightClassName}>

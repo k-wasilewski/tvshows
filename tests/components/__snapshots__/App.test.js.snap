@@ -91,6 +91,7 @@ Array [
   </div>,
   <div
     className="makeStyles-blurApp-2"
+    id="App"
   >
     <img
       alt="logo"
