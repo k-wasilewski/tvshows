@@ -40,6 +40,7 @@ exports[`SearchForm rendering specification SearchForm is rendered 1`] = `
   <button
     className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
     disabled={false}
+    id="searchFormResetBtn"
     onBlur={[Function]}
     onDragLeave={[Function]}
     onFocus={[Function]}

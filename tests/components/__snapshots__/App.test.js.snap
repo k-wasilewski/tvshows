@@ -141,6 +141,7 @@ Array [
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
         disabled={false}
+        id="searchFormResetBtn"
         onBlur={[Function]}
         onClick={[Function]}
         onDragLeave={[Function]}
