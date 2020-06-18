@@ -7,7 +7,6 @@ import {Provider} from "react-redux";
 import {configure} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 import {mount, shallow} from "enzyme";
-import {App} from "../../../../src/components/App";
 
 describe("Results rendering specification", () => {
     it('Results is rendered', () => {
