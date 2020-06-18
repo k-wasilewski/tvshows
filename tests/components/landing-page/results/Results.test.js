@@ -61,4 +61,47 @@ describe("Results functional specification", () => {
         expect(component.find(Results).state('filteredResults')).toStrictEqual([]);
         component.unmount();
     });
+
+    it('filterByDay() filters results from props to state.filteredResults value ' +
+        'by passed day number', (done) => {
+        configure({adapter: new Adapter()});
+
+        const resultMonday = {
+            show: {
+                name: 'sample name',
+                genres: ['sample genre'],
+                schedule: {
+                    days: 'Monday'
+                }
+            },
+            score: 2
+        };
+
+        const resultTuesday = {
+            show: {
+                name: 'sample name',
+                genres: ['sample genre'],
+                schedule: {
+                    days: 'Tuesday'
+                }
+            },
+            score: 2
+        };
+
+        const testInitialResults = [resultMonday, resultTuesday];
+
+        const component = shallow(
+            <Results results={testInitialResults}/>
+        );
+
+        component.instance().filterByDay(1);
+        component.update();
+
+        setTimeout(function () {
+            expect(JSON.stringify(component.state('filteredResults')))
+                .toBe(JSON.stringify([resultMonday]));
+            component.unmount();
+            done();
+        }, 500);
+    });
 });

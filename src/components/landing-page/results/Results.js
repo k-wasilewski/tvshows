@@ -18,7 +18,7 @@ export class Results extends React.Component {
             this.setState({filteredResults: []});
     }
 
-    filterByDay = (day) => {
+    filterByDay(day) {
         const dayName = mapDayNoToName(day);
 
         const filteredResults = this.props.results.filter(result =>
