@@ -4,7 +4,7 @@ import ResultsTable from './ResultsTable';
 import ResultsFilter from './ResultsFilter';
 import mapDayNoToName from '../../../functions/mapDayNoToName';
 
-class Results extends React.Component {
+export class Results extends React.Component {
     constructor(props) {
         super(props);
 

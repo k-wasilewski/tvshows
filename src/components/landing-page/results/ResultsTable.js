@@ -45,7 +45,7 @@ export function ResultsTable(props) {
     const history = useHistory();
 
     React.useEffect( () => {
-        setSortedResults(props.results.sort((a, b) => b.score - a.score));
+        setSortedResults(Array.from(props.results).sort((a, b) => b.score - a.score));
     }, [props.results]);
 
     function rowClicked(event, result) {
