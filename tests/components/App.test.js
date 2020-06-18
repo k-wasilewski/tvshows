@@ -63,4 +63,27 @@ describe("App functional specification", () => {
             done();
         }, 500)
     });
+
+    it('App styling changes correctly', (done) => {
+        configure({adapter: new Adapter()});
+
+        const component = mount(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <App img=''/>
+                </BrowserRouter>
+            </Provider>
+        );
+
+        expect(component.find('#App').getDOMNode().className).toContain('-App-');
+
+        component.setProps({children: <BrowserRouter><App img='changed'/></BrowserRouter>});
+        component.update();
+
+        setTimeout(function () {
+            expect(component.find('#App').getDOMNode().className).toContain('-blurApp-');
+            component.unmount();
+            done();
+        }, 500);
+    });
 });
