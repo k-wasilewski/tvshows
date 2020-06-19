@@ -2,7 +2,7 @@
 
 exports[`LandingPage rendering specification LandingPage is rendered 1`] = `
 <form
-  className="makeStyles-dashboard-10"
+  className="makeStyles-dashboard-11"
   id="searchForm"
   onSubmit={[Function]}
 >
@@ -12,7 +12,7 @@ exports[`LandingPage rendering specification LandingPage is rendered 1`] = `
     
   </span>
   <input
-    className="makeStyles-input-13"
+    className="makeStyles-input-14"
     id="searchFormInput"
     onChange={[Function]}
     type="text"
