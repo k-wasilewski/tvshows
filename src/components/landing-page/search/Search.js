@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { setResults } from '../../../redux/actions';
-import {SearchForm} from "./SearchForm";
+import { setResults, setQuery } from '../../../redux/actions';
+import SearchForm from "./SearchForm";
 
 export class Search extends React.Component {
     constructor(props) {
@@ -34,6 +34,8 @@ export class Search extends React.Component {
 
     submitQuery(event) {
         const query = this.state.input;
+
+        this.props.setQuery(query);
 
         axios.get(`http://api.tvmaze.com/search/shows?q=${query}`)
                 .then(resp => {
@@ -85,7 +87,8 @@ export class Search extends React.Component {
 };
 
 const mapDispatchToProps = {
-    setResults
+    setResults,
+    setQuery
 };
 
 export default connect(null, mapDispatchToProps)(Search);
