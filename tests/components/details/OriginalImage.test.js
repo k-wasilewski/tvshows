@@ -6,6 +6,7 @@ import ConnectedOriginalImage, {OriginalImage} from "../../../src/components/det
 import {Provider} from "react-redux";
 import {configure, mount} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
+import { createShallow, createMount } from '@material-ui/core/test-utils';
 
 describe("OriginalImage rendering specification", () => {
     it('OriginalImage is rendered', () => {
@@ -39,11 +40,12 @@ describe("OriginalImage functional specification", () => {
 
     it('renders img with src and title passed as props', () => {
         configure({adapter: new Adapter()});
+        const shallow = createShallow({ dive: true });
 
         const mockSrc = 'mockSrc';
         const mockTitle = 'mockTitle';
 
-        const component = mount(
+        const component = shallow(
             <OriginalImage src={mockSrc} title={mockTitle} />
         );
 
@@ -56,6 +58,7 @@ describe("OriginalImage functional specification", () => {
 
     it('is hidden when props.src value is empty', (done) => {
         configure({adapter: new Adapter()});
+        const mount = createMount();
 
         const mockSrc = 'mockSrc';
         const mockTitle = 'mockTitle';
