@@ -59,4 +59,38 @@ describe("MediumImage functional specification", () => {
         expect(img.html()).toContain(name);
         expect(img.html()).toContain(mediumImgSrc);
     });
+
+    it('calls props.setOriginalImage when img is clicked', (done) => {
+        configure({adapter: new Adapter()});
+
+        const name = 'sample name';
+        const mediumImgSrc = 'medium src';
+        const originalImgSrc = 'original src';
+
+        const testResult = {
+            show: {
+                name: name,
+                image: {
+                    medium: mediumImgSrc,
+                    original: originalImgSrc
+                }
+            }
+        };
+
+        const mockSetOriginalImage = jest.fn();
+
+        const component = mount(
+            <MediumImage result={testResult} setOriginalImage={mockSetOriginalImage} />
+        );
+
+        const img = component.find('#mediumImage').at(0);
+        img.simulate('click');
+        component.update();
+
+        setTimeout(function () {
+            expect(mockSetOriginalImage).toHaveBeenCalledWith(originalImgSrc, name);
+            component.unmount();
+            done();
+        }, 500);
+    });
 });
