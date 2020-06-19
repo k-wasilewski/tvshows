@@ -6,7 +6,7 @@ import ConnectedDetails, {Details} from "../../../src/components/details/Details
 import {Provider} from "react-redux";
 import {configure, mount} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
-import {ErrorMsg} from "../../../src/components/misc/ErrorMsg";
+import {ErrorMsg} from "../../../src/components/error/ErrorMsg";
 import Button from '@material-ui/core/Button';
 
 describe("Details rendering specification", () => {

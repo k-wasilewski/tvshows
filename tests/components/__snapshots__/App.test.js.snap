@@ -3,7 +3,7 @@
 exports[`App rendering specification App is rendered 1`] = `
 Array [
   <div
-    className="MuiPaper-root MuiCard-root makeStyles-hidden-8 MuiPaper-elevation1 MuiPaper-rounded"
+    className="MuiPaper-root MuiCard-root makeStyles-hidden-7 MuiPaper-elevation1 MuiPaper-rounded"
     id="originalImageCard"
   >
     <button
@@ -101,7 +101,7 @@ Array [
       src={Object {}}
     />
     <form
-      className="makeStyles-dashboard-11"
+      className="makeStyles-dashboard-10"
       id="searchForm"
       onSubmit={[Function]}
     >
@@ -111,7 +111,7 @@ Array [
         
       </span>
       <input
-        className="makeStyles-input-14"
+        className="makeStyles-input-13"
         id="searchFormInput"
         onChange={[Function]}
         type="text"

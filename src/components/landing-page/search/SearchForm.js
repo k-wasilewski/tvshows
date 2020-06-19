@@ -1,4 +1,4 @@
-import {ErrorMsg} from "../../misc/ErrorMsg";
+import {ErrorMsg} from "../../error/ErrorMsg";
 import React, {useEffect, useRef} from "react";
 import {styles} from "../../../styles/styles";
 import Button from '@material-ui/core/Button';

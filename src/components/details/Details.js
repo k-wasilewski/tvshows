@@ -2,7 +2,7 @@ import React from 'react';
 import {setDetailedResult, setOriginalImage} from '../../redux/actions';
 import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {ErrorMsg} from '../misc/ErrorMsg';
+import {ErrorMsg} from '../error/ErrorMsg';
 import {styles} from '../../styles/styles';
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";

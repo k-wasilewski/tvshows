@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Details rendering specification Details is rendered 1`] = `
+exports[`NotFoundComponent rendering specification NotFoundComponent is rendered 1`] = `
 <div
   className="makeStyles-dashboard-10"
 >
   <span
     className="makeStyles-errorMsg-6"
   >
-    Należy wybrać element z listy
+    Nie znaleziono strony
   </span>
   <button
     className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"

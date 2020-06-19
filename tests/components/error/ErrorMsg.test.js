@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import {ErrorMsg} from "../../../src/components/misc/ErrorMsg";
+import {ErrorMsg} from "../../../src/components/error/ErrorMsg";
 import React from "react";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
