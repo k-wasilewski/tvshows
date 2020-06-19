@@ -1,7 +1,7 @@
 import React from 'react';
 import {setDetailedResult, setOriginalImage} from '../../redux/actions';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {ErrorMsg} from '../misc/ErrorMsg';
 import {styles} from '../../styles/styles';
 import Button from '@material-ui/core/Button';
@@ -18,6 +18,7 @@ const createMarkup = (text) => {
 export function Details(props) {
     const result = (props.detailedResult===undefined) ? [] : props.detailedResult;
     const classes = styles();
+    const history = useHistory();
 
     function resetDetailedResult() {
         props.setDetailedResult([]);
@@ -27,7 +28,8 @@ export function Details(props) {
         return (
             <div className={classes.dashboard}>
                 <ErrorMsg msg={'Należy wybrać element z listy'} />
-                <Link to='/'><Button variant='outlined' size='small'>Powrót</Button></Link>
+                <Button variant='outlined' size='small' onClick={() => history.push('/details')}>
+                    Powrót</Button>
             </div>
             );
     } else {
