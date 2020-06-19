@@ -21,14 +21,11 @@ import {
 import filterByScoreDesc from "../../../functions/filterByScoreDesc";
 
 const mappedGenres = (genres) => {
-    if (genres.length===1) return genres;
-    else {
-        return genres.map(genre => {
-            if (genres.indexOf(genre)!==genres.length-1)
-                return genre+=', ';
-            else return genre;
-        });
-    }
+    return genres.map(genre => {
+        if (genres.indexOf(genre)!==genres.length-1)
+            return genre+=', ';
+        else return genre;
+    });
 };
 
 const StyledTableHeadRow = withStyles((theme) => (TABLE_HEAD_STYLE))(TableRow);
@@ -78,7 +75,7 @@ export function ResultsTable(props) {
                                 <StyledTableCell align='right'>
                                     {result.show.name}
                                 </StyledTableCell>
-                                <StyledTableCell align='right'>
+                                <StyledTableCell id='genresCell-resultsTable' align='right'>
                                     {mappedGenres(result.show.genres)}
                                 </StyledTableCell>
                                 <StyledTableCell align='right'>
