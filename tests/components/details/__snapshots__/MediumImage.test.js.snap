@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MediumImage rendering specification MediumImage is rendered 1`] = `
+<img
+  alt="img-sample name"
+  className="makeStyles-mediumImage-14"
+  id="mediumImage"
+  onClick={[Function]}
+  src="medium src"
+/>
+`;

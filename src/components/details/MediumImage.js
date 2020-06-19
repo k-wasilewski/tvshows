@@ -12,7 +12,7 @@ export function MediumImage(props) {
     const originalImgSrc = result.show.image.original;
 
     return (
-        <img alt={`img-${showName}`} src={mediumImgSrc}
+        <img id='mediumImage' alt={`img-${showName}`} src={mediumImgSrc}
              className={classes.mediumImage} onClick={() => {
             if (result.length!==0)
                 props.setOriginalImage(originalImgSrc, showName);
