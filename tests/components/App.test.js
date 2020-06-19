@@ -2,18 +2,19 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import store from "../../src/redux/store";
 import {BrowserRouter} from "react-router-dom";
-import {App} from "../../src/components/App";
+import ConnectedApp, {App} from "../../src/components/App";
 import {Provider} from "react-redux";
 import {configure, mount} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
-import { createShallow, createMount } from '@material-ui/core/test-utils';
+import { createMount } from '@material-ui/core/test-utils';
+import OriginalImage from "../../src/components/details/OriginalImage";
 
 describe("App rendering specification", () => {
     it('App is rendered', () => {
         const component = renderer.create(
             <Provider store={store}>
                 <BrowserRouter>
-                    <App/>
+                    <ConnectedApp/>
                 </BrowserRouter>
             </Provider>
         );
@@ -67,6 +68,29 @@ describe("App functional specification", () => {
 
         setTimeout(function () {
             expect(component.find('#App').getDOMNode().className).toContain('-blurApp-');
+            component.unmount();
+            done();
+        }, 500);
+    });
+
+    it('resets redux props.originalImage value when notified by OriginalImage', (done) => {
+        configure({adapter: new Adapter()});
+
+        const mockSetOriginalImage = jest.fn();
+
+        const component = mount(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <App setOriginalImage={mockSetOriginalImage} />
+                </BrowserRouter>
+            </Provider>
+        );
+
+        component.find(OriginalImage).prop('notifyParent')();
+        component.update();
+
+        setTimeout(function () {
+            expect(mockSetOriginalImage).toHaveBeenCalledWith('', '');
             component.unmount();
             done();
         }, 500);
