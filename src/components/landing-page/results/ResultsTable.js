@@ -19,6 +19,7 @@ import {
     TABLE_CELL_STYLE
 } from '../../../styles/styles';
 import sortByScoreDesc from "../../../functions/sortByScoreDesc";
+import {CircularProgress} from "@material-ui/core";
 
 const mappedGenres = (genres) => {
     return genres.map(genre => {
@@ -43,8 +44,10 @@ export function ResultsTable(props) {
     const history = useHistory();
 
     React.useEffect( () => {
-        if (props.results!==undefined)
-            setSortedResults(sortByScoreDesc(Array.from(props.results)));
+        if (props.results!==undefined) {
+            if (sortedResults!==props.results)
+                setSortedResults(sortByScoreDesc(Array.from(props.results)));
+        }
     }, [props.results]);
 
     function rowClicked(event, result) {
@@ -54,41 +57,43 @@ export function ResultsTable(props) {
 
     if (sortedResults.length===0) return <React.Fragment />
     else return (
-        <StyledTableContainer component={Paper}>
-            <StyledTable aria-label='results table'>
-                <TableHead>
-                    <StyledTableHeadRow>
-                        <StyledTableCell>Ocena</StyledTableCell>
-                        <StyledTableCell align='right'>Tytuł</StyledTableCell>
-                        <StyledTableCell align='right'>Gatunki</StyledTableCell>
-                        <StyledTableCell align='right'>Data premiery</StyledTableCell>
-                    </StyledTableHeadRow>
-                </TableHead>
-                <TableBody>
-                    {sortedResults.map((result) => (
-                        <Tooltip key={`tooltip-${result.score}${result.show.name}`}
-                                 title={`Szczegóły serialu ${result.show.name}`} placement='top-end'>
-                            <StyledTableRow className='resultsTable-row'
-                                            key={result.score+result.show.name}
-                                            onClick={event => rowClicked(event, result)}>
-                                <StyledTableCell component='th' scope='row'>
-                                    {result.score}
-                                </StyledTableCell>
-                                <StyledTableCell align='right'>
-                                    {result.show.name}
-                                </StyledTableCell>
-                                <StyledTableCell id='resultsTable-genresCell' align='right'>
-                                    {mappedGenres(result.show.genres)}
-                                </StyledTableCell>
-                                <StyledTableCell align='right'>
-                                    {result.show.premiered}
-                                </StyledTableCell>
-                            </StyledTableRow>
-                        </Tooltip>
-                    ))}
-                </TableBody>
-            </StyledTable>
-        </StyledTableContainer>
+        <React.Suspense fallback={<CircularProgress />}>
+            <StyledTableContainer component={Paper}>
+                <StyledTable aria-label='results table'>
+                    <TableHead>
+                        <StyledTableHeadRow>
+                            <StyledTableCell>Ocena</StyledTableCell>
+                            <StyledTableCell align='right'>Tytuł</StyledTableCell>
+                            <StyledTableCell align='right'>Gatunki</StyledTableCell>
+                            <StyledTableCell align='right'>Data premiery</StyledTableCell>
+                        </StyledTableHeadRow>
+                    </TableHead>
+                    <TableBody>
+                        {sortedResults.map((result) => (
+                            <Tooltip key={`tooltip-${result.score}${result.show.name}`}
+                                     title={`Szczegóły serialu ${result.show.name}`} placement='top-end'>
+                                <StyledTableRow className='resultsTable-row'
+                                                key={result.score+result.show.name}
+                                                onClick={event => rowClicked(event, result)}>
+                                    <StyledTableCell component='th' scope='row'>
+                                        {result.score}
+                                    </StyledTableCell>
+                                    <StyledTableCell align='right'>
+                                        {result.show.name}
+                                    </StyledTableCell>
+                                    <StyledTableCell id='resultsTable-genresCell' align='right'>
+                                        {mappedGenres(result.show.genres)}
+                                    </StyledTableCell>
+                                    <StyledTableCell align='right'>
+                                        {result.show.premiered}
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            </Tooltip>
+                        ))}
+                    </TableBody>
+                </StyledTable>
+            </StyledTableContainer>
+        </React.Suspense>
     );
 };
 
