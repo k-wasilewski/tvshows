@@ -4,9 +4,8 @@ import store from "../../../src/redux/store";
 import {BrowserRouter} from "react-router-dom";
 import ConnectedOriginalImage, {OriginalImage} from "../../../src/components/details/OriginalImage";
 import {Provider} from "react-redux";
-import {configure, mount} from 'enzyme';
+import {configure, mount, shallow} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
-import { createShallow, createMount } from '@material-ui/core/test-utils';
 
 describe("OriginalImage rendering specification", () => {
     it('OriginalImage is rendered', () => {
@@ -37,8 +36,6 @@ describe("OriginalImage functional specification", () => {
     });
 
     it('renders img with src and title passed as props', () => {
-        const shallow = createShallow({ dive: true });
-
         const mockSrc = 'mockSrc';
         const mockTitle = 'mockTitle';
 
@@ -53,8 +50,6 @@ describe("OriginalImage functional specification", () => {
     });
 
     it('is hidden when props.src value is empty', (done) => {
-         const mount = createMount();
-
         const mockSrc = 'mockSrc';
         const mockTitle = 'mockTitle';
 

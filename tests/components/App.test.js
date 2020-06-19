@@ -6,7 +6,6 @@ import ConnectedApp, {App} from "../../src/components/App";
 import {Provider} from "react-redux";
 import {configure, mount} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
-import { createMount } from '@material-ui/core/test-utils';
 import OriginalImage from "../../src/components/details/OriginalImage";
 
 describe("App rendering specification", () => {
@@ -35,9 +34,6 @@ describe("App functional specification", () => {
     });
 
     it('toggles copyrightClassName when props.detailedResult change', (done) => {
-        configure({adapter: new Adapter()});
-        const mount = createMount();
-
         component = mount(
             <Provider store={store}>
                 <BrowserRouter>
