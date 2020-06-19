@@ -50,7 +50,7 @@ describe("App functional specification", () => {
         }, 500)
     });
 
-    it('App styling changes correctly', (done) => {
+    it('className changes when redux props.img value is empty', (done) => {
         configure({adapter: new Adapter()});
 
         const component = mount(
