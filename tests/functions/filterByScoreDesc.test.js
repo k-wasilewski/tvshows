@@ -1,4 +1,4 @@
-import filterByScoreDesc from "../../src/functions/filterByScoreDesc";
+import sortByScoreDesc from "../../src/functions/sortByScoreDesc";
 
 describe("filterByScoreDesc functional specification", () => {
     it('filterByScoreDesc() filters results by score descending', () => {
@@ -32,7 +32,7 @@ describe("filterByScoreDesc functional specification", () => {
 
         const results = [result1, result4, result3, result6];
 
-        expect(filterByScoreDesc(results)).toStrictEqual(
+        expect(sortByScoreDesc(results)).toStrictEqual(
             [result6, result4, result3, result1]);
     });
 });

@@ -18,7 +18,7 @@ import {
     TABLE_CONTAINER_STYLE,
     TABLE_CELL_STYLE
 } from '../../../styles/styles';
-import filterByScoreDesc from "../../../functions/filterByScoreDesc";
+import sortByScoreDesc from "../../../functions/sortByScoreDesc";
 
 const mappedGenres = (genres) => {
     return genres.map(genre => {
@@ -44,7 +44,7 @@ export function ResultsTable(props) {
 
     React.useEffect( () => {
         if (props.results!==undefined)
-            setSortedResults(filterByScoreDesc(Array.from(props.results)));
+            setSortedResults(sortByScoreDesc(Array.from(props.results)));
     }, [props.results]);
 
     function rowClicked(event, result) {
