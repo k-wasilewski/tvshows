@@ -1,7 +1,7 @@
 import React from 'react';
 import {setDetailedResult, setOriginalImage} from '../../redux/actions';
 import {connect} from 'react-redux';
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {ErrorMsg} from '../misc/ErrorMsg';
 import {styles} from '../../styles/styles';
 import Button from '@material-ui/core/Button';
@@ -28,7 +28,7 @@ export function Details(props) {
         return (
             <div className={classes.dashboard}>
                 <ErrorMsg msg={'Należy wybrać element z listy'} />
-                <Button variant='outlined' size='small' onClick={() => history.push('/details')}>
+                <Button variant='outlined' size='small' onClick={() => history.push('/')}>
                     Powrót</Button>
             </div>
             );
@@ -39,9 +39,12 @@ export function Details(props) {
                     <Typography variant="h5" component="h2" className={classes.detailsHeader}>
                         {result.show.name}
                     </Typography>
-                    <Link to='/'><Button variant='outlined' size='small' onClick={resetDetailedResult}>
+                    <Button variant='outlined' size='small' onClick={() => {
+                        resetDetailedResult();
+                        history.push('/');
+                    }}>
                         Powrót
-                    </Button></Link>
+                    </Button>
                     <Typography variant="body1" component="h2" className={classes.detailsSpan}
                         dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
                     {(result.show.image)===null ?
