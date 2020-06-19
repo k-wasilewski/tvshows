@@ -16,7 +16,7 @@ const createMarkup = (text) => {
 };
 
 export function Details(props) {
-    const result = props.detailedResult;
+    const result = (props.detailedResult===undefined) ? [] : props.detailedResult;
     const classes = styles();
 
     function resetDetailedResult() {
