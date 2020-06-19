@@ -68,7 +68,8 @@ export function ResultsTable(props) {
                     {sortedResults.map((result) => (
                         <Tooltip key={`tooltip-${result.score}${result.show.name}`}
                                  title={`Szczegóły serialu ${result.show.name}`} placement='top-end'>
-                            <StyledTableRow key={result.score+result.show.name}
+                            <StyledTableRow className='resultsTable-row'
+                                            key={result.score+result.show.name}
                                             onClick={event => rowClicked(event, result)}>
                                 <StyledTableCell component='th' scope='row'>
                                     {result.score}
@@ -76,7 +77,7 @@ export function ResultsTable(props) {
                                 <StyledTableCell align='right'>
                                     {result.show.name}
                                 </StyledTableCell>
-                                <StyledTableCell id='genresCell' align='right'>
+                                <StyledTableCell id='resultsTable-genresCell' align='right'>
                                     {mappedGenres(result.show.genres)}
                                 </StyledTableCell>
                                 <StyledTableCell align='right'>

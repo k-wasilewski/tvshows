@@ -18,6 +18,15 @@ describe("ResultsTable rendering specification", () => {
     });
 });
 
+const mockHistoryPush = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useHistory: () => ({
+        push: mockHistoryPush,
+    }),
+}));
+
 describe("ResultsTable functional specification", () => {
     it('useState is called when props.results change', (done) => {
         configure({adapter: new Adapter()});
@@ -41,17 +50,13 @@ describe("ResultsTable functional specification", () => {
         const mockUseState = jest.spyOn(React, 'useState');
 
         const component = mount(
-            <Provider store={store}>
-                <ResultsTable results={[testResultsValue]}/>
-            </Provider>
+            <ResultsTable results={[testResultsValue]}/>
         );
         const CALLS_PER_CHANGE = 2;
         expect(mockUseState).toHaveBeenCalledTimes(CALLS_PER_CHANGE);
 
-        component.setProps({children:
-                <Provider store={store}>
-                    <ResultsTable results={[testResultsValueChanged]} />
-                </Provider>
+        component.setProps({
+            results: [testResultsValueChanged]
         });
         component.update();
 
@@ -74,15 +79,43 @@ describe("ResultsTable functional specification", () => {
         };
 
         const component = mount(
-            <Provider store={store}>
-                <ResultsTable results={[rawResult]} />
-            </Provider>
+            <ResultsTable results={[rawResult]} />
         );
 
-        const genresCell = component.find('#genresCell').at(0);
+        const genresCell = component.find('#resultsTable-genresCell').at(0);
 
         setTimeout(function () {
             expect(genresCell.text()).toBe('first, second, third');
+            component.unmount();
+            done();
+        }, 500);
+    });
+
+    it('sets props.detailedResult value and redirects to \'details when ' +
+        'row is clicked', (done) => {
+        configure({adapter: new Adapter()});
+
+        const testResult = {
+            show: {
+                name: 'sample name',
+                genres: ['first', 'second', 'third']
+            },
+            score: 2
+        };
+
+        const mockSetDetailedResult = jest.fn();
+
+        const component = mount(
+            <ResultsTable results={[testResult]} setDetailedResult={mockSetDetailedResult} />
+        );
+
+        const row = component.find('.resultsTable-row').at(0);
+        row.simulate('click');
+        component.update();
+
+        setTimeout(function () {
+            expect(mockSetDetailedResult).toHaveBeenCalledWith(testResult);
+            expect(mockHistoryPush).toHaveBeenCalledWith('/details');
             component.unmount();
             done();
         }, 500);
