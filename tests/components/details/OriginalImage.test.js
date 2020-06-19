@@ -26,14 +26,23 @@ describe("OriginalImage rendering specification", () => {
 });
 
 describe("OriginalImage functional specification", () => {
+    let component;
+
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
     it('renders img with src and title passed as props', () => {
-        configure({adapter: new Adapter()});
         const shallow = createShallow({ dive: true });
 
         const mockSrc = 'mockSrc';
         const mockTitle = 'mockTitle';
 
-        const component = shallow(
+        component = shallow(
             <OriginalImage src={mockSrc} title={mockTitle} />
         );
 
@@ -41,17 +50,15 @@ describe("OriginalImage functional specification", () => {
 
         expect(img.prop('image')).toBe(mockSrc);
         expect(img.prop('title')).toBe(`${mockTitle}-img`);
-        component.unmount();
     });
 
     it('is hidden when props.src value is empty', (done) => {
-        configure({adapter: new Adapter()});
-        const mount = createMount();
+         const mount = createMount();
 
         const mockSrc = 'mockSrc';
         const mockTitle = 'mockTitle';
 
-        const component = mount(
+        component = mount(
             <OriginalImage src={mockSrc} title={mockTitle} />
         );
 
@@ -65,21 +72,18 @@ describe("OriginalImage functional specification", () => {
         setTimeout(function () {
             imgCard = component.find('#originalImageCard').at(0);
             expect(imgCard.prop('className')).toContain('hidden');
-            component.unmount();
             done();
         }, 500);
     });
 
     it('props.notifyParent() is called and visibility is set to false when close button ' +
         'is clicked', (done) => {
-        configure({adapter: new Adapter()});
-
         const mockSrc = 'mockSrc';
         const mockTitle = 'mockTitle';
         const mockNotifyParent = jest.fn();
         const mockUseState = jest.spyOn(React, 'useState');
 
-        const component = mount(
+        component = mount(
             <OriginalImage src={mockSrc} title={mockTitle} notifyParent={mockNotifyParent} />
         );
 
@@ -90,7 +94,6 @@ describe("OriginalImage functional specification", () => {
         setTimeout(function () {
             expect(mockNotifyParent).toHaveBeenCalledTimes(1);
             expect(mockUseState).toHaveBeenCalledWith(false);
-            component.unmount();
             done();
         }, 500);
     });

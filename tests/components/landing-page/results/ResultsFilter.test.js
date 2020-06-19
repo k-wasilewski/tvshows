@@ -18,9 +18,17 @@ describe("ResultsFilter rendering specification", () => {
 });
 
 describe("ResultsFilter functional specification", () => {
-    it('is only rendered when redux props.results are not empty', (done) => {
-        configure({adapter: new Adapter()});
+    let component;
 
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
+    it('is only rendered when redux props.results are not empty', (done) => {
         const testFilteredResultsValue = {
             show: {
                 name: 'sample name',
@@ -29,7 +37,7 @@ describe("ResultsFilter functional specification", () => {
             score: 2
         };
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Results results={[testFilteredResultsValue]}/>
             </Provider>
@@ -40,18 +48,15 @@ describe("ResultsFilter functional specification", () => {
         component.update();
         setTimeout(function () {
             expect(component.find(ResultsFilter).exists()).toBeFalsy();
-            component.unmount();
             done();
         }, 500);
     });
 
     it('sets state.day value and calls props.setDay when day input is changed', () => {
-        configure({adapter: new Adapter()});
-
         const mockSetDayState = jest.spyOn(React, 'useState');
         const mockSetDayProps = jest.fn();
 
-        const component = mount(
+        component = mount(
             <ResultsFilter setDay={mockSetDayProps} />
         );
 
@@ -64,7 +69,6 @@ describe("ResultsFilter functional specification", () => {
         setTimeout(function () {
             expect(mockSetDayProps).toHaveBeenCalledTimes(1);
             expect(mockSetDayState).toHaveBeenCalledTimes(2);
-            component.unmount();
         }, 500);
     });
 });

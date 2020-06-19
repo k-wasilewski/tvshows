@@ -25,12 +25,20 @@ describe("Search rendering specification", () => {
 });
 
 describe("Search functional specification", () => {
-    it('sets state.input value as SearchForm\'s input', () => {
-        configure({adapter: new Adapter()});
+    let component;
 
-        const component = mount(
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
+    it('sets state.input value as SearchForm\'s input', (done) => {
+        component = mount(
             <Provider store={store}>
-                <ConnectedSearch />
+                <Search />
             </Provider>
         );
         const testInput = 'test input value';
@@ -39,8 +47,8 @@ describe("Search functional specification", () => {
         input.simulate('change', { target: { value: testInput } });
 
         setTimeout(function () {
-            expect(component.find(Search).instance().state.input).toBe(testInput);
-            component.unmount();
+            expect(component.find(Search).state('input')).toBe(testInput);
+            done();
         }, 500);
     });
 
@@ -49,18 +57,17 @@ describe("Search functional specification", () => {
 
         const mockSetQuery = jest.fn();
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Search setQuery={mockSetQuery}/>
             </Provider>
         );
 
-        const searchForm = component.find('#searchForm');
-        searchForm.forEach(form => form.simulate('submit'));
+        const searchForm = component.find('#searchForm').at(0);
+        searchForm.simulate('submit');
 
         expect(submitQuery).toHaveBeenCalled();
         expect(mockSetQuery).toHaveBeenCalled();
-        component.unmount();
     });
 
     it('submitQuery() submits a query from state.input value', (done) => {
@@ -72,13 +79,13 @@ describe("Search functional specification", () => {
         const mockSetQuery = jest.fn();
         const mockSetResults = jest.fn();
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Search setResults={mockSetResults} setQuery={mockSetQuery} />
             </Provider>
         );
 
-        component.find('#searchFormInput').at(0).simulate('change', {target: {value: testInput}});
+        component.find(Search).setState({input: testInput});
         component.update();
 
         const mockedEvent = {preventDefault: () => {}};
@@ -87,7 +94,6 @@ describe("Search functional specification", () => {
         setTimeout(function () {
             expect(mockSetQuery).toHaveBeenCalledWith(testInput);
             expect(mockSetResults).toHaveBeenCalledWith(resp);
-            component.unmount();
             mock.reset();
             done();
         }, 500);
@@ -100,7 +106,7 @@ describe("Search functional specification", () => {
 
         const mockSetQuery = jest.fn();
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Search setQuery={mockSetQuery}/>
             </Provider>
@@ -111,7 +117,6 @@ describe("Search functional specification", () => {
 
         setTimeout(function () {
             expect(component.find(Search).state().errorMsg).toBe('Pole nie może być puste');
-            component.unmount();
             mock.reset();
             done();
         }, 500);
@@ -124,7 +129,7 @@ describe("Search functional specification", () => {
 
         const mockSetQuery = jest.fn();
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Search setQuery={mockSetQuery}/>
             </Provider>
@@ -139,7 +144,6 @@ describe("Search functional specification", () => {
 
         setTimeout(function () {
             expect(component.find(Search).state().errorMsg).toBe('Nic nie znaleziono');
-            component.unmount();
             mock.reset();
             done();
         }, 4000);
@@ -153,7 +157,7 @@ describe("Search functional specification", () => {
 
         const mockSetQuery = jest.fn();
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Search setQuery={mockSetQuery}/>
             </Provider>
@@ -167,12 +171,9 @@ describe("Search functional specification", () => {
         component.find(Search).instance().submitQuery(mockedEvent);
 
         setTimeout(function () {
-            console.log(component.find(Search).debug())
-            console.log(component.find(Search).state().errorMsg)
             expect(mockSetQuery).toBeCalledWith(testInput);
             expect(component.find(Search).state().input).toBe('');
             expect(component.find(Search).state().inputRef.value).toBe('');
-            component.unmount();
             mock.reset();
             done();
         }, 4000);
@@ -184,7 +185,7 @@ describe("Search functional specification", () => {
         const mockSetResults = jest.fn();
         const mockSetQuery = jest.fn();
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Search setResults={mockSetResults} setQuery={mockSetQuery}/>
             </Provider>
@@ -208,15 +209,13 @@ describe("Search functional specification", () => {
         expect(component.find(Search).state('input')).toBe('');
         expect(component.find(Search).state('inputRef').value).toBe('');
         expect(mockSetResults).toHaveBeenCalledWith([]);
-
-        component.unmount();
     });
 
     it('getInputRefFromChild(ref) sets ref as state value', (done) => {
         const ref = 'mock ref'
         const mockRef = {current: ref};
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Search />
             </Provider>
@@ -228,7 +227,6 @@ describe("Search functional specification", () => {
 
         setTimeout(function () {
             expect(component.find(Search).state().inputRef).toBe(ref);
-            component.unmount();
             done();
         }, 500);
     });

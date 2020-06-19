@@ -24,11 +24,21 @@ describe("App rendering specification", () => {
 });
 
 describe("App functional specification", () => {
+    let component;
+
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
     it('toggles copyrightClassName when props.detailedResult change', (done) => {
         configure({adapter: new Adapter()});
         const mount = createMount();
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <BrowserRouter>
                     <App />
@@ -45,15 +55,12 @@ describe("App functional specification", () => {
 
         setTimeout(function () {
             expect(copyright.prop('className')).toContain('copyrightDetails');
-            component.unmount();
             done();
         }, 500)
     });
 
     it('className changes when redux props.img value is empty', (done) => {
-        configure({adapter: new Adapter()});
-
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <BrowserRouter>
                     <App img=''/>
@@ -68,17 +75,14 @@ describe("App functional specification", () => {
 
         setTimeout(function () {
             expect(component.find('#App').getDOMNode().className).toContain('-blurApp-');
-            component.unmount();
             done();
         }, 500);
     });
 
     it('resets redux props.originalImage value when notified by OriginalImage', (done) => {
-        configure({adapter: new Adapter()});
-
         const mockSetOriginalImage = jest.fn();
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <BrowserRouter>
                     <App setOriginalImage={mockSetOriginalImage} />
@@ -91,7 +95,6 @@ describe("App functional specification", () => {
 
         setTimeout(function () {
             expect(mockSetOriginalImage).toHaveBeenCalledWith('', '');
-            component.unmount();
             done();
         }, 500);
     });

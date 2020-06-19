@@ -44,9 +44,17 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe("Details functional specification", () => {
-    it('renders ErrorMsg when props.detailedResult value is empty', (done) => {
-        configure({adapter: new Adapter()});
+    let component;
 
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
+    it('renders ErrorMsg when props.detailedResult value is empty', (done) => {
         const testResult = {
             show: {
                 name: 'sample name',
@@ -60,7 +68,7 @@ describe("Details functional specification", () => {
 
         const errorMsg = 'Należy wybrać element z listy';
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <BrowserRouter>
                     <ConnectedDetails />
@@ -76,15 +84,12 @@ describe("Details functional specification", () => {
 
         setTimeout(function () {
             expect(component.find(ErrorMsg).debug()).toBe('');
-            component.unmount();
             done();
         }, 500);
     });
 
     it('redirects to \' when goBackBtn is clicked', (done) => {
-        configure({adapter: new Adapter()});
-
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <BrowserRouter>
                     <ConnectedDetails />
@@ -98,7 +103,6 @@ describe("Details functional specification", () => {
 
         setTimeout(function () {
             expect(mockHistoryPush).toHaveBeenCalledWith('/');
-            component.unmount();
             done();
         }, 500);
     });

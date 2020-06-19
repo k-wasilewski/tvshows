@@ -34,9 +34,17 @@ describe("MediumImage rendering specification", () => {
 });
 
 describe("MediumImage functional specification", () => {
-    it('renders img element with attributes passed in props', () => {
-        configure({adapter: new Adapter()});
+    let component;
 
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
+    it('renders img element with attributes passed in props', () => {
         const name = 'sample name';
         const mediumImgSrc = 'medium src';
 
@@ -49,7 +57,7 @@ describe("MediumImage functional specification", () => {
             }
         };
 
-        const component = mount(
+        component = mount(
             <MediumImage result={testResult} />
         );
 
@@ -60,8 +68,6 @@ describe("MediumImage functional specification", () => {
     });
 
     it('calls props.setOriginalImage when img is clicked', (done) => {
-        configure({adapter: new Adapter()});
-
         const name = 'sample name';
         const mediumImgSrc = 'medium src';
         const originalImgSrc = 'original src';
@@ -78,7 +84,7 @@ describe("MediumImage functional specification", () => {
 
         const mockSetOriginalImage = jest.fn();
 
-        const component = mount(
+        component = mount(
             <MediumImage result={testResult} setOriginalImage={mockSetOriginalImage} />
         );
 
@@ -88,7 +94,6 @@ describe("MediumImage functional specification", () => {
 
         setTimeout(function () {
             expect(mockSetOriginalImage).toHaveBeenCalledWith(originalImgSrc, name);
-            component.unmount();
             done();
         }, 500);
     });

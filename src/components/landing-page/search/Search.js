@@ -20,7 +20,7 @@ export class Search extends React.Component {
         this.getInputRefFromChild = this.getInputRefFromChild.bind(this);
     }
 
-    inputOnChange = (event) => {
+    inputOnChange(event) {
         this.setState({input: event.target.value});
     }
 

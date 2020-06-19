@@ -28,9 +28,17 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe("ResultsTable functional specification", () => {
-    it('useState is called when props.results change', (done) => {
-        configure({adapter: new Adapter()});
+    let component;
 
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
+    it('useState is called when props.results change', (done) => {
         const testResultsValue = {
             show: {
                 name: 'sample name',
@@ -49,7 +57,7 @@ describe("ResultsTable functional specification", () => {
 
         const mockUseState = jest.spyOn(React, 'useState');
 
-        const component = mount(
+        component = mount(
             <ResultsTable results={[testResultsValue]}/>
         );
         const CALLS_PER_CHANGE = 2;
@@ -62,14 +70,11 @@ describe("ResultsTable functional specification", () => {
 
         setTimeout(function () {
             expect(mockUseState).toHaveBeenCalledTimes(CALLS_PER_CHANGE*2);
-            component.unmount();
             done();
         }, 500);
     });
 
     it('maps results to results split by commas', (done) => {
-        configure({adapter: new Adapter()});
-
         const rawResult = {
             show: {
                 name: 'sample name',
@@ -78,7 +83,7 @@ describe("ResultsTable functional specification", () => {
             score: 2
         };
 
-        const component = mount(
+        component = mount(
             <ResultsTable results={[rawResult]} />
         );
 
@@ -86,15 +91,12 @@ describe("ResultsTable functional specification", () => {
 
         setTimeout(function () {
             expect(genresCell.text()).toBe('first, second, third');
-            component.unmount();
             done();
         }, 500);
     });
 
     it('sets props.detailedResult value and redirects to \'details when ' +
         'row is clicked', (done) => {
-        configure({adapter: new Adapter()});
-
         const testResult = {
             show: {
                 name: 'sample name',
@@ -105,7 +107,7 @@ describe("ResultsTable functional specification", () => {
 
         const mockSetDetailedResult = jest.fn();
 
-        const component = mount(
+        component = mount(
             <ResultsTable results={[testResult]} setDetailedResult={mockSetDetailedResult} />
         );
 
@@ -116,15 +118,12 @@ describe("ResultsTable functional specification", () => {
         setTimeout(function () {
             expect(mockSetDetailedResult).toHaveBeenCalledWith(testResult);
             expect(mockHistoryPush).toHaveBeenCalledWith('/details');
-            component.unmount();
             done();
         }, 500);
     });
 
     it('renders empty React.Fragment if results are empty', () => {
-        configure({adapter: new Adapter()});
-
-        const component = shallow(
+        component = shallow(
             <ResultsTable results={[]} />
         );
 

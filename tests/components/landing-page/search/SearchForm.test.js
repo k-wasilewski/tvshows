@@ -15,40 +15,42 @@ describe("SearchForm rendering specification", () => {
 });
 
 describe("SearchForm functional specification", () => {
-    it('passInputRefToParent() is called when componentDidMount', () => {
-        configure({adapter: new Adapter()});
+    let component;
 
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
+    it('passInputRefToParent() is called when componentDidMount', () => {
         const mockPassInputRefToParent = jest.fn();
 
-        const component = mount(
+        component = mount(
             <SearchForm passInputRefToParent={mockPassInputRefToParent}/>
         );
 
         expect(mockPassInputRefToParent).toHaveBeenCalled();
-        component.unmount();
     });
 
     it('displays errorMsg when props.msg value is received', () => {
-        configure({adapter: new Adapter()});
-
         const testMsg = 'sample msg';
         const mockPassInputRefToParent = jest.fn();
 
-        const component = mount(
+        component = mount(
             <SearchForm passInputRefToParent={mockPassInputRefToParent} msg={testMsg}/>
         );
 
         expect(component.find('#errorMsg').text()).toBe(testMsg);
-        component.unmount();
     });
 
     it('props.doReset() is called when searchFormResetBtn is clicked', () => {
-        configure({adapter: new Adapter()});
-
         const mockdoReset = jest.fn();
         const mockPassInputRefToParent = jest.fn();
 
-        const component = mount(
+        component = mount(
             <SearchForm passInputRefToParent={mockPassInputRefToParent}
                         doReset={mockdoReset}/>
         );
@@ -57,6 +59,5 @@ describe("SearchForm functional specification", () => {
         component.update();
 
         expect(mockdoReset).toHaveBeenCalled();
-        component.unmount();
     });
 });
