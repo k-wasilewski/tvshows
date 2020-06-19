@@ -2,6 +2,8 @@ import {ErrorMsg} from "../../error/ErrorMsg";
 import React, {useEffect, useRef} from "react";
 import {styles} from "../../../styles/styles";
 import Button from '@material-ui/core/Button';
+import Typography from "@material-ui/core/Typography";
+import {connect} from "react-redux";
 
 export function SearchForm(props) {
     const classes = styles();
@@ -25,7 +27,18 @@ export function SearchForm(props) {
             <Button id='searchFormSubmitBtn' type='submit' variant='outlined' size='small'
                     onKeyDown={onKeyDown}>Szukaj</Button>
             <Button id='searchFormResetBtn' variant='outlined' size='small'
-                    onClick={props.doReset}>Resetuj wyniki</Button>
+                    onClick={props.doReset}>Resetuj wyniki</Button><br/>
+            <Typography variant="body1" component="h2" className={classes.query}>
+                {(props.query==='') ? null : `Wyniki dla '${props.query}'`}
+            </Typography>
         </form>
     );
 };
+
+const mapStateToProps = (state) => {
+    return {
+        query: state.setQueryReducer.query
+    };
+};
+
+export default connect(mapStateToProps, null)(SearchForm);

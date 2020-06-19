@@ -30,7 +30,9 @@ describe("Search functional specification", () => {
         configure({adapter: new Adapter()});
 
         const component = mount(
-            <Search />
+            <Provider store={store}>
+                <ConnectedSearch />
+            </Provider>
         );
         const testInput = 'test input value';
 
@@ -38,7 +40,7 @@ describe("Search functional specification", () => {
         input.simulate('change', { target: { value: testInput } });
 
         setTimeout(function () {
-            expect(component.instance().state.input).toBe(testInput);
+            expect(component.find(Search).instance().state.input).toBe(testInput);
             component.unmount();
         }, 500);
     });
@@ -46,16 +48,19 @@ describe("Search functional specification", () => {
     it('submitQuery() is called when form is submitted', () => {
         const submitQuery = jest.spyOn(Search.prototype, 'submitQuery');
 
+        const mockSetQuery = jest.fn();
+
         const component = mount(
             <Provider store={store}>
-                <Search />
+                <Search setQuery={mockSetQuery}/>
             </Provider>
         );
 
         const searchForm = component.find('#searchForm');
         searchForm.forEach(form => form.simulate('submit'));
 
-        expect(submitQuery).toHaveBeenCalled()
+        expect(submitQuery).toHaveBeenCalled();
+        expect(mockSetQuery).toHaveBeenCalled();
         component.unmount();
     });
 
@@ -65,19 +70,23 @@ describe("Search functional specification", () => {
         const testInput = 'testInput';
         mock.onGet().reply(200, resp);
 
+        const mockSetQuery = jest.fn();
         const mockSetResults = jest.fn();
 
-        const component = shallow(
-            <Search setResults={mockSetResults} />
+        const component = mount(
+            <Provider store={store}>
+                <Search setResults={mockSetResults} setQuery={mockSetQuery} />
+            </Provider>
         );
 
-        component.setState({input: testInput});
+        component.find('#searchFormInput').at(0).simulate('change', {target: {value: testInput}});
         component.update();
 
         const mockedEvent = {preventDefault: () => {}};
-        component.instance().submitQuery(mockedEvent);
+        component.find(Search).instance().submitQuery(mockedEvent);
 
         setTimeout(function () {
+            expect(mockSetQuery).toHaveBeenCalledWith(testInput);
             expect(mockSetResults).toHaveBeenCalledWith(resp);
             component.unmount();
             mock.reset();
@@ -90,15 +99,19 @@ describe("Search functional specification", () => {
         const resp = 'success';
         mock.onGet().reply(200, resp);
 
-        const component = shallow(
-            <Search />
+        const mockSetQuery = jest.fn();
+
+        const component = mount(
+            <Provider store={store}>
+                <Search setQuery={mockSetQuery}/>
+            </Provider>
         );
 
         const mockedEvent = {preventDefault: () => {}};
-        component.instance().submitQuery(mockedEvent);
+        component.find(Search).instance().submitQuery(mockedEvent);
 
         setTimeout(function () {
-            expect(component.state().errorMsg).toBe('Pole nie może być puste');
+            expect(component.find(Search).state().errorMsg).toBe('Pole nie może być puste');
             component.unmount();
             mock.reset();
             done();
@@ -110,18 +123,23 @@ describe("Search functional specification", () => {
         const resp = [];
         mock.onGet().reply(200, resp);
 
-        const component = shallow(
-            <Search />
-        );
+        const mockSetQuery = jest.fn();
 
-        component.setState({input: 'testInput'});
+        const component = mount(
+            <Provider store={store}>
+                <Search setQuery={mockSetQuery}/>
+            </Provider>
+        );
+        const testInput = 'test input value';
+
+        component.find('#searchFormInput').at(0).simulate('change', {target: {value: testInput}});
         component.update();
 
         const mockedEvent = {preventDefault: () => {}};
-        component.instance().submitQuery(mockedEvent);
+        component.find(Search).instance().submitQuery(mockedEvent);
 
         setTimeout(function () {
-            expect(component.state().errorMsg).toBe('Nic nie znaleziono');
+            expect(component.find(Search).state().errorMsg).toBe('Nic nie znaleziono');
             component.unmount();
             mock.reset();
             done();
@@ -132,27 +150,31 @@ describe("Search functional specification", () => {
         const testValue = 'testValue';
 
         const mockSetResults = jest.fn();
+        const mockSetQuery = jest.fn();
 
-        const component = shallow(
-            <Search setResults={mockSetResults} />
+        const component = mount(
+            <Provider store={store}>
+                <Search setResults={mockSetResults} setQuery={mockSetQuery}/>
+            </Provider>
         );
 
-        component.setState({
+        component.find(Search).instance().setState({
             input: testValue,
             inputRef: {
                 value: testValue
             }
         });
 
-        expect(component.state('input')).toBe(testValue);
-        expect(component.state('inputRef').value).toBe(testValue);
+        expect(component.find(Search).state('input')).toBe(testValue);
+        expect(component.find(Search).state('inputRef').value).toBe(testValue);
         expect(mockSetResults).toHaveBeenCalledTimes(0);
 
         const mockedEvent = {preventDefault: () => {}};
-        component.instance().resetResults(mockedEvent);
+        component.find(Search).instance().resetResults(mockedEvent);
 
-        expect(component.state('input')).toBe('');
-        expect(component.state('inputRef').value).toBe('');
+        expect(mockSetQuery).toHaveBeenCalledWith('');
+        expect(component.find(Search).state('input')).toBe('');
+        expect(component.find(Search).state('inputRef').value).toBe('');
         expect(mockSetResults).toHaveBeenCalledWith([]);
 
         component.unmount();

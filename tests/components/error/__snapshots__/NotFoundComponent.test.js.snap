@@ -2,7 +2,7 @@
 
 exports[`NotFoundComponent rendering specification NotFoundComponent is rendered 1`] = `
 <div
-  className="makeStyles-dashboard-10"
+  className="makeStyles-dashboard-11"
 >
   <span
     className="makeStyles-errorMsg-6"

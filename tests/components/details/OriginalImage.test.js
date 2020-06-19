@@ -29,11 +29,11 @@ describe("OriginalImage functional specification", () => {
     const getMaterialUIClassName = (className) => {
         switch (className) {
             case 'imageCard':
-                return `makeStyles-${className}-17`;
+                return `makeStyles-${className}-18`;
             case 'imageWrapperCard':
-                return `makeStyles-${className}-16`;
+                return `makeStyles-${className}-17`;
             case 'hidden':
-                return `makeStyles-${className}-7`;
+                return `makeStyles-${className}-8`;
         }
     }
 

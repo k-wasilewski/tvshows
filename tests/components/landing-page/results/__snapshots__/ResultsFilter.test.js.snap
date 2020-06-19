@@ -2,15 +2,15 @@
 
 exports[`ResultsFilter rendering specification ResultsFilter is rendered 1`] = `
 <div
-  className="makeStyles-dashboard-12"
+  className="makeStyles-dashboard-13"
 >
   <h2
-    className="MuiTypography-root makeStyles-filterLabel-13 MuiTypography-body1"
+    className="MuiTypography-root makeStyles-filterLabel-14 MuiTypography-body1"
   >
     Filtruj:
   </h2>
   <div
-    className="MuiFormControl-root makeStyles-formControl-1 makeStyles-formControl-14"
+    className="MuiFormControl-root makeStyles-formControl-1 makeStyles-formControl-15"
   >
     <label
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"

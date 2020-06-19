@@ -2,14 +2,14 @@
 
 exports[`SearchForm rendering specification SearchForm is rendered 1`] = `
 <form
-  className="makeStyles-dashboard-10"
+  className="makeStyles-dashboard-11"
   id="searchForm"
 >
   <span
     className="makeStyles-errorMsg-6"
   />
   <input
-    className="makeStyles-input-13"
+    className="makeStyles-input-14"
     id="searchFormInput"
     type="text"
   />
@@ -61,5 +61,11 @@ exports[`SearchForm rendering specification SearchForm is rendered 1`] = `
       Resetuj wyniki
     </span>
   </button>
+  <br />
+  <h2
+    className="MuiTypography-root makeStyles-query-7 MuiTypography-body1"
+  >
+    Wyniki dla 'undefined'
+  </h2>
 </form>
 `;
