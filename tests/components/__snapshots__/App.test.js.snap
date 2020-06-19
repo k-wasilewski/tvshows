@@ -4,6 +4,7 @@ exports[`App rendering specification App is rendered 1`] = `
 Array [
   <div
     className="MuiPaper-root MuiCard-root makeStyles-hidden-7 MuiPaper-elevation1 MuiPaper-rounded"
+    id="originalImageCard"
   >
     <button
       className="MuiButtonBase-root MuiCardActionArea-root"

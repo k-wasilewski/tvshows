@@ -20,7 +20,7 @@ export function OriginalImage(props) {
     }, [props.src]);
 
     return (
-        <Card className={visible ? classes.imageWrapperCard : classes.hidden}>
+        <Card id='originalImageCard' className={visible ? classes.imageWrapperCard : classes.hidden}>
             <CardActionArea>
                 {(props.src==='') ? <CircularProgress /> : <CardMedia className={classes.imageCard}
                     image={props.src} title={`${props.title}-img`} />}
