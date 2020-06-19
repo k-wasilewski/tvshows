@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import ConnectedResultsTable, {ResultsTable} from "../../../../src/components/landing-page/results/ResultsTable";
-import {configure, mount} from 'enzyme';
+import {configure, mount, shallow} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 import store from "../../../../src/redux/store";
 import {Provider} from "react-redux";
@@ -119,5 +119,15 @@ describe("ResultsTable functional specification", () => {
             component.unmount();
             done();
         }, 500);
+    });
+
+    it('renders empty React.Fragment if results are empty', () => {
+        configure({adapter: new Adapter()});
+
+        const component = shallow(
+            <ResultsTable results={[]} />
+        );
+
+        expect(component.debug()).toBe('<Fragment />');
     });
 });
