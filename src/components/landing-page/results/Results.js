@@ -11,6 +11,9 @@ export class Results extends React.Component {
         this.state = {
             filteredResults: []
         };
+
+        this.filterByDay = this.filterByDay.bind(this);
+        this.resetFilter = this.resetFilter.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

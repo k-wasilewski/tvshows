@@ -46,7 +46,7 @@ describe("OriginalImage functional specification", () => {
         const component = mount(
             <OriginalImage src={mockSrc} title={mockTitle} />
         );
-        
+
         const img = component.find(`.${getMaterialUIClassName('imageCard')}`).at(0);
 
         expect(img.prop('image')).toBe(mockSrc);

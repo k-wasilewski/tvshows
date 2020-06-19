@@ -46,9 +46,6 @@ export const styles = makeStyles({
         display: 'block',
         color: 'red',
     },
-    query: {
-        display: 'block'
-    },
     hidden: {
         display: 'none'
     },
