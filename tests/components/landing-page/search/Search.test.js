@@ -6,7 +6,7 @@ import ConnectedSearch, {Search} from "../../../../src/components/landing-page/s
 import {Provider} from "react-redux";
 import {configure} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
-import {mount, shallow} from "enzyme";
+import {mount} from "enzyme";
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -140,6 +140,39 @@ describe("Search functional specification", () => {
 
         setTimeout(function () {
             expect(component.find(Search).state().errorMsg).toBe('Nic nie znaleziono');
+            component.unmount();
+            mock.reset();
+            done();
+        }, 4000);
+    });
+
+    it('submitQuery() sets redux props.query value as inputRef.value ' +
+        'and clears the inputRef.value and state.input value', (done) => {
+        const mock = new MockAdapter(axios);
+        const resp = [];
+        mock.onGet().reply(200, resp);
+
+        const mockSetQuery = jest.fn();
+
+        const component = mount(
+            <Provider store={store}>
+                <Search setQuery={mockSetQuery}/>
+            </Provider>
+        );
+        const testInput = 'test input value';
+
+        component.find('#searchFormInput').at(0).simulate('change', {target: {value: testInput}});
+        component.update();
+
+        const mockedEvent = {preventDefault: () => {}};
+        component.find(Search).instance().submitQuery(mockedEvent);
+
+        setTimeout(function () {
+            console.log(component.find(Search).debug())
+            console.log(component.find(Search).state().errorMsg)
+            expect(mockSetQuery).toBeCalledWith(testInput);
+            expect(component.find(Search).state().input).toBe('');
+            expect(component.find(Search).state().inputRef.value).toBe('');
             component.unmount();
             mock.reset();
             done();
