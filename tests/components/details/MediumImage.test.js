@@ -34,7 +34,6 @@ describe("MediumImage rendering specification", () => {
 });
 
 describe("MediumImage functional specification", () => {
-
     it('renders img element with attributes passed in props', () => {
         configure({adapter: new Adapter()});
 

@@ -23,7 +23,6 @@ describe("Results rendering specification", () => {
 });
 
 describe("Results functional specification", () => {
-
     it('clears the state.filteredResults when componentDidUpdate with unchanged ' +
         'state.filteredResults value', () => {
         configure({adapter: new Adapter()});
