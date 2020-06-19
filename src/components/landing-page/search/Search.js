@@ -75,7 +75,7 @@ export class Search extends React.Component {
         event.preventDefault();
     }
 
-    getInputRefFromChild = (inputRef) => {
+    getInputRefFromChild(inputRef) {
         this.setState({inputRef: inputRef.current});
     }
 

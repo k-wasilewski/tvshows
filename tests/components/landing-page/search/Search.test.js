@@ -25,7 +25,6 @@ describe("Search rendering specification", () => {
 });
 
 describe("Search functional specification", () => {
-
     it('sets state.input value as SearchForm\'s input', () => {
         configure({adapter: new Adapter()});
 
@@ -211,5 +210,26 @@ describe("Search functional specification", () => {
         expect(mockSetResults).toHaveBeenCalledWith([]);
 
         component.unmount();
+    });
+
+    it('getInputRefFromChild(ref) sets ref as state value', (done) => {
+        const ref = 'mock ref'
+        const mockRef = {current: ref};
+
+        const component = mount(
+            <Provider store={store}>
+                <Search />
+            </Provider>
+        );
+
+
+        component.find(Search).instance().getInputRefFromChild(mockRef);
+        component.update();
+
+        setTimeout(function () {
+            expect(component.find(Search).state().inputRef).toBe(ref);
+            component.unmount();
+            done();
+        }, 500);
     });
 });
