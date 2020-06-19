@@ -43,7 +43,8 @@ export function ResultsTable(props) {
     const history = useHistory();
 
     React.useEffect( () => {
-        setSortedResults(filterByScoreDesc(Array.from(props.results)));
+        if (props.results!==undefined)
+            setSortedResults(filterByScoreDesc(Array.from(props.results)));
     }, [props.results]);
 
     function rowClicked(event, result) {
@@ -75,7 +76,7 @@ export function ResultsTable(props) {
                                 <StyledTableCell align='right'>
                                     {result.show.name}
                                 </StyledTableCell>
-                                <StyledTableCell id='genresCell-resultsTable' align='right'>
+                                <StyledTableCell id='genresCell' align='right'>
                                     {mappedGenres(result.show.genres)}
                                 </StyledTableCell>
                                 <StyledTableCell align='right'>
