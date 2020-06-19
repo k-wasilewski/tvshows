@@ -35,7 +35,7 @@ export default function ResultsFilter(props) {
             </Typography>
             <FormControl className={`${materialUiClasses.formControl} ${classes.formControl}`}>
                 <InputLabel id='demo-simple-select-label'>Dzień tygodnia</InputLabel>
-                <Select labelId='demo-simple-select-label' id='demo-simple-select'
+                <Select labelId='demo-simple-select-label' id='resultsFilterSelect'
                     value={day} onChange={handleChange}>
                     <MenuItem value={1}>Poniedziałek</MenuItem>
                     <MenuItem value={2}>Wtorek</MenuItem>

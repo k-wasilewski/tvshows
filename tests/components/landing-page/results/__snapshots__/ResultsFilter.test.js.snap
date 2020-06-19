@@ -25,9 +25,9 @@ exports[`ResultsFilter rendering specification ResultsFilter is rendered 1`] = `
     >
       <div
         aria-haspopup="listbox"
-        aria-labelledby="demo-simple-select-label demo-simple-select"
+        aria-labelledby="demo-simple-select-label resultsFilterSelect"
         className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-        id="demo-simple-select"
+        id="resultsFilterSelect"
         onBlur={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}

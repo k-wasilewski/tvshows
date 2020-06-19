@@ -44,4 +44,27 @@ describe("ResultsFilter functional specification", () => {
             done();
         }, 500);
     });
+
+    it('sets state.day value and calls props.setDay when day input is changed', () => {
+        configure({adapter: new Adapter()});
+
+        const mockSetDayState = jest.spyOn(React, 'useState');
+        const mockSetDayProps = jest.fn();
+
+        const component = mount(
+            <ResultsFilter setDay={mockSetDayProps} />
+        );
+
+        expect(mockSetDayProps).toHaveBeenCalledTimes(0);
+        expect(mockSetDayState).toHaveBeenCalledTimes(1);
+
+        component.find('#resultsFilterSelect').at(0).simulate('change', {target: { value: 3}});
+        component.update();
+
+        setTimeout(function () {
+            expect(mockSetDayProps).toHaveBeenCalledTimes(1);
+            expect(mockSetDayState).toHaveBeenCalledTimes(2);
+            component.unmount();
+        }, 500);
+    });
 });
