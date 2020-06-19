@@ -26,18 +26,6 @@ describe("OriginalImage rendering specification", () => {
 });
 
 describe("OriginalImage functional specification", () => {
-
-    const getMaterialUIClassName = (className) => {
-        switch (className) {
-            case 'imageCard':
-                return `makeStyles-${className}-18`;
-            case 'imageWrapperCard':
-                return `makeStyles-${className}-17`;
-            case 'hidden':
-                return `makeStyles-${className}-8`;
-        }
-    }
-
     it('renders img with src and title passed as props', () => {
         configure({adapter: new Adapter()});
         const shallow = createShallow({ dive: true });
@@ -49,7 +37,7 @@ describe("OriginalImage functional specification", () => {
             <OriginalImage src={mockSrc} title={mockTitle} />
         );
 
-        const img = component.find(`.${getMaterialUIClassName('imageCard')}`).at(0);
+        const img = component.find('[className*="imageCard"]').at(0);
 
         expect(img.prop('image')).toBe(mockSrc);
         expect(img.prop('title')).toBe(`${mockTitle}-img`);
@@ -67,16 +55,16 @@ describe("OriginalImage functional specification", () => {
             <OriginalImage src={mockSrc} title={mockTitle} />
         );
 
-        let imgCard = component.find('#originalImageCard').at(0);
+        let imgCard = component.find('[id*="originalImageCard"]').at(0);
 
-        expect(imgCard.prop('className')).toBe(getMaterialUIClassName('imageWrapperCard'));
+        expect(imgCard.prop('className')).toContain('imageWrapperCard');
 
         component.setProps({src: ''});
         component.update();
 
         setTimeout(function () {
             imgCard = component.find('#originalImageCard').at(0);
-            expect(imgCard.prop('className')).toBe(getMaterialUIClassName('hidden'));
+            expect(imgCard.prop('className')).toContain('hidden');
             component.unmount();
             done();
         }, 500);

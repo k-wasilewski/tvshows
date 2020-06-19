@@ -23,20 +23,6 @@ describe("App rendering specification", () => {
 });
 
 describe("App functional specification", () => {
-
-    function getCopyright(component) {
-        return component.find('#copyright').at(0).find('h2');
-    }
-
-    function getMaterialUIClassName(className) {
-        switch (className) {
-            case 'copyrightLandingPage':
-                return `MuiTypography-root makeStyles-${className}-4 MuiTypography-h6`;
-            case 'copyrightDetails':
-                return `MuiTypography-root makeStyles-${className}-5 MuiTypography-h6`;
-        }
-    }
-
     it('toggles copyrightClassName when props.detailedResult change', (done) => {
         configure({adapter: new Adapter()});
         const mount = createMount();
@@ -48,19 +34,16 @@ describe("App functional specification", () => {
                 </BrowserRouter>
             </Provider>
         );
-        let copyright = getCopyright(component);
-        const copyrightLandingPageClassName =
-            getMaterialUIClassName('copyrightLandingPage');
+        let copyright = component.find('#copyright').at(0).find('h2');
 
-        expect(copyright.hasClass(copyrightLandingPageClassName)).toBeTruthy();
+        expect(copyright.prop('className')).toContain('copyrightLandingPage');
 
         component.setProps({children: <BrowserRouter><App detailedResult='changed'/></BrowserRouter>});
         component.update();
-        copyright = getCopyright(component);
-        const copyrightDetailsClassName = getMaterialUIClassName('copyrightDetails');
+        copyright = component.find('#copyright').at(0).find('h2');
 
         setTimeout(function () {
-            expect(copyright.hasClass(copyrightDetailsClassName)).toBeTruthy();
+            expect(copyright.prop('className')).toContain('copyrightDetails');
             component.unmount();
             done();
         }, 500)
