@@ -31,7 +31,7 @@ export function OriginalImage(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button variant='outlined' size='small' onClick={() => {
+                <Button id='originalImageCloseBtn' variant='outlined' size='small' onClick={() => {
                     setVisible(false);
                     props.notifyParent();
                 }}>

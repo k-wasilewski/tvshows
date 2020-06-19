@@ -78,4 +78,29 @@ describe("OriginalImage functional specification", () => {
             done();
         }, 500);
     });
+
+    it('props.notifyParent() is called and visibility is set to false when close button ' +
+        'is clicked', (done) => {
+        configure({adapter: new Adapter()});
+
+        const mockSrc = 'mockSrc';
+        const mockTitle = 'mockTitle';
+        const mockNotifyParent = jest.fn();
+        const mockUseState = jest.spyOn(React, 'useState');
+
+        const component = mount(
+            <OriginalImage src={mockSrc} title={mockTitle} notifyParent={mockNotifyParent} />
+        );
+
+        let closeBtn = component.find('#originalImageCloseBtn').at(0);
+        closeBtn.simulate('click');
+        component.update();
+
+        setTimeout(function () {
+            expect(mockNotifyParent).toHaveBeenCalledTimes(1);
+            expect(mockUseState).toHaveBeenCalledWith(false);
+            component.unmount();
+            done();
+        }, 500);
+    });
 });
