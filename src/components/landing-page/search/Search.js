@@ -22,16 +22,16 @@ export class Search extends React.Component {
         this.getInputRefFromChild = this.getInputRefFromChild.bind(this);
     }
 
-    inputOnChange(event) {
-        this.setState({input: event.target.value});
-    }
-
     componentDidMount() {
         this._isMounted = true;
     }
 
     componentWillUnmount() {
         this._isMounted = false;
+    }
+
+    inputOnChange(event) {
+        this.setState({input: event.target.value});
     }
 
     submitQuery(event) {
