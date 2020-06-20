@@ -15,7 +15,7 @@ export default class ErrorBoundary extends React.Component {
         this.logErrorToServices(error.toString(), info.componentStack);
     }
 
-    logErrorToServices = sendLog;   //better logging
+    logErrorToServices = sendLog;
 
     render() {
         if (this.state.errorMessage) {
