@@ -1,5 +1,6 @@
 import React from "react";
 import ErrorComponent from "./ErrorComponent";
+import {sendLog} from "./Log";
 
 export default class ErrorBoundary extends React.Component {
     state = {
@@ -14,7 +15,7 @@ export default class ErrorBoundary extends React.Component {
         this.logErrorToServices(error.toString(), info.componentStack);
     }
 
-    logErrorToServices = console.log;   //better logging
+    logErrorToServices = sendLog;   //better logging
 
     render() {
         if (this.state.errorMessage) {

@@ -13,7 +13,7 @@ export function ErrorComponent(props) {
             <div className={classes.dashboard}>
                 <ErrorMsg msg={props.msg} />
                 <Button variant='outlined' size='small' onClick={() => history.push('/')}>
-                    Powrót</Button>
+                    Powrót</Button>//odswiez
             </div>
         </div>
     );

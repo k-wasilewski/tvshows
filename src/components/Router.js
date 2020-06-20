@@ -5,6 +5,7 @@ import Details from './details/Details';
 import ErrorComponent from "./error/ErrorComponent";
 
 const Router = () => {
+    throw new Error('my error')
     return (
         <React.Fragment>
             <Switch>
