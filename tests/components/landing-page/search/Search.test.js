@@ -116,13 +116,15 @@ describe("Search functional specification", () => {
         component.find(Search).instance().submitQuery(mockedEvent);
 
         setTimeout(function () {
-            expect(component.find(Search).state().errorMsg).toBe('Pole nie może być puste');
+            expect(component.find(Search).state().errorMsg).toBe(
+                'Pole nie może być puste');
             mock.reset();
             done();
         }, 500);
     });
 
-    it('submitQuery() sets state.errorMsg accordingly when response from server equals 0', (done) => {
+    it('submitQuery() sets state.errorMsg accordingly when response from server equals 0',
+        (done) => {
         const mock = new MockAdapter(axios);
         const resp = [];
         mock.onGet().reply(200, resp);
@@ -136,7 +138,8 @@ describe("Search functional specification", () => {
         );
         const testInput = 'test input value';
 
-        component.find('#searchFormInput').at(0).simulate('change', {target: {value: testInput}});
+        component.find('#searchFormInput').at(0).simulate('change',
+            {target: {value: testInput}});
         component.update();
 
         const mockedEvent = {preventDefault: () => {}};
@@ -146,8 +149,34 @@ describe("Search functional specification", () => {
             expect(component.find(Search).state().errorMsg).toBe('Nic nie znaleziono');
             mock.reset();
             done();
-        }, 4000);
+        }, 500);
     });
+
+    it('submitQuery() sets state.errorMsg accordingly when there is error',
+        (done) => {
+            const mockSetQuery = jest.fn();
+
+            component = mount(
+                <Provider store={store}>
+                    <Search setQuery={mockSetQuery}/>
+                </Provider>
+            );
+            const testInput = 'test input value';
+
+            component.find('#searchFormInput').at(0).simulate('change',
+                {target: {value: testInput}});
+            component.update();
+
+            const mockedEvent = {preventDefault: () => {}};
+            component.find(Search).instance().submitQuery(mockedEvent);
+
+            setTimeout(function () {
+                expect(component.find(Search).state().errorMsg).toBe(
+                    'Błąd serwera');
+                //mock.reset();
+                done();
+            }, 500);
+        });
 
     it('submitQuery() sets redux props.query value as inputRef.value ' +
         'and clears the inputRef.value and state.input value', (done) => {
@@ -176,7 +205,7 @@ describe("Search functional specification", () => {
             expect(component.find(Search).state().inputRef.value).toBe('');
             mock.reset();
             done();
-        }, 4000);
+        }, 500);
     });
 
     it('resetResults() resets the according values', () => {
