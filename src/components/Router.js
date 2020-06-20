@@ -11,7 +11,7 @@ const Router = () => {
             <Switch>
                 <Route path={`/`} exact render={() => <LandingPage />} />
                 <Route path={`/details`} exact render={() => <Details />} />
-                <Route path='*' exact render={() => <ErrorComponent msg='Nie znaleziono strony'/>} />
+                <Route exact render={() => <ErrorComponent msg='Nie znaleziono strony'/>} />
             </Switch>
         </React.Fragment>
     );
