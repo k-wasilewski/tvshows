@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import ResultsTable from './ResultsTable';
 import ResultsFilter from './ResultsFilter';
 import mapDayNoToName from '../../../functions/mapDayNoToName';
+import 'babel-polyfill';
 
 export class Results extends React.Component {
     constructor(props) {
