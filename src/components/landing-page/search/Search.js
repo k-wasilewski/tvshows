@@ -42,24 +42,28 @@ export class Search extends React.Component {
         inputRef.value='';
 
         axios.get(`http://api.tvmaze.com/search/shows?q=${query}`)
-                .then(resp => {
-            if (query==='') {
-                if (this._isMounted)
-                    this.setState({
-                    errorMsg: 'Pole nie może być puste'
-                });
-            } else if (resp.data.length===0) {
-                if (this._isMounted)
-                    this.setState({
-                    errorMsg: 'Nic nie znaleziono'
-                });
-            } else {
-                this.props.setResults(resp.data);
-                this.setState({
-                    errorMsg: ''
-                });
+            .then(resp => {
+            if (this._isMounted) {
+                if (query==='') {
+                    if (this._isMounted)
+                        this.setState({
+                            errorMsg: 'Pole nie może być puste'
+                        });
+                } else if (resp.data.length===0) {
+                    if (this._isMounted)
+                        this.setState({
+                            errorMsg: 'Nic nie znaleziono'
+                        });
+                } else {
+                    if (this._isMounted) {
+                        this.props.setResults(resp.data);
+                        this.setState({
+                            errorMsg: ''
+                        });
+                    }
+                }
+                this.setState({loading: false});
             }
-            this.setState({loading: false});
         }).catch(error => {
             if (this._isMounted)
                 this.setState({
