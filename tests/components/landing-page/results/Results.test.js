@@ -23,10 +23,18 @@ describe("Results rendering specification", () => {
 });
 
 describe("Results functional specification", () => {
+    let component;
+
+    beforeEach(() => {
+        configure({ adapter: new Adapter() });
+    });
+
+    afterEach(() => {
+        component.unmount();
+    });
+
     it('clears the state.filteredResults when componentDidUpdate with unchanged ' +
         'state.filteredResults value', () => {
-        configure({adapter: new Adapter()});
-
         const testFilteredResultsValue = {
             show: {
                 name: 'sample name',
@@ -42,7 +50,7 @@ describe("Results functional specification", () => {
             score: 3
         };
 
-        const component = mount(
+        component = mount(
             <Provider store={store}>
                 <Results results={[testFilteredResultsValue]}/>
             </Provider>
@@ -56,13 +64,10 @@ describe("Results functional specification", () => {
         component.setProps({children: <Results results={[testChangedFilteredResultsValue]}/>});
         component.update();
         expect(component.find(Results).state('filteredResults')).toStrictEqual([]);
-        component.unmount();
     });
 
     it('filterByDay() filters results from props to state.filteredResults value ' +
         'by passed day number', (done) => {
-        configure({adapter: new Adapter()});
-
         const resultMonday = {
             show: {
                 name: 'sample name',
@@ -87,7 +92,7 @@ describe("Results functional specification", () => {
 
         const testInitialResults = [resultMonday, resultTuesday];
 
-        const component = shallow(
+        component = shallow(
             <Results results={testInitialResults}/>
         );
 
@@ -97,28 +102,25 @@ describe("Results functional specification", () => {
         setTimeout(function () {
             expect(JSON.stringify(component.state('filteredResults')))
                 .toBe(JSON.stringify([resultMonday]));
-            component.unmount();
             done();
         }, 500);
     });
 
     it('resetFilter() sets state.filteredResults value to props.results value', () => {
-        configure({adapter: new Adapter()});
-
         const testInitialResults = ['sample value'];
 
-        const component = shallow(
+        component = shallow(
             <Results results={testInitialResults}/>
         );
+
         let stateFilteredResults = component.state('filteredResults');
-        let propsResults = component.props().children[1].props.results;
+        let propsResults = component.props().children[2].props.results;
 
         expect(stateFilteredResults===propsResults).toBeFalsy();
         component.instance().resetFilter();
         component.update();
         stateFilteredResults = component.state('filteredResults');
-        propsResults = component.props().children[1].props.results;
+        propsResults = component.props().children[2].props.results;
         expect(stateFilteredResults===propsResults).toBeTruthy();
-        component.unmount();
     });
 });

@@ -8,6 +8,7 @@ import 'babel-polyfill';
 export class Results extends React.PureComponent {
     constructor(props) {
         super(props);
+        this.loading=false;
 
         this.state = {
             filteredResults: []
@@ -17,9 +18,16 @@ export class Results extends React.PureComponent {
         this.resetFilter = this.resetFilter.bind(this);
     }
 
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        this.loading=true;
+        return null;
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.state.filteredResults===prevState.filteredResults)
+        if (this.state.filteredResults===prevState.filteredResults) {
             this.setState({filteredResults: []});
+            this.loading=false;
+        }
     }
 
     filterByDay(day) {
@@ -50,6 +58,7 @@ export class Results extends React.PureComponent {
         return (
             <React.Fragment>
                 {resultsFilter}
+                {(this.loading) ? 'loading' : null}
                 <ResultsTable results={results} />
             </React.Fragment>
         );
