@@ -1,7 +1,7 @@
 import React from 'react';
 import {styles} from "../../styles/styles";
 import {useHistory} from 'react-router-dom';
-import {ErrorMsg} from './/ErrorMsg';
+import {ErrorMsg} from './ErrorMsg';
 import Button from '@material-ui/core/Button';
 
 export function NotFoundComponent(props) {
