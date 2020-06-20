@@ -48,7 +48,7 @@ export function ResultsTable(props) {
             if (sortedResults!==props.results)
                 setSortedResults(sortByScoreDesc(Array.from(props.results)));
         }
-    }, [props.results]);
+    }, [props.results]);    //eslint-disable-line react-hooks/exhaustive-deps
 
     function rowClicked(event, result) {
         props.setDetailedResult(result);

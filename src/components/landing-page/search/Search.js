@@ -36,7 +36,8 @@ export class Search extends React.Component {
         const query = this.state.input;
         this.setState({input: ''});
         this.props.setQuery(query);
-        this.state.inputRef.value='';
+        const inputRef = this.state.inputRef;
+        inputRef.value='';
 
         axios.get(`http://api.tvmaze.com/search/shows?q=${query}`)
                 .then(resp => {
