@@ -2,7 +2,7 @@
 
 exports[`Search rendering specification Search is rendered 1`] = `
 <form
-  className="makeStyles-dashboard-11"
+  className="makeStyles-dashboard-12"
   id="searchForm"
   onSubmit={[Function]}
 >
@@ -12,7 +12,7 @@ exports[`Search rendering specification Search is rendered 1`] = `
     
   </span>
   <input
-    className="makeStyles-input-14"
+    className="makeStyles-input-15"
     id="searchFormInput"
     onChange={[Function]}
     type="text"

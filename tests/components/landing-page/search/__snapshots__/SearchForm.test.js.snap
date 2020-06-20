@@ -2,14 +2,14 @@
 
 exports[`SearchForm rendering specification SearchForm is rendered 1`] = `
 <form
-  className="makeStyles-dashboard-11"
+  className="makeStyles-dashboard-12"
   id="searchForm"
 >
   <span
     className="makeStyles-errorMsg-6"
   />
   <input
-    className="makeStyles-input-14"
+    className="makeStyles-input-15"
     id="searchFormInput"
     type="text"
   />

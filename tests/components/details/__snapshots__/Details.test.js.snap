@@ -2,7 +2,7 @@
 
 exports[`Details rendering specification Details is rendered 1`] = `
 <div
-  className="makeStyles-dashboard-11"
+  className="makeStyles-dashboard-12"
 >
   <span
     className="makeStyles-errorMsg-6"

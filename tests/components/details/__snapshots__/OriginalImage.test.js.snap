@@ -2,7 +2,7 @@
 
 exports[`OriginalImage rendering specification OriginalImage is rendered 1`] = `
 <div
-  className="MuiPaper-root MuiCard-root makeStyles-hidden-8 MuiPaper-elevation1 MuiPaper-rounded"
+  className="MuiPaper-root MuiCard-root makeStyles-hidden-9 MuiPaper-elevation1 MuiPaper-rounded"
   id="originalImageCard"
 >
   <button
