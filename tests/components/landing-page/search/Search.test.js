@@ -9,6 +9,7 @@ import Adapter from "enzyme-adapter-react-16";
 import {mount} from "enzyme";
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import {CircularProgress} from "@material-ui/core";
 
 describe("Search rendering specification", () => {
     it('Search is rendered', () => {
@@ -287,5 +288,20 @@ describe("Search functional specification", () => {
             expect(component.find(Search).state().inputRef).toBe(ref);
             done();
         }, 500);
+    });
+
+    it('renders CircularProgress when state.loading value is true', () => {
+        component = mount(
+            <Provider store={store}>
+                <Search />
+            </Provider>
+        );
+
+        console.log(component.find(Search).html())
+        expect(component.find(Search).html().includes('CircularProgress')).toBeFalsy();
+        component.find(Search).setState({loading: true});
+        component.update();
+        console.log(component.find(Search).html())
+        expect(component.find(Search).html().includes('CircularProgress')).toBeTruthy();
     });
 });
