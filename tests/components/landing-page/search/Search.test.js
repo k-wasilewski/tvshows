@@ -297,11 +297,9 @@ describe("Search functional specification", () => {
             </Provider>
         );
 
-        console.log(component.find(Search).html())
         expect(component.find(Search).html().includes('CircularProgress')).toBeFalsy();
         component.find(Search).setState({loading: true});
         component.update();
-        console.log(component.find(Search).html())
         expect(component.find(Search).html().includes('CircularProgress')).toBeTruthy();
     });
 });
