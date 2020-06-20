@@ -48,7 +48,7 @@ export function Details(props) {
                     <Typography variant="body1" component="h2" className={classes.detailsSpan}
                         dangerouslySetInnerHTML={createMarkup(result.show.summary)} />
                     {(result.show.image)===null ?
-                        <Button variant='disabled' size='small'>brak zdjęcia</Button>
+                        <Button disabled={true} size='small'>brak zdjęcia</Button>
                         :
                         <React.Fragment>
                             {(props.img==='') ?

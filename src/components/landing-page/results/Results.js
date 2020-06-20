@@ -20,7 +20,7 @@ export class Results extends React.PureComponent {
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         this.loading=true;
-        return null;//Details invalid variant disabled
+        return null;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
