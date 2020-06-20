@@ -9,10 +9,12 @@ export function ErrorComponent(props) {
     const classes = styles();
 
     return (
-        <div className={classes.dashboard}>
-            <ErrorMsg msg={props.msg} />
-            <Button variant='outlined' size='small' onClick={() => history.push('/')}>
-                Powrót</Button>
+        <div className={classes.App}>
+            <div className={classes.dashboard}>
+                <ErrorMsg msg={props.msg} />
+                <Button variant='outlined' size='small' onClick={() => history.push('/')}>
+                    Powrót</Button>
+            </div>
         </div>
     );
 };
