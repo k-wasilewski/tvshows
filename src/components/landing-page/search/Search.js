@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { setResults, setQuery } from '../../../redux/actions';
 import SearchForm from "./SearchForm";
+import CircularProgressWrapper from "./CircularProgressWrapper";
 
 export class Search extends React.Component {
     constructor(props) {
@@ -12,7 +13,8 @@ export class Search extends React.Component {
         this.state = {
             input: '',
             errorMsg: '',
-            inputRef: null
+            inputRef: null,
+            loading: false
         };
 
         this.inputOnChange = this.inputOnChange.bind(this);
@@ -34,7 +36,7 @@ export class Search extends React.Component {
 
     submitQuery(event) {
         const query = this.state.input;
-        this.setState({input: ''});
+        this.setState({input: '', loading: true});
         this.props.setQuery(query);
         const inputRef = this.state.inputRef;
         inputRef.value='';
@@ -57,6 +59,7 @@ export class Search extends React.Component {
                     errorMsg: ''
                 });
             }
+            this.setState({loading: false});
         }).catch(error => {
             if (this._isMounted)
                 this.setState({
@@ -82,10 +85,20 @@ export class Search extends React.Component {
 
     render() {
         return (
-            <SearchForm msg={this.state.errorMsg} onSubmit={this.submitQuery}
-                        onChange={this.inputOnChange} doReset={this.resetResults}
-                        passInputRefToParent={this.getInputRefFromChild} />
+            <React.Fragment>
+                {(this.state.loading) ? <CircularProgressWrapper /> : null}
+                <SearchForm msg={this.state.errorMsg} onSubmit={this.submitQuery}
+                            onChange={this.inputOnChange} doReset={this.resetResults}
+                            passInputRefToParent={this.getInputRefFromChild} />
+            </React.Fragment>
+
         );
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        results: state.setResultsReducer.results
     };
 };
 
@@ -94,4 +107,4 @@ const mapDispatchToProps = {
     setQuery
 };
 
-export default connect(null, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
