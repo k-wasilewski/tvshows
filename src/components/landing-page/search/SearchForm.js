@@ -1,5 +1,5 @@
+import React from "react";
 import {ErrorMsg} from "../../error/ErrorMsg";
-import React, {useEffect, useRef} from "react";
 import {styles} from "../../../styles/styles";
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
@@ -7,9 +7,9 @@ import {connect} from "react-redux";
 
 export function SearchForm(props) {
     const classes = styles();
-    const inputRef = useRef();
+    const inputRef = React.useRef();
 
-    useEffect(() => {
+    React.useEffect(() => {
         props.passInputRefToParent(inputRef);
     }, []);     //eslint-disable-line react-hooks/exhaustive-deps
 
