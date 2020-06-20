@@ -2,15 +2,15 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import LandingPage from './landing-page/LandingPage';
 import Details from './details/Details';
-import NotFoundComponent from "./error/NotFoundComponent";
+import ErrorComponent from "./error/ErrorComponent";
 
 const Router = () => {
     return (
         <React.Fragment>
             <Switch>
-                <Route path={`/`} exact component={LandingPage} />
-                <Route path={`/details`} exact component={Details} />
-                <Route path='*' exact={true} component={NotFoundComponent} />
+                <Route path={`/`} exact render={() => <LandingPage />} />
+                <Route path={`/details`} exact render={() => <Details />} />
+                <Route path='*' exact render={() => <ErrorComponent msg='Nie znaleziono strony'/>} />
             </Switch>
         </React.Fragment>
     );

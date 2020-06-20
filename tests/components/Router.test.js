@@ -7,7 +7,7 @@ import {Provider} from "react-redux";
 import App from "../../src/components/App";
 import {mount, configure} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
-import NotFoundComponent from "../../src/components/error/NotFoundComponent";
+import ErrorComponent from "../../src/components/error/ErrorComponent";
 
 describe("Router functional specification", () => {
     let component;
@@ -47,7 +47,7 @@ describe("Router functional specification", () => {
         expect(component.find(Details)).toHaveLength(1);
     });
 
-    it('component "NotFoundComponent" is displayed when unknown url is passed', () => {
+    it('component "ErrorComponent" is displayed when unknown url is passed', () => {
         component = mount(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/frfergrtgbtghreg']}>
@@ -56,6 +56,6 @@ describe("Router functional specification", () => {
             </Provider>
         );
 
-        expect(component.find(NotFoundComponent)).toHaveLength(1);
+        expect(component.find(ErrorComponent)).toHaveLength(1);
     });
 });

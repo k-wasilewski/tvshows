@@ -1,14 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotFoundComponent rendering specification NotFoundComponent is rendered 1`] = `
+exports[`ErrorComponent rendering specification ErrorComponent is rendered 1`] = `
 <div
   className="makeStyles-dashboard-12"
 >
   <span
     className="makeStyles-errorMsg-6"
-  >
-    Nie znaleziono strony
-  </span>
+  />
   <button
     className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
     disabled={false}

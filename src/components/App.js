@@ -6,6 +6,7 @@ import {setDetailedResult, setOriginalImage} from '../redux/actions';
 import {connect} from 'react-redux';
 import OriginalImg from "./details/OriginalImage";
 import Typography from "@material-ui/core/Typography";
+import ErrorBoundary from "./error/ErrorBoundary";
 
 export function App(props) {
     const classes = styles();
@@ -23,7 +24,7 @@ export function App(props) {
     }
 
     return (
-        <React.Fragment>
+        <ErrorBoundary>
             <OriginalImg notifyParent={gotCallbackFromImg} />
             <div id='App' className={(props.img==='') ? classes.App : classes.blurApp}>
                 <img className={classes.logo} src={logo} alt='logo' />
@@ -32,7 +33,7 @@ export function App(props) {
                     &copy; Kuba Wasilewski, 2020
                 </Typography>
             </div>
-        </React.Fragment>
+        </ErrorBoundary>
     );
 };
 

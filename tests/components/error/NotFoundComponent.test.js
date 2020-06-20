@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {NotFoundComponent} from "../../../src/components/error/NotFoundComponent";
+import {ErrorComponent} from "../../../src/components/error/ErrorComponent";
 
-describe("NotFoundComponent rendering specification", () => {
-    it('NotFoundComponent is rendered', () => {
+describe("ErrorComponent rendering specification", () => {
+    it('ErrorComponent is rendered', () => {
         const component = renderer.create(
-            <NotFoundComponent/>
+            <ErrorComponent/>
         );
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
