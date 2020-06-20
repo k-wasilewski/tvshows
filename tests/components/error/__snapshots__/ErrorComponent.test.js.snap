@@ -2,34 +2,38 @@
 
 exports[`ErrorComponent rendering specification ErrorComponent is rendered 1`] = `
 <div
-  className="makeStyles-dashboard-12"
+  className="makeStyles-App-1"
 >
-  <span
-    className="makeStyles-errorMsg-6"
-  />
-  <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
-    disabled={false}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={0}
-    type="button"
+  <div
+    className="makeStyles-dashboard-12"
   >
     <span
-      className="MuiButton-label"
+      className="makeStyles-errorMsg-6"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
     >
-      Powrót
-    </span>
-  </button>
+      <span
+        className="MuiButton-label"
+      >
+        Powrót
+      </span>
+    </button>
+  </div>
 </div>
 `;
