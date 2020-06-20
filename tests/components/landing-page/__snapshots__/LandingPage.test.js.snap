@@ -1,74 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LandingPage rendering specification LandingPage is rendered 1`] = `
-<form
-  className="makeStyles-dashboard-12"
-  id="searchForm"
-  onSubmit={[Function]}
->
-  <span
-    className="makeStyles-errorMsg-6"
-  >
-    
-  </span>
-  <input
-    className="makeStyles-input-15"
-    id="searchFormInput"
-    onChange={[Function]}
-    type="text"
-  />
-  <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
-    disabled={false}
-    id="searchFormSubmitBtn"
-    onBlur={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={0}
-    type="submit"
+Array [
+  <form
+    className="makeStyles-dashboard-12"
+    id="searchForm"
+    onSubmit={[Function]}
   >
     <span
-      className="MuiButton-label"
+      className="makeStyles-errorMsg-6"
     >
-      Szukaj
+      
     </span>
-  </button>
-  <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
-    disabled={false}
-    id="searchFormResetBtn"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={0}
-    type="button"
+    <input
+      className="makeStyles-input-15"
+      id="searchFormInput"
+      onChange={[Function]}
+      type="text"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+      disabled={false}
+      id="searchFormSubmitBtn"
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="submit"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Szukaj
+      </span>
+    </button>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+      disabled={false}
+      id="searchFormResetBtn"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Resetuj wyniki
+      </span>
+    </button>
+    <br />
+    <h2
+      className="MuiTypography-root makeStyles-query-7 MuiTypography-body1"
+    />
+  </form>,
+  <div
+    className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+    role="progressbar"
+    style={
+      Object {
+        "height": 40,
+        "width": 40,
+      }
+    }
   >
-    <span
-      className="MuiButton-label"
+    <svg
+      className="MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
     >
-      Resetuj wyniki
-    </span>
-  </button>
-  <br />
-  <h2
-    className="MuiTypography-root makeStyles-query-7 MuiTypography-body1"
-  />
-</form>
+      <circle
+        className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
+  </div>,
+]
 `;

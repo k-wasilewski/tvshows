@@ -109,18 +109,18 @@ describe("Results functional specification", () => {
     it('resetFilter() sets state.filteredResults value to props.results value', () => {
         const testInitialResults = ['sample value'];
 
-        component = shallow(
+        component = mount(
             <Results results={testInitialResults}/>
         );
 
         let stateFilteredResults = component.state('filteredResults');
-        let propsResults = component.props().children[2].props.results;
+        let propsResults = component.prop('results');
 
-        expect(stateFilteredResults===propsResults).toBeFalsy();
+        expect(stateFilteredResults).not.toBe(propsResults);
         component.instance().resetFilter();
         component.update();
         stateFilteredResults = component.state('filteredResults');
-        propsResults = component.props().children[2].props.results;
-        expect(stateFilteredResults===propsResults).toBeTruthy();
+        propsResults = component.prop('results');
+        expect(stateFilteredResults).toBe(propsResults);
     });
 });

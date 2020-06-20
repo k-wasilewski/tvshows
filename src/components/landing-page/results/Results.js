@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import ResultsTable from './ResultsTable';
 import ResultsFilter from './ResultsFilter';
 import mapDayNoToName from '../../../functions/mapDayNoToName';
 import 'babel-polyfill';
+import {CircularProgress} from "@material-ui/core";
 
 export class Results extends React.PureComponent {
     constructor(props) {
@@ -20,7 +20,7 @@ export class Results extends React.PureComponent {
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         this.loading=true;
-        return null;
+        return null;//Details invalid variant disabled
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -55,11 +55,15 @@ export class Results extends React.PureComponent {
             :
             <ResultsFilter setDay={this.filterByDay} doReset={this.resetFilter} />;
 
+        const ResultsTable = React.lazy(() => import('./ResultsTable'));
+
         return (
             <React.Fragment>
                 {resultsFilter}
                 {(this.loading) ? 'loading' : null}
-                <ResultsTable results={results} />
+                <React.Suspense fallback={<CircularProgress />}>
+                    <ResultsTable results={results} />
+                </React.Suspense>
             </React.Fragment>
         );
     };
