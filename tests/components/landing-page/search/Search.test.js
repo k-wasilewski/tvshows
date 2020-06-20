@@ -173,7 +173,6 @@ describe("Search functional specification", () => {
             setTimeout(function () {
                 expect(component.find(Search).state().errorMsg).toBe(
                     'Błąd serwera');
-                //mock.reset();
                 done();
             }, 500);
         });
@@ -203,6 +202,36 @@ describe("Search functional specification", () => {
             expect(mockSetQuery).toBeCalledWith(testInput);
             expect(component.find(Search).state().input).toBe('');
             expect(component.find(Search).state().inputRef.value).toBe('');
+            mock.reset();
+            done();
+        }, 500);
+    });
+
+    it('submitQuery() sets state.loading value to true initially and then to false ' +
+        'when response is received', (done) => {
+        const mock = new MockAdapter(axios);
+        const resp = [];
+        mock.onGet().reply(200, resp);
+
+        const mockSetQuery = jest.fn();
+
+        component = mount(
+            <Provider store={store}>
+                <Search setQuery={mockSetQuery}/>
+            </Provider>
+        );
+        const testInput = 'test input value';
+
+        component.find('#searchFormInput').at(0).simulate('change', {target: {value: testInput}});
+        component.update();
+
+        const mockedEvent = {preventDefault: () => {}};
+        component.find(Search).instance().submitQuery(mockedEvent);
+        component.update();
+        expect(component.find(Search).state().loading).toBe(true);
+
+        setTimeout(function () {
+            expect(component.find(Search).state().loading).toBe(false);
             mock.reset();
             done();
         }, 500);
