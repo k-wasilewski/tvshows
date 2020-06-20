@@ -69,11 +69,12 @@ export function ResultsTable(props) {
                         </StyledTableHeadRow>
                     </TableHead>
                     <TableBody>
-                        {sortedResults.map((result) => (
-                            <Tooltip key={`tooltip-${result.score}${result.show.name}`}
-                                     title={`Szczegóły serialu ${result.show.name}`} placement='top-end'>
+                        {sortedResults.map((result, index) => (
+                            <Tooltip key={`tooltip-${result.score}${result.show.name}${index}`}
+                                     title={`Szczegóły serialu ${result.show.name}`}
+                                     placement='top-end'>
                                 <StyledTableRow className='resultsTable-row'
-                                                key={result.score+result.show.name}
+                                                key={`${result.score}${result.show.name}${index}`}
                                                 onClick={event => rowClicked(event, result)}>
                                     <StyledTableCell component='th' scope='row'>
                                         {result.score}
