@@ -5,7 +5,7 @@ import ResultsFilter from './ResultsFilter';
 import mapDayNoToName from '../../../functions/mapDayNoToName';
 import 'babel-polyfill';
 
-export class Results extends React.Component {
+export class Results extends React.PureComponent {
     constructor(props) {
         super(props);
 

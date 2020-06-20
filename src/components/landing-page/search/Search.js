@@ -5,7 +5,7 @@ import { setResults, setQuery } from '../../../redux/actions';
 import SearchForm from "./SearchForm";
 import CircularProgressWrapper from "./CircularProgressWrapper";
 
-export class Search extends React.Component {
+export class Search extends React.PureComponent {
     constructor(props) {
         super(props);
         this._isMounted = false;
