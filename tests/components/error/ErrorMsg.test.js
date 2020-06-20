@@ -12,18 +12,18 @@ describe("ErrorMsg rendering specification", () => {
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
+});
 
-    describe("ErrorMsg functional specification", () => {
-        it('renders msg passed as props', () => {
-            configure({adapter: new Adapter()});
+describe("ErrorMsg functional specification", () => {
+    it('renders msg passed as props', () => {
+        configure({adapter: new Adapter()});
 
-            const testMsg = 'test message';
+        const testMsg = 'test message';
 
-            const component = mount(
-                <ErrorMsg msg={testMsg} />
-            );
+        const component = mount(
+            <ErrorMsg msg={testMsg} />
+        );
 
-            expect(component.find('span').text()).toBe(testMsg);
-        });
+        expect(component.find('span').text()).toBe(testMsg);
     });
 });
