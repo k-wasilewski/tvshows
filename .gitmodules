@@ -1,0 +1,3 @@
+[submodule "tvshows-logging-server"]
+	path = tvshows-logging-server
+	url = https://github.com/k-wasilewski/tvshows-logging-server
