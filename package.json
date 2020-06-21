@@ -30,10 +30,11 @@
     "surge": "^0.21.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "development": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "production": "surge"
   },
   "eslintConfig": {
     "extends": "react-app"
