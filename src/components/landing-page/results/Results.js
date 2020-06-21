@@ -26,8 +26,8 @@ export class Results extends React.PureComponent {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.state.filteredResults===prevState.filteredResults) {
             this.setState({filteredResults: []});
-            this.loading=false;
         }
+        this.loading=false;
     }
 
     filterByDay(day) {
@@ -60,7 +60,7 @@ export class Results extends React.PureComponent {
         return (
             <React.Fragment>
                 {resultsFilter}
-                {(this.loading) ? 'loading' : null}
+                {(this.loading) ? <CircularProgress /> : null}
                 <React.Suspense fallback={<CircularProgress />}>
                     <ResultsTable results={results} />
                 </React.Suspense>
