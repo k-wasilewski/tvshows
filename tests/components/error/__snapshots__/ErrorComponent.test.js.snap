@@ -10,9 +10,14 @@ exports[`ErrorComponent rendering specification ErrorComponent is rendered 1`] =
     <span
       className="makeStyles-errorMsg-6"
     />
+    <img
+      alt="logo"
+      className="makeStyles-logo-3"
+      src={Object {}}
+    />
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
-      disabled={false}
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+      disabled={true}
       onBlur={[Function]}
       onClick={[Function]}
       onDragLeave={[Function]}
@@ -25,15 +30,21 @@ exports[`ErrorComponent rendering specification ErrorComponent is rendered 1`] =
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      tabIndex={0}
+      tabIndex={-1}
       type="button"
     >
       <span
         className="MuiButton-label"
       >
-        Powrót
+        Odśwież stronę
       </span>
     </button>
+    <h2
+      className="MuiTypography-root makeStyles-copyrightLandingPage-4 MuiTypography-h6"
+      id="copyright"
+    >
+      © Kuba Wasilewski, 2020
+    </h2>
   </div>
 </div>
 `;
