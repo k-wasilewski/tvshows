@@ -32,8 +32,8 @@
     "surge": "^0.21.3"
   },
   "scripts": {
-    "build": "react-scripts build",
-    "postbuild": "tar -cvzf build/tvshows.tar.gz -C build .",
+    "build": "react-scripts build && cp -r build build_gzip",
+    "postbuild": "gzip -r build_gzip",
     "start": "react-scripts start",
     "node": "node server.js",
     "surge": "surge",
