@@ -19,9 +19,10 @@ tvshows - a React.js app for looking up a tv show<br>
 <br>
 
 ### test
-1. cd tvshows<br>
-2. npm run test<br>
-
+1. $ cd tvshows<br>
+2. $ npm run test<br>
+<br>
+<br>
 
 ## User flow:
 #### 1 - Landing page
