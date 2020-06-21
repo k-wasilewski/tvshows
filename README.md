@@ -15,7 +15,7 @@ tvshows - a React.js app for looking up a tv show<br>
 ### deploy_surge
 1. $ cd tvshows<br>
 2. $ npm run surge<br>
-3. project: /home/kuba/Desktop/projects/tvshows/build<br>
+3. project: [your/clone/path]/tvshows/build<br>
 4. domain: http://tvshows.surge.sh<br>
 5. go to http://tvshows.surge.sh<br>
 
