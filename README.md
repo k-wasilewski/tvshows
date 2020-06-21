@@ -7,7 +7,6 @@ tvshows - a React.js app for looking up a tv show<br>
 2. $ npm install<br>
 3. $ npm run development<br>
 4. go to http://localhost:3000<br>
-<br>
 
 ### build&run_production
 1. $ cd tvshows<br>
@@ -16,12 +15,10 @@ tvshows - a React.js app for looking up a tv show<br>
 4. project: /home/kuba/Desktop/projects/tvshows/build<br>
 5. domain: http://tvshows.surge.sh<br>
 6. go to http://tvshows.surge.sh<br>
-<br>
 
 ### test
 1. $ cd tvshows<br>
 2. $ npm run test<br>
-<br>
 <br>
 
 ## User flow:
