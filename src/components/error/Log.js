@@ -7,7 +7,11 @@ const customJSON = log => ({
     stacktrace: log.stacktrace
 });
 
-remote.apply(log, { format: customJSON, url: 'http://localhost:8080/log' });
+remote.apply(log, {
+    format: customJSON,
+    headers: {'Access-Control-Allow-Origin': '*'},
+    url: 'http://localhost:8080/log'
+});
 
 log.enableAll();
 
