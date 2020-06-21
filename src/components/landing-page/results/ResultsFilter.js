@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function ResultsFilter(props) {
+export default React.memo(function ResultsFilter(props) {
     const materialUiClasses = useStyles();
     const classes = styles();
     const [day, setDay] = React.useState('');
@@ -52,4 +52,4 @@ export default function ResultsFilter(props) {
             }}>Resetuj filtr</Button>
         </div>
     );
-};
+});
