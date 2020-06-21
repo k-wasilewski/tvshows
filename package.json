@@ -14,6 +14,8 @@
     "babel-polyfill": "^6.26.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "express": "^4.17.1",
+    "express-static-gzip": "^2.0.6",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^16.2.2",
     "loglevel": "^1.6.8",
@@ -30,11 +32,13 @@
     "surge": "^0.21.3"
   },
   "scripts": {
-    "development": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "tar -cvzf build/tvshows.tar.gz -C build .",
+    "start": "react-scripts start",
+    "node": "node server.js",
+    "surge": "surge",
     "test": "jest",
-    "eject": "react-scripts eject",
-    "production": "surge"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

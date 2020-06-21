@@ -1,20 +1,23 @@
-## build&run_development + build&run_production + test the app
+## build&deploy_node.js&deploy_surge&test the app
 tvshows - a React.js app for looking up a tv show<br>
 *tvshows-logging-server - a Spring Boot server for error logging (build&run in submodule's README)*<br>
 
-### build&run_development
+### build
 1. $ cd tvshows<br>
 2. $ npm install<br>
-3. $ npm run development<br>
-4. go to http://localhost:3000<br>
+3. $ npm build<br>
 
-### build&run_production
+### deploy_node.js
 1. $ cd tvshows<br>
-2. $ npm run build<br>
-3. $ npm run production<br>
-4. project: /home/kuba/Desktop/projects/tvshows/build<br>
-5. domain: http://tvshows.surge.sh<br>
-6. go to http://tvshows.surge.sh<br>
+2. $ npm run node<br>
+3. go to http://localhost:3000<br>
+
+### deploy_surge
+1. $ cd tvshows<br>
+2. $ npm run surge<br>
+3. project: /home/kuba/Desktop/projects/tvshows/build<br>
+4. domain: http://tvshows.surge.sh<br>
+5. go to http://tvshows.surge.sh<br>
 
 ### test
 1. $ cd tvshows<br>
