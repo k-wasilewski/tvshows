@@ -29,4 +29,13 @@ describe("redux actions specification", () => {
         };
         expect(actions.setOriginalImage(src, title)).toEqual(expectedAction);
     });
+
+    it('setQuery action works as expected', () => {
+        const query = 'sample query';
+        const expectedAction = {
+            type: actions.SET_QUERY,
+            data: query
+        };
+        expect(actions.setQuery(query)).toEqual(expectedAction);
+    });
 });

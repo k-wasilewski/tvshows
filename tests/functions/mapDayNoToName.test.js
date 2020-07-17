@@ -9,5 +9,6 @@ describe("mapDayNoToName functional specification", () => {
         expect(mapDayNoToName(5)).toBe('Friday');
         expect(mapDayNoToName(6)).toBe('Saturday');
         expect(mapDayNoToName(7)).toBe('Sunday');
+        expect(mapDayNoToName(21)).toBe('');
     });
 });
