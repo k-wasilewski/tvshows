@@ -106,4 +106,35 @@ describe("Details functional specification", () => {
             done();
         }, 500);
     });
+
+    it('resetDetailedResult() clears the redux state value detailedResult', (done) => {
+        const testResult = {
+            show: {
+                name: 'sample name',
+                image: {
+                    medium: 'mediumSrc',
+                    original: 'originalSrc'
+                }
+            },
+            score: 2
+        };
+
+        component = mount(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <ConnectedDetails detailedResult={testResult}/>
+                </BrowserRouter>
+            </Provider>
+        );
+
+        const resetBtn = component.find(Button).at(0);
+        resetBtn.simulate('click');
+        component.update();
+
+        setTimeout(function () {
+            expect(component.find(Details).props().detailedResult)
+                .toStrictEqual([]);
+            done();
+        }, 500);
+    });
 });

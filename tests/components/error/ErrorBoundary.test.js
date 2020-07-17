@@ -13,8 +13,7 @@ describe("ErrorBoundary functional specification", () => {
         configure({adapter: new Adapter()});
 
         const componentDidCatch = jest.spyOn(ErrorBoundary.prototype, 'componentDidCatch');
-        const consoleErrorLog = jest.spyOn(console, 'error')
-            .mockImplementation(() => console.log('error caught by ErrorBoundary'));
+        const consoleErrorLog = jest.spyOn(console, 'error').mockImplementation(() => {});
 
         const component = mount(
             <ErrorBoundary>
