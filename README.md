@@ -7,6 +7,14 @@ tvshows - a React.js app for looking up a tv show<br>
 2. $ npm install<br>
 3. $ npm build<br>
 
+### deploy_Dockerfile
+1. $ cd build<br>
+2. $ npm run build<br>
+4. $ mv ../Dockerfile.react.prod .
+5. $ docker build -t tvshows .
+6. $ docker run -d tvshows
+7. go to http://localhost:3000<br>
+
 ### deploy_node.js
 1. $ cd tvshows<br>
 2. $ npm run node<br>
