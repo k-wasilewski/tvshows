@@ -1,10 +1,3 @@
-#!groovy
-import ci.utils.plab.v2.model.*
-import ci.utils.plab.v2.model.acceptanceCriteria.*
-import ci.utils.plab.v2.model.loaddrivers.*
-import ci.utils.plab.v2.model.reportData.*
-import ci.utils.plab.v2.model.test.*
-
 pipeline {
     agent {
         docker { image 'gcr.io/cloud-builders/yarn' }
