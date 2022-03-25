@@ -1,0 +1,5 @@
+{
+    "baseUrl": "http://localhost:8080",
+    "scrollBehavior": "center",
+    "mailHogUrl": "http://localhost:8025"
+}

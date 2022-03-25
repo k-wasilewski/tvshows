@@ -1,0 +1,24 @@
+{
+  "name": "taiab-e2e-tests",
+  "version": "1.0.0",
+  "description": "Travel Agency in a Box end to end system tests",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:test-chrome": "cypress run --spec \"cypress/integration/shared/**\" --browser chrome",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.3.1",
+    "cypress-recurse": "^1.13.1",
+    "random-lorem": "^1.0.4"
+  },
+  "dependencies": {
+    "cypress-mailhog": "^1.4.0",
+    "nodemailer": "^6.7.2",
+    "smtp-tester": "^1.2.0"
+  }
+}
