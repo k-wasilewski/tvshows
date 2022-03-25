@@ -11,11 +11,20 @@ pipeline {
     }
 
     stages {
-        stage('git clone repository') {
+        stage('checkout sources') {
             steps {
                 script {
-                    dir("/tmp") {
-                        sh(returnStdout: true, script: 'git clone https://github.com/k-wasilewski/tvshows.git')
+                    dir('/tmp') {
+                        checkout([
+                                $class                           : 'GitSCM',
+                                branches                         : scm.branches,
+                                doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
+                                extensions                       : [[$class: 'CloneOption', noTags: false, shallow: false, depth: 0, reference: '']],
+                                userRemoteConfigs                : scm.userRemoteConfigs,
+                        ])
+                        env.currentCommitHash = sh(script: 'git rev-parse HEAD', returnStdout: true)?.trim()
+                        sh(returnStdout: true, script: "echo Current branch is ${scm.branches[0].name}")
+                        sh(returnStdout: true, script: "echo Current currentCommitHash is ${env.currentCommitHash}")
                     }
                 }
             }
